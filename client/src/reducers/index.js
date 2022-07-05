@@ -11,3 +11,5 @@ function rootReducer(state = InitialState, action){
             return "hola"
     }
 }
+
+export default rootReducer
