@@ -7,7 +7,7 @@ import Welcome from "./../welcome/Welcome"
 
 export default function Home(){
     return(
-        <div>
+        <>
             <NavBar/>
             <div>---------------------------------------------------------------------</div>
             <div><Welcome/></div>
@@ -18,6 +18,6 @@ export default function Home(){
             <div>---------------------------------------------------------------------</div>
             <footer><Footer/></footer>
             <div>---------------------------------------------------------------------</div>
-        </div>
+        </>
     )
 }
