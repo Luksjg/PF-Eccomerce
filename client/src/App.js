@@ -11,6 +11,7 @@ function App() {
           {/* <Route exact path="/tienda" component={Store}/>  */}
           {/* <Route path="/tienda/:producto" componente={productDetail}/> */}
           {/* <Route path="/edit" component={editPage}/>  */}
+          {/* <Route path="/crearproducto" component={createProduct}/>  */}
           {/* <Route path="/nosotros" component={weAreTheChampions}/> */}
         </Switch>
       </BrowserRouter>

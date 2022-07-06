@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from 'axios'
 
 export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS"
 export const GET_BY_CATEGORY = "GET_BY_CATEGORY"
@@ -7,7 +7,8 @@ export const GET_ALL_USERS = "GET_ALL_USERS"
 export const GET_USER = "GET_USER"
 export const DELETE_USER = "DELETE_USER"
 export const GET_REVIEWS = "GET_REVIEWS"
-export const EDIT_USER = "EDIT_USER" 
+export const EDIT_USER_ADMIN = "EDIT_USER_ADMIN" 
+export const NEW_SUB = "NEW_SUB"
 
 export function getAllProducts(){
     return async function(dispatch){
@@ -52,18 +53,26 @@ export function getUser(id){
 
 export function deleteUser(id){
     return async function(dispatch){
-        let data = await axios.delete(`http://localhost:3001/user/${id}`)
+        let data = await fetch(`http://localhost:3001/user/${id}`, { method: 'DELETE' });
         return dispatch({
             type: DELETE_USER,
             payload: data
         })
     }
 }
+
+export function newSub(payload){
+    return{
+        type: NEW_SUB,
+        payload: payload
+    }
+}
+
 export function editUserAdmin(id){
     return async function(dispatch){
         let data = await axios.put(`http://localhost:3001/user/${id}`)
         return dispatch({
-            tye: EDIT_USER,
+            tye: EDIT_USER_ADMIN,
             payload: data
         })
     }
