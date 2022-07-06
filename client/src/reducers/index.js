@@ -1,4 +1,4 @@
-import {GET_ALL_PRODUCTS, GET_BY_CATEGORY, GET_PRODUCT, GET_ALL_USERS, GET_USER, GET_REVIEWS, EDIT_USER_ADMIN, DELETE_USER} from "../actions/index"
+import {GET_ALL_PRODUCTS, GET_BY_CATEGORY, GET_PRODUCT, GET_ALL_USERS, GET_USER, GET_REVIEWS, EDIT_USER_ADMIN, DELETE_USER, NEW_SUB} from "../actions/index"
 
 const InitialState={
     allProducts : [],
@@ -6,7 +6,8 @@ const InitialState={
     product: undefined,
     users: [],
     user: undefined,
-    reviews: []
+    reviews: [],
+    subs: []
 }
 
 function rootReducer(state = InitialState, action){
@@ -33,6 +34,12 @@ function rootReducer(state = InitialState, action){
             return{
                 ...state,
                 users: action.payload
+            }
+        case NEW_SUB:
+            let subs = state.subs.filter(s=> s.email !== action.payload.email)
+            return{
+                ...state,
+                subs: [subs, action.payload]
             }
         case GET_USER:
             return{
