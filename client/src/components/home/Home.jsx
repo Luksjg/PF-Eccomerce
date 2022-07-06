@@ -1,14 +1,20 @@
 import React from "react";
 import Footer from "../footer/Footer"
 import Subscribe from "../subscribe/Subscribe";
+import PaymentInfo from "../paymentInfo/PaymentInfo"
+import NavBar from "../navbar/NavBar"
 
 export default function Home(){
     return(
         <div>
-            <p>hola</p>
+            <NavBar/>
+            <div>---------------------------------------------------------------------</div>
             <div><Subscribe/></div>
-
+            <div>---------------------------------------------------------------------</div>
+            <div><PaymentInfo/></div>
+            <div>---------------------------------------------------------------------</div>
             <footer><Footer/></footer>
+            <div>---------------------------------------------------------------------</div>
         </div>
     )
 }
