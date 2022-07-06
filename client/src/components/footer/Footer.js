@@ -22,7 +22,7 @@ export default function Footer(){
                 <p>miketyson@gmail.com</p>
             </div>
             <div>
-                <h3><img src="https://www.pnguniverse.com/wp-content/uploads/2020/12/Marihuana.png" alt="logo"></img></h3>
+                <h3><img src="https://www.pnguniverse.com/wp-content/uploads/2020/12/Marihuana.png" alt="logo" width="150" height="150"></img></h3>
             </div>
         </div>
     )
