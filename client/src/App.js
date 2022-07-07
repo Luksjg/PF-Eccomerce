@@ -13,12 +13,14 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Home}/>
+
           <Route exact path="/tienda" component={StorePage}/> 
           <Route path="/tienda/:producto" componente={ProductDetail}/>
           <Route path="/crearproducto" component={CreateProduct}/> 
           <Route path="/nosotros" component={WeAre}/>
           <Route exact path="/create" component={CreateProduct}/>
           <Route path='*' component={Page404}/>
+
         </Switch>
       </BrowserRouter>
     </div>
