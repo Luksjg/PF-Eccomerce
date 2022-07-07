@@ -2,6 +2,7 @@ import "./App.module.css"
 import Home from "./components/home/Home.jsx"
 import {BrowserRouter, Route, Switch} from 'react-router-dom' 
 import CreateProduct from "./components/createProduct/CreateProduct"
+import ProductDetail from "./components/productDetail/ProductDetail"
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home}/>
           {/* <Route exact path="/tienda" component={Store}/>  */}
-          {/* <Route path="/tienda/:producto" componente={productDetail}/> */}
+          <Route path="/tienda/:producto" componente={ProductDetail}/>
           {/* <Route path="/edit" component={editPage}/>  */}
           {/* <Route path="/crearproducto" component={createProduct}/>  */}
           {/* <Route path="/nosotros" component={weAreTheChampions}/> */}

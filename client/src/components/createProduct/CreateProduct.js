@@ -89,10 +89,22 @@ export default function CreateProduct(){
                         <p>Categoria:</p>
                         <select value={input.category} name="category" onChange={e=>handleChange(e)}>
                         <option></option>
-                        <option>ejemplo</option>
-                        <option>ejemplo</option>
-                        <option>ejemplo</option>
-                        <option>ejemplo</option>
+                        <option>abonos</option>
+                        <option>cosecha</option>
+                        <option>cultivo</option>
+                        <option>destacados</option>
+                        <option>control-plagas-hongos</option>
+                        <option>topcrop</option>
+                        <option>herramientas-accesorios</option>
+                        <option>iluminacion</option>
+                        <option>armadores</option>
+                        <option>bandejas</option>
+                        <option>papelillos</option>
+                        <option>picadores</option>
+                        <option>pipas</option>
+                        <option>varios</option>
+                        <option>pulverizadores</option>
+                        <option>sustratos</option>
                         </select>
                         </div>
                     <div></div>
