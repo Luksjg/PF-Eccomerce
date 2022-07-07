@@ -10,6 +10,7 @@ export default function NavBar(){
         <Link to="/"><label>Home</label></Link>
         <Link to="/tienda"><label>Tienda</label></Link>    
         <Link to="/nosotros"><label>Nosotros</label></Link>
+        <Link to="/create"><label>Crear producto </label></Link> {/* Only visible in admin user */}
     </div>
     )
 }
