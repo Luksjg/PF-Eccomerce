@@ -5,6 +5,7 @@ import CreateProduct from "./components/createProduct/CreateProduct"
 import ProductDetail from "./components/productDetail/ProductDetail"
 import StorePage from "./components/storePage/StorePage"
 import WeAre from "./components/weAre/WeAre"
+import Page404 from "./components/Page404/Page404"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/crearproducto" component={CreateProduct}/> 
           <Route path="/nosotros" component={WeAre}/>
           <Route exact path="/create" component={CreateProduct}/>
+          <Route path='*' component={Page404}/>
         </Switch>
       </BrowserRouter>
     </div>

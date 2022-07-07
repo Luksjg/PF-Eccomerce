@@ -4,7 +4,6 @@ import Subscribe from "../subscribe/Subscribe";
 import PaymentInfo from "../paymentInfo/PaymentInfo"
 import NavBar from "../navbar/NavBar"
 import Welcome from "./../welcome/Welcome"
-import Categories from "../categories/Categories";
 import MapProducts from "../mapProducts/MapProducts";
 
 export default function Home(){
@@ -15,8 +14,6 @@ export default function Home(){
             <div><Welcome/></div>
             <div>-------------------------------------------------------------------------</div>
             <div><MapProducts/></div>
-            <div>-------------------------------------------------------------------------</div>
-            <div><Categories/></div>
             <div>-------------------------------------------------------------------------</div>
             <div><Subscribe/></div>
             <div>-------------------------------------------------------------------------</div>
