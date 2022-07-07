@@ -5,6 +5,7 @@ import PaymentInfo from "../paymentInfo/PaymentInfo"
 import NavBar from "../navbar/NavBar"
 import Welcome from "./../welcome/Welcome"
 import Categories from "../categories/Categories";
+import MapProducts from "../mapProducts/MapProducts";
 
 export default function Home(){
     return(
@@ -12,6 +13,8 @@ export default function Home(){
             <NavBar/>
             <div>-------------------------------------------------------------------------</div>
             <div><Welcome/></div>
+            <div>-------------------------------------------------------------------------</div>
+            <div><MapProducts/></div>
             <div>-------------------------------------------------------------------------</div>
             <div><Categories/></div>
             <div>-------------------------------------------------------------------------</div>
