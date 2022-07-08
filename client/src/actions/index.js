@@ -9,12 +9,23 @@ export const DELETE_USER = "DELETE_USER"
 export const GET_REVIEWS = "GET_REVIEWS"
 export const EDIT_USER_ADMIN = "EDIT_USER_ADMIN" 
 export const NEW_SUB = "NEW_SUB"
+export const GET_OUTSADING_PRODUCTS = "GET_OUTSADING_PRODUCTS"
 
 export function getAllProducts(){
     return async function(dispatch){
         let data = await axios.get('http://localhost:3001/product');
         return dispatch({
             type: GET_ALL_PRODUCTS,
+            payload: data
+        })
+    }
+}
+
+export function getOutsandingProducts(){
+    return async function(dispatch){
+        let data = await axios.get('http://localhost:3001/outsading')
+        return dispatch({
+            type: GET_OUTSADING_PRODUCTS,
             payload: data
         })
     }
