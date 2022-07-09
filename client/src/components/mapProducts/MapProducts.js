@@ -7,9 +7,6 @@ export default function MapProducts({productsToShow}){
 
     const [currentPage, setCurrentPage] = useState(1)
 
-    console.log(productsToShow)
-
-    // let products = productsToShow.data
     let productsPage = 9
     const LastProduct = currentPage * productsPage
     const FirstProduct = LastProduct - productsPage
