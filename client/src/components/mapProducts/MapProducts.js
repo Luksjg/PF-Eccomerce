@@ -7,10 +7,13 @@ export default function MapProducts({productsToShow}){
 
     const [currentPage, setCurrentPage] = useState(1)
 
-    let countriesPage = 9
-    const LastCountry = currentPage * countriesPage
-    const FirstCountry = LastCountry - countriesPage
-    const currentProducts = productsToShow.slice(FirstCountry, LastCountry)
+    console.log(productsToShow)
+
+    // let products = productsToShow.data
+    let productsPage = 9
+    const LastProduct = currentPage * productsPage
+    const FirstProduct = LastProduct - productsPage
+    const currentProducts = productsToShow.slice(FirstProduct, LastProduct)
 
     return(
         <div>

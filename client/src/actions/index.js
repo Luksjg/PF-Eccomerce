@@ -13,31 +13,31 @@ export const GET_OUTSADING_PRODUCTS = "GET_OUTSADING_PRODUCTS"
 
 export function getAllProducts(){
     return async function(dispatch){
-        let data = await axios.get('http://localhost:3001/product');
+        let data = await axios.get('http://localhost:3001/products');
         return dispatch({
             type: GET_ALL_PRODUCTS,
-            payload: data
+            payload: data.data
         })
     }
 }
 
 export function getOutsandingProducts(){
     return async function(dispatch){
-        let data = await axios.get('http://localhost:3001/outsading')
+        let data = await axios.get('http://localhost:3001/products/destacado')
         return dispatch({
             type: GET_OUTSADING_PRODUCTS,
-            payload: data
+            payload: data.data
         })
     }
 }
 
-export function getAllUsers(){
+export function getByCategory(category){
     return async function(dispatch){
-        let data = await axios.get('http://localhost:3001/user');
-        return dispatch({
-            type: GET_ALL_PRODUCTS,
-            payload: data
-        })
+    let data = await axios.get(`http://localhost:3001/filters/category/${category}`)
+    return dispatch({
+        type: GET_BY_CATEGORY,
+        payload: data.data
+    })
     }
 }
 
@@ -89,12 +89,7 @@ export function editUserAdmin(id){
     }
 }
 
-export function getByCategory(category){
-    return{
-        type: GET_BY_CATEGORY,
-        payload: category
-    }
-}
+
 
 export function getProduct(name){
     return{

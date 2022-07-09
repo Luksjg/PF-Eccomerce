@@ -5,6 +5,7 @@ export default function Categories(){
 
     return(
         <div>
+            <Link to={"/categoria/prueba"}>prueba</Link>
             <Link to={"/categoria/abonos"}>Abonos</Link>
             <Link to={"/categoria/cosecha"}>Cosecha</Link>
             <Link to={"/categoria/cultivo"}>Cultivo</Link>

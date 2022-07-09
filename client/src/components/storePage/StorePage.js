@@ -4,13 +4,15 @@ import Categories from "../categories/Categories"
 import Footer from "../footer/Footer"
 import MapProducts from "../mapProducts/MapProducts"
 import NavBar from "../navbar/NavBar"
+import { getAllProducts } from "../../actions"
 
 export default function StorePage(){
     const dispatch = useDispatch()
     
     const productsToShow = useSelector(state=> state.allProducts)
+
     useEffect(()=>{
-    //    dispatch(getAllProducts()) 
+       dispatch(getAllProducts()) 
     },[dispatch])
 
 

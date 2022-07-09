@@ -7,18 +7,19 @@ import AboutMe from "./../AboutMe/AboutMe"
 import Welcome from "./../welcome/Welcome"
 import MapProducts from "../mapProducts/MapProducts";
 import { useDispatch, useSelector } from "react-redux";
-// import { getOutsandingProducts } from "../../actions";
+import { getOutsandingProducts } from "../../actions";
 
 export default function Home() {
     
     const dispatch = useDispatch()
     
-    const productsToShow = useSelector(state=> state.products)
-    //por ahora mapeo todos los productos
     useEffect(()=>{
-    //    dispatch(getOutsandingProducts()) 
+      dispatch(getOutsandingProducts()) 
     },[dispatch])
 
+    const productsToShow = useSelector(state=> state.outsandingProducts)
+    
+    
     return(
     <div>
       <NavBar />
@@ -44,10 +45,7 @@ export default function Home() {
       <div>
         <AboutMe/>
       </div>
-      <div>
-        ---------------------------------------------------------------------
-      </div>
-      
+      <div>---------------------------------------------------------------------</div>
       <footer>
         <Footer />
       </footer>

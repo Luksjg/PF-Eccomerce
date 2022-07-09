@@ -3,8 +3,8 @@ import {GET_ALL_PRODUCTS,GET_OUTSADING_PRODUCTS, GET_BY_CATEGORY, GET_PRODUCT, G
 const InitialState={
     allProducts : [],
     products: [],
+    outsandingProducts:[],
     product: undefined,
-    users: [],
     user: undefined,
     reviews: [],
     subs: []
@@ -27,13 +27,12 @@ function rootReducer(state = InitialState, action){
         case GET_OUTSADING_PRODUCTS:
             return{
                 ...state,
-                products: action.payload
+                outsandingProducts : action.payload
             }
         case GET_BY_CATEGORY:
-            let productsFound = state.allProducts.filter(p=> p.category = action.payload )
             return{
                 ...state,
-                products: productsFound 
+                products: action.payload
             } 
         case GET_ALL_USERS:
             return{
