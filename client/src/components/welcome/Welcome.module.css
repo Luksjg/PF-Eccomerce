@@ -1,0 +1,67 @@
+.contImg{
+    height: 70vh;
+    width: 100%;
+    background-image: url("./canabbi1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.logoN{
+    height: 60vh;
+    width: 40vh;
+    margin-left: 15vh;
+    margin-top: 0vh;
+   /*  background-color: aquamarine; */
+}
+.logo{
+    background :linear-gradient(135deg,rgba(255,255,255,0.1),rgba(255,255,255,0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37); 
+    height: 35vh;
+    width: 35vh;
+    margin-top: 10vh;
+}
+.titulo h1{
+
+    border : 0px none rgb(255, 255, 255); 
+    font-size : 75px; 
+    text-size-adjust : 100%; 
+    vertical-align : baseline; 
+    background : rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box; 
+    color : rgb(255, 255, 255); 
+    box-sizing : border-box; 
+    margin-top: -40vh;
+    margin-left: 55vw;
+
+
+}
+.subTitulo{
+    margin-top: 0vh;
+    margin-left: 55vw;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+}
+
+.btn{
+    height: 5vh;
+    width: 18vh;
+    margin-top: 2vh;
+    margin-left: 55vw;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    background-color : transparent; 
+   
+    border: 3px solid rgb(255, 255, 255);
+    
+}
+.btn:hover{
+    background-color : rgba(255, 255, 255, 0.2); 
+    border: 1px solid rgba(255,255,255,0.18);
+    transition: 0.4s;
+    
+}
+  
+

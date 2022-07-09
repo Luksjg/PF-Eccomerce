@@ -1,14 +1,35 @@
-import React from "react"
-import { Link } from "react-router-dom"
-
-export default function Welcome(){
-
-    return(
-        <div>
-            <img src="https://i.pinimg.com/736x/18/4c/51/184c515146b9a891c744ec9a266f2229.jpg" alt="welcome logo"/>
-            <p> El e-commerce más completo en productos para cultivos y grow.
-            ¡Hacé tu pedido con el codigo SoyHenry y obtené un 20% DE AUMENTO en tu próxima compra! </p>
-            <Link to={"/tienda"}>Ver productos</Link>
+import React from "react";
+import { Link } from "react-router-dom";
+import S from "./Welcome.module.css";
+import logo from "./logo.png";
+export default function Welcome() {
+  return (
+    <div>
+      <div className={S.contImg}>
+        <div className={S.logoN}>
+          <img className={S.logo} src={logo} alt='logo' />
         </div>
-    )
+        <div className={S.contSup}>
+          <div className={S.titulo}>
+            <h1>HENRY GREENSHOP</h1>
+          </div>
+          <div className={S.subTitulo}>
+            <p>
+              {" "}
+              El e-commerce más completo en productos para cultivos y grow.{" "}
+              <br />
+              ¡Hacé tu pedido y obtené un 20% DE DESCUENTO en tu próxima compra!{" "}
+            </p>
+          </div>
+          <div className={S.contBtn}>
+            <div>
+              <Link to={"/tienda"}>
+                <button className={S.btn}>Ver productos</button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
