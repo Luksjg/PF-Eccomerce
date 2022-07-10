@@ -1,11 +1,11 @@
-import {GET_ALL_PRODUCTS, GET_BY_CATEGORY, GET_PRODUCT, GET_ALL_USERS, GET_USER, GET_REVIEWS, EDIT_USER_ADMIN, DELETE_USER, NEW_SUB} from "../actions/index"
+import {GET_ALL_PRODUCTS,GET_OUTSADING_PRODUCTS, GET_BY_CATEGORY, GET_PRODUCT, GET_USER, GET_REVIEWS, EDIT_USER_ADMIN, DELETE_USER, NEW_SUB, ORDER} from "../actions/index"
 
 const InitialState={
     allProducts : [],
     products: [],
-    product: undefined,
-    users: [],
-    user: undefined,
+    product: [],
+    outsandingProducts:[],
+    user: [],
     reviews: [],
     subs: []
 }
@@ -19,22 +19,25 @@ function rootReducer(state = InitialState, action){
                 allProducts: action.payload
             }
         case GET_PRODUCT:
-            let productFound = state.allProducts.filter(p => p.name === action.payload)
             return{
                 ...state,
-                product: productFound
+                product: action.payload
+            }
+        case GET_OUTSADING_PRODUCTS:
+            return{
+                ...state,
+                outsandingProducts : action.payload
             }
         case GET_BY_CATEGORY:
-            let productsFound = state.allProducts.filter(p=> p.category = action.payload )
             return{
                 ...state,
-                products: productsFound 
+                products: action.payload
             } 
-        case GET_ALL_USERS:
+        case ORDER:
             return{
-                ...state,
-                users: action.payload
-            }
+            ...state,
+            products: action.payload
+            } 
         case NEW_SUB:
             let subs = state.subs.filter(s=> s.email !== action.payload.email)
             return{

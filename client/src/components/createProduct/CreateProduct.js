@@ -1,6 +1,7 @@
 import React, { useState } from "react"
-// import { useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom"
+import { postProduct } from "../../actions"
 import Footer from "../footer/Footer"
 import NavBar from "../navbar/NavBar"
 
@@ -12,12 +13,12 @@ export default function CreateProduct(){
         category:"",
         stock:0,
         description:"",
-        outstanding:false
+        outstanding:"no"
     })
 
     const history =useHistory()
 
-    // const dispatch =useDispatch()
+    const dispatch =useDispatch()
 
     function handleChange(e){
         setInput({
@@ -26,32 +27,33 @@ export default function CreateProduct(){
         })
     }
 
-    function handleImages(e){
-        setInput({
-            ...input, 
-            [e.target.name]: [...input.images, e.target.value]
-        })
-    }
-    //sirve pero tendria que ver como se guardan en la base de datos
+    // function handleImages(e){
+    //     setInput({
+    //         ...input, 
+    //         // [e.target.name]: [...input.images, e.target.value]
+    //         [e.target.name]: e.target.value
+    //     })
+    // }
+    // no sirve subir imagenes
 
     async function handleSubmit(e){
-        if(!input.name || input.images.length < 1 || !input.price ){
+        if(!input.name || !input.price ){
             e.preventDefault()
             return alert('Complete todos los campos para poder continuar')
         }else{
             e.preventDefault()
-            // dispatch(postProduct(input));
+            dispatch(postProduct(input));
             alert('Producto creado exitosamente');
             console.log(input)
-            history.push("/home")
+            history.push("/")
             setInput({
                 name:"",
-                images:[],
+                image:[],
                 price:0,
                 category:"",
                 stock:0,
                 description:"",
-                outstanding:false
+                outstanding:""
             })
         }
     }
@@ -67,23 +69,24 @@ export default function CreateProduct(){
                         <p>Nombre del articulo</p>
                         <input type="text" value={input.name} name='name' onChange={e=>handleChange(e)}/>
                     </div>
-                    <div>
+
+                    {/* <div>
                         <p>Imagenes del producto</p>
                         <input type="file" name="images" onChange={e=>handleImages(e)} accept="image/png, image/gif, image/jpeg" />
                         
                     </div>
+
+                    Buscar como postear imagenes
+                    
+                    */}
+                      <div>
+                        <p>imagen por ahora</p>
+                        <input type="text" value={input.image} name='image' onChange={e=>handleChange(e)}/>
+                    </div>
+
                     <div>
                         <p>Precio</p>
                         <input type="number" value={input.price} name="price" onChange={e=>handleChange(e)} min="1" max="10000"/>
-                        
-                    {/* input[type=number]::-webkit-inner-spin-button, 
-                    input[type=number]::-webkit-outer-spin-button { 
-                    -webkit-appearance: none; 
-                    margin: 0; 
-                    }
-                    input[type=number] { -moz-appearance:textfield; } 
-                    (CODIGO CSS PARA QUITAR LOS BOTONCITOS DE UN INPUT NUMBER)*/}
-
                     </div>
                     <div>
                         <p>Categoria:</p>
@@ -112,10 +115,8 @@ export default function CreateProduct(){
                         <input type="number" value={input.stock} name="stock" onChange={e=>handleChange(e)} min="1" max="10000"/>
                     <div>
                         <p>¿Destacar producto?</p>
-                        <select value={input.outstanding} name="outsanding" onChange={e=>handleChange(e)}>
-                        <option>No</option>
-                        <option>Si</option>
-                        </select>
+                        <label><input type="radio" value={input.outstanding} key="si" name="outsanding"/>si</label>
+                        <label><input type="radio" value={input.outstanding} key="no" name="outsanding"/>no</label>
                     </div>
                     <button type="submit">Crear actividad</button>
                 </form>

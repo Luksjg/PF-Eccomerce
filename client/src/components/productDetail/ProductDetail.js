@@ -1,50 +1,47 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { getProduct } from "../../actions";
 import Categories from "../categories/Categories";
 import Footer from "../footer/Footer";
 import NavBar from "../navbar/NavBar";
 
 export default function ProductDetail(){
-    const {producto} = useParams();
+    const {id} = useParams();
     const dispatch = useDispatch();
     
-    const [loading, setLoading] = useState(true)
     
     useEffect(() => {
-        // dispatch(getProduct(producto));
-        setTimeout(()=>{setLoading(false)},1500)
-      }, [dispatch, producto]);
+        dispatch(getProduct(id));
+      }, [dispatch, id]);
 
     const product = useSelector(state => state.product)
+    console.log(product)
 
-    if(loading){
-        return(
-            <div>cargando</div>
-        )
-    }else{
+
+    // if(loading){
+    //     return(
+    //         <div>cargando</div>
+    //     )
+    // }else{
     return(
-        <div>
-            {
-                product.name ? 
-                <div>Producto no encontrado</div> //Si no encunetra el producta, se renderiza un error
-                :
+        <div> 
                 <div>
 
                 <NavBar/>
 
                 <div>-------------------------------------------------------------------------</div>
 
-                <img src={product.images[0]} alt={product.name}/>
+                <img src={product.images} alt={"Imagenotfound1"}/>
                 {/* Si no existen mas imagenes, ni las muestra */}
-                <img src={product.images[1] ? product.images[1] : null} alt={product.name}/>
-                <img src={product.images[2] ? product.images[2] : null} alt={product.name}/>
+                {/* <img src={product.images} alt={"Imagenotfound2"}/>
+                <img src={product.images} alt={"Imagenotfound3"}/> */}
                 <p>{product.name}</p>
                 <p>{product.price}</p>
                 <p>{product.description} </p>
                 {/* Si no hay stock, se muestra este texto */}
                 <p>{product.stock > 0 ? product.stock : <label>Sin stock</label>}</p>
-                <p>Categoria: <Link to={product.category}>{product.category}</Link></p>     
+                <p>Categoria: <Link to={`/categoria/${product.category}`}>{product.category}</Link></p>     
 
                 <div>-------------------------------------------------------------------------</div>
 
@@ -55,8 +52,7 @@ export default function ProductDetail(){
                 <Footer/>
                 
                 </div>  
-            } 
         </div>
         ) 
     }
-}
+// }

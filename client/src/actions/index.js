@@ -9,23 +9,65 @@ export const DELETE_USER = "DELETE_USER"
 export const GET_REVIEWS = "GET_REVIEWS"
 export const EDIT_USER_ADMIN = "EDIT_USER_ADMIN" 
 export const NEW_SUB = "NEW_SUB"
+export const GET_OUTSADING_PRODUCTS = "GET_OUTSADING_PRODUCTS"
+export const ORDER = "ORDER"
 
 export function getAllProducts(){
     return async function(dispatch){
-        let data = await axios.get('http://localhost:3001/product');
+        let data = await axios.get('http://localhost:3001/products');
         return dispatch({
             type: GET_ALL_PRODUCTS,
-            payload: data
+            payload: data.data
         })
     }
 }
 
-export function getAllUsers(){
+export function getOutsandingProducts(){
     return async function(dispatch){
-        let data = await axios.get('http://localhost:3001/user');
+        let data = await axios.get('http://localhost:3001/products/destacado')
         return dispatch({
-            type: GET_ALL_PRODUCTS,
-            payload: data
+            type: GET_OUTSADING_PRODUCTS,
+            payload: data.data
+        })
+    }
+}
+
+export function getByCategory(category){
+    return async function(dispatch){
+    let data = await axios.get(`http://localhost:3001/filters/category/${category}`)
+    return dispatch({
+        type: GET_BY_CATEGORY,
+        payload: data.data
+    })
+    }
+}
+
+export function order(order){
+    return async function(dispatch){
+        let data = await axios.get(`http://localhost:3001/filters/${order}`)
+        return dispatch({
+            type: ORDER,
+            payload: data.data
+        })
+    }
+}
+
+export function getProduct(id){
+    return async function(dispatch){
+        let data = await axios.get(`http://localhost:3001/products/${id}`)
+        return dispatch({
+            type: GET_PRODUCT,
+            payload: data.data
+        })
+    }
+}
+
+export function postProduct(payload){
+    return async function(dispatch){
+        let data = await axios.post(`http://localhost:3001/products`, payload)
+        return dispatch({
+            type: GET_PRODUCT,
+            payload: data.data
         })
     }
 }
@@ -78,16 +120,5 @@ export function editUserAdmin(id){
     }
 }
 
-export function getByCategory(category){
-    return{
-        type: GET_BY_CATEGORY,
-        payload: category
-    }
-}
 
-export function getProduct(name){
-    return{
-        type: GET_PRODUCT,
-        payload: name
-    }
-}
+
