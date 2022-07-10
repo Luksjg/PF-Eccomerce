@@ -61,7 +61,7 @@ export default function Subscribe() {
   }
 
   return (
-    <div>
+    <div className={style.contenedor}>
       {/*  <a href={"https://www.instagram.com/"}><img src={"https://149440826.v2.pressablecdn.com/wp-content/uploads/2020/03/instagram-png-instagram-png-logo-1455.png"} alt="instagram Link" width="100" height="100"></img></a> */}
       <a href={"https://www.whatsapp.com/"}>
         <img
@@ -72,35 +72,56 @@ export default function Subscribe() {
           className={style.whatsapp}
         ></img>
       </a>
-      <div>
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <p>Nombre</p>
-          <input
-            type='text'
-            value={input.name}
-            name='name'
-            onChange={(e) => handleChange(e)}
-          />
-          <p>email</p>
-          <input
-            type='text'
-            value={input.mail}
-            name='mail'
-            onChange={(e) => handleChange(e)}
-          />
-          {errors.mail ? <label>{errors.mail}</label> : null}
-          <p>mensaje</p>
-          <input
-            type='text'
-            value={input.message}
-            size='100'
-            name='message'
-            onChange={(e) => handleChange(e)}
-          />
-          <div>
-            <button type='submit'> Subscribirte </button>
-          </div>
-        </form>
+      <div className={style.form}>
+        <div className={style.formTitle}>
+          <h1>¡No te pierdas ningun articulo! </h1>
+        </div>
+        <div className={style.formSubtitle}>
+          <h3>
+            {" "}
+            Suscríbete a nuestro newsletter y no te perderás ningún tema de
+            interés del mundo del cultivo.{" "}
+          </h3>
+        </div>
+        <div className={style.formInput}>
+          <form onSubmit={(e) => handleSubmit(e)}>
+            <div className={style.formInputGroup}>
+              <p>Nombre</p>
+              <input
+                type='text'
+                value={input.name}
+                name='name'
+                onChange={(e) => handleChange(e)}
+              />
+            </div>
+            <div className={style.formInputGroup}>
+              <p>Email</p>
+              <input
+                type='text'
+                value={input.mail}
+                name='mail'
+                onChange={(e) => handleChange(e)}
+              />
+              {errors.mail ? <label>{errors.mail}</label> : null}
+            </div>
+            <div className={style.formInputGroup}>
+              <p>Mensaje</p>
+              <input
+                type='text'
+                value={input.message}
+                size='100'
+                name='message'
+                onChange={(e) => handleChange(e)}
+              />
+            </div>
+            <div className={style.botonCont}>
+              <button className={style.boton} type='submit'>
+                {" "}
+                Subscribirte{" "}
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

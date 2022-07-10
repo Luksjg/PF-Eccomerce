@@ -7,12 +7,12 @@
     display: flex;
     justify-content:space-evenly ;
     width: 60vw;
-    margin-left: 20vw;
+    margin-left: 23vw;
 /*     background-color: aqua; */
 }
 .contenedor h3{
     color: white;
-    font-size: 1rem;
+    font-size: 1.4rem;
     font-weight: bold;
     margin-top: 50px;
 
@@ -20,7 +20,7 @@
 .contenedor p{
 
     color: white;
-    font-size: .8rem;
+    font-size: 1.2rem;
     margin-top: 20px;
 }
 .logo img{
