@@ -1,3 +1,4 @@
+
 import "./App.module.css"
 import Home from "./components/home/Home.jsx"
 import {BrowserRouter, Route, Switch} from 'react-router-dom' 
@@ -8,11 +9,13 @@ import WeAre from "./components/weAre/WeAre"
 import Page404 from "./components/page404/Page404"
 import ProductsCategory from "./components/productsCategories/ProdutsCategory"
 
+
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <BrowserRouter>
         <Switch>
+
           <Route exact path="/" component={Home}/>
           <Route exact path="/tienda" component={StorePage}/> 
           <Route path="/producto/:id" component={ProductDetail}/>
@@ -21,6 +24,7 @@ function App() {
           <Route path="/nosotros" component={WeAre}/>
           <Route exact path="/create" component={CreateProduct}/>
           <Route path='*' component={Page404}/>
+
         </Switch>
       </BrowserRouter>
     </div>

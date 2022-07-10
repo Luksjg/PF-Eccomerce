@@ -1,0 +1,73 @@
+.whatsapp{
+  position: fixed;
+    bottom: 15px;
+    right: 15px;
+}
+.contenedor{
+  background-image: url("./violeta.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 60vh;
+  width: 100%;
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formTitle{
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  margin-top: 15vh;
+}
+.formSubtitle{
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.formInputGroup{
+   display: flex;
+  flex-direction: column;
+  margin-left: 27%;
+  width: 20vw;
+
+}
+
+.formInputGroup p{
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+.formInputGroup input{
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+}
+
+
+.botonCont{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.boton{
+  background-color: rgb(223, 75, 56);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+}
+.boton:hover{
+  background-color: rgb(255, 255, 255);
+  color: rgb(223, 75, 56);
+  transition: .5s;
+}
