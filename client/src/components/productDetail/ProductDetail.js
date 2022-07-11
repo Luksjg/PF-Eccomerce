@@ -16,7 +16,6 @@ export default function ProductDetail(){
       }, [dispatch, id]);
 
     const product = useSelector(state => state.product)
-    console.log(product)
 
 
     // if(loading){

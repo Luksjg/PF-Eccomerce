@@ -5,11 +5,11 @@ import PaymentInfo from "../paymentInfo/PaymentInfo";
 import NavBar from "../navbar/NavBar";
 import Carrusel from "../Carrusel/Carrusel";
 
-import AboutMe from "./../AboutMe/";
+import AboutMe from "./../AboutMe/AboutMe";
 import Welcome from "./../welcome/Welcome";
 
 // import MapProducts from "../mapProducts/MapProducts";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getOutsandingProducts } from "../../actions";
 
 export default function Home() {
@@ -34,7 +34,7 @@ export default function Home() {
       </div>
 
       <div>
-        <AboutMe />
+        <AboutMe/>
       </div>
 
       <div>

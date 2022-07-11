@@ -88,7 +88,8 @@ const Carrusel = ({ slides }) => {
         <div className={styles.inner} ref={slidesContainer}>
           {productsToShow?.map((e, i) => {
             return (
-              <ProductCard
+              <Link to={"/producto/" + e.id}>
+                <ProductCard
                 key={i}
                 id={e.id}
                 img={e.img}
@@ -96,6 +97,7 @@ const Carrusel = ({ slides }) => {
                 price={e.price}
                 stock={e.stock}
               />
+              </Link>
             );
           })}
         </div>
