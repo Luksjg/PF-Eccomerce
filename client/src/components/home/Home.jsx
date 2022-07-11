@@ -5,10 +5,10 @@ import PaymentInfo from "../paymentInfo/PaymentInfo";
 import NavBar from "../navbar/NavBar";
 import Carrusel from "../Carrusel/Carrusel";
 
-import AboutMe from "../aboutMe/AboutMe";
+import AboutMe from "./../AboutMe/";
 import Welcome from "./../welcome/Welcome";
 
-import MapProducts from "../mapProducts/MapProducts";
+// import MapProducts from "../mapProducts/MapProducts";
 import { useDispatch, useSelector } from "react-redux";
 import { getOutsandingProducts } from "../../actions";
 
@@ -19,7 +19,6 @@ export default function Home() {
     dispatch(getOutsandingProducts());
   }, [dispatch]);
 
-  const productsToShow = useSelector((state) => state.outsandingProducts);
 
   return (
     <div>

@@ -1,27 +1,31 @@
 import React from "react";
+import style from "./AboutMe.module.css";
+import local from "./local.jpg";
+import { Link } from "react-router-dom";
 
 const AboutMe = () => {
   return (
-    <div>
-      <h1>About Me</h1>
-      <p>
-        I am a full stack developer with a passion for creating beautiful,
-        responsive websites. I have a background in business and a passion for
-        learning new technologies. I am currently working as a software engineer
-        at <a href='https://www.linkedin.com/company/cisco/'>Cisco</a>. I am a
-        full stack developer with a passion for creating beautiful, responsive
-        websites. I have a background in business and a passion for learning new
-        technologies. I am currently working as a software engineer at{" "}
-        <a href='https://www.linkedin.com/company/cisco/'>Cisco</a>. I am a full
-        stack developer with a passion for creating beautiful, responsive
-        websites. I have a background in business and a passion for learning new
-        technologies. I am currently working as a software engineer at{" "}
-        <a href='https://www.linkedin.com/company/cisco/'>Cisco</a>. I am a full
-        stack developer with a passion for creating beautiful, responsive
-        websites. I have a background in business and a passion for learning new
-        technologies. I am currently working as a software engineer at{" "}
-        <a href='https://www.linkedin.com/company/cisco/'>Cisco</a>.
-      </p>
+    <div className={style.contenedor}>
+      <div className={style.imagen}>
+        <img src={local} alt='imagen' />
+      </div>
+      <div className={style.texto}>
+        <strong>Quiénes Somos</strong>
+        <p>
+          En <Link to='/nosotros'>Henry Green Shop</Link>, nos dedicamos hace
+          mas de 15 dias a la venta de productos para cultivos
+        </p>
+        <p>
+          Contamos con la más amplia variedad de productos, todos de la mejor
+          calidad y al precio más conveniente.
+        </p>
+        <p>
+          Nos destacamos además por ofrecerte un asesoramiento profesional, para
+          que te lleves exactamente lo que estás buscando, ya que tu
+          satisfacción es nuestro principal objetivo.
+        </p>
+        <p>¡Acercate a nuestro local y hacé crecer tus cultivos!</p>
+      </div>
     </div>
   );
 };

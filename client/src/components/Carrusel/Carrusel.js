@@ -62,8 +62,7 @@ const Carrusel = ({ slides }) => {
       });
     };
   }
-
-  console.log(slidesContainer.current.children.length, numberOfSlidesToShow);
+  
   return (
     <>
       <div className={styles.texto}>

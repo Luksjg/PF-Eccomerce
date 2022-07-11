@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useRef, useEffect } from "react";
+// import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import imagen from "./img.jpg";
 import style from "./ProductCard.module.css";

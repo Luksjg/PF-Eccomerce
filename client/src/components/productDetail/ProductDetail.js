@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getProduct } from "../../actions";
-import Categories from "../categories/Categories";
+import styles from "./../productDetail/ProductDetail.module.css"
 import Footer from "../footer/Footer";
 import NavBar from "../navbar/NavBar";
 
@@ -27,11 +27,10 @@ export default function ProductDetail(){
     return(
         <div> 
                 <div>
-
+                <br/><br/>
                 <NavBar/>
 
-                <div>-------------------------------------------------------------------------</div>
-
+                <div className={styles.container}>
                 <img src={product.images} alt={"Imagenotfound1"}/>
                 {/* Si no existen mas imagenes, ni las muestra */}
                 {/* <img src={product.images} alt={"Imagenotfound2"}/>
@@ -43,11 +42,10 @@ export default function ProductDetail(){
                 <p>{product.stock > 0 ? product.stock : <label>Sin stock</label>}</p>
                 <p>Categoria: <Link to={`/categoria/${product.category}`}>{product.category}</Link></p>     
 
-                <div>-------------------------------------------------------------------------</div>
+                </div>
 
-                <Categories/>
 
-                <div>-------------------------------------------------------------------------</div>
+                {/* <Categories/> */}
 
                 <Footer/>
                 

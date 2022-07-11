@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import style from "./Categories.module.css";
+
 export default function Categories() {
   return (
     <div className={style.container}>
-      <Link to={"/categoria/prueba"}>prueba</Link>
-      <br />
       <Link to={"/categoria/abonos"}>Abonos</Link>
       <br />
       <Link to={"/categoria/cosecha"}>Cosecha</Link>

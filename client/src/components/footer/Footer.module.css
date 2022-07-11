@@ -1,6 +1,10 @@
 .contenedor{
-    height: 30vh;
+    height: 40vh;
     background-color: #636363;
+    display: flex;
+    position: flex;
+    bottom: 0px;
+    width: 400vh;
 }
 .subCont{
     

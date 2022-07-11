@@ -3,6 +3,11 @@
     bottom: 15px;
     right: 15px;
 }
+
+h1{
+  color:black;
+  margin:60px
+}
 .contenedor{
   background-image: url("./violeta.jpg");
   background-size: cover;
@@ -58,7 +63,10 @@
 }
 .boton{
   background-color: rgb(223, 75, 56);
+  align-items: center;
   border: none;
+  margin-top: 20px;
+  margin-right: 70px;
   border-radius: 10px;
   padding: 10px;
   color: #fff;
