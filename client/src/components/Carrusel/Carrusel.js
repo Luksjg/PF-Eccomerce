@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import styles from "./Carrusel.module.css";
 import ProductCard from "../productCard/ProductCard";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Carrusel = ({ slides }) => {
   const productsToShow = useSelector((state) => state.outsandingProducts);
@@ -99,6 +100,10 @@ const Carrusel = ({ slides }) => {
             );
           })}
         </div>
+        <div></div>
+        <Link to={"/tienda"}>
+          <button className={styles.botonProduct}>Todos los productos</button>
+        </Link>
       </div>
     </>
   );

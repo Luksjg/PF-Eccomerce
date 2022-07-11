@@ -1,13 +1,17 @@
 .contPay{
     display: flex;
     justify-content: center;
+    width: 100%;
     padding : 30px 0px; 
     border : 0px none rgb(102, 102, 102); 
     font-size : 14px; 
     text-size-adjust : 100%; 
     vertical-align : baseline; 
     position : relative; 
-    /*  background-color: bisque; */
+    margin-top: 20vh;
+    margin-bottom: 15vh;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgb(36, 31, 133) 0%, rgb(98, 7, 73) 100%, rgba(0,212,255,1) 100%);
     
 }
 .boxIcon{
@@ -29,4 +33,9 @@
 
 .box{
     margin: 20px;
+    cursor: pointer;
+}
+.box:hover{
+    transform: scale(1.2);
+
 }

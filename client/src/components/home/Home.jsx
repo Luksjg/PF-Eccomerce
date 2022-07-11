@@ -3,6 +3,7 @@ import Footer from "../footer/Footer";
 import Subscribe from "../subscribe/Subscribe";
 import PaymentInfo from "../paymentInfo/PaymentInfo";
 import NavBar from "../navbar/NavBar";
+import Carrusel from "../Carrusel/Carrusel";
 
 import AboutMe from "../aboutMe/AboutMe";
 import Welcome from "./../welcome/Welcome";
@@ -10,7 +11,6 @@ import Welcome from "./../welcome/Welcome";
 import MapProducts from "../mapProducts/MapProducts";
 import { useDispatch, useSelector } from "react-redux";
 import { getOutsandingProducts } from "../../actions";
-import Carrusel from "../Carrusel/Carrusel";
 
 export default function Home() {
   const dispatch = useDispatch();
