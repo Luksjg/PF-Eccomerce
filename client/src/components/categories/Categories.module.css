@@ -4,9 +4,9 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    position: absolute;
+    position:relative;
     width: 10vw ;
-    margin-top: -170vh;
+    margin-top: -50vh;
     margin-left: 2vw;
     padding-bottom: 10px;
 }

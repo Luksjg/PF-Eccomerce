@@ -5,6 +5,8 @@ import style from "./Categories.module.css";
 export default function Categories() {
   return (
     <div className={style.container}>
+      <Link to={"/tienda"}>Todos</Link>
+      <br />
       <Link to={"/categoria/abonos"}>Abonos</Link>
       <br />
       <Link to={"/categoria/cosecha"}>Cosecha</Link>
