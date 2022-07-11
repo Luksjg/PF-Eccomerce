@@ -1,0 +1,60 @@
+.container{
+    overflow: hidden;
+    position: relative;
+    min-width: 260px;
+    height: 400px;
+    max-width: 110vh;
+    margin-left: 21%;
+    padding-bottom: 80px;
+  }
+  .texto{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-bottom:50px;
+    margin-top: 20vh;
+    font-size: 2rem;
+  }
+  .btn {
+    z-index: 50;
+    position: absolute;
+    top: 30%;
+    color: #ffffff;
+    background-color: #54093f;
+    border: none;
+    font-weight: 999;
+    opacity: 0.9;
+  
+    padding: 10px ;
+    border-radius: 3px;
+  }
+  
+  .btn:hover {
+    opacity: 1;
+  }
+  
+  .btn:active {
+    transform: scale(0.98);
+  }
+  
+  .left {
+    left: 10px;
+  }
+  .right {
+    right: 20px;
+  }
+  
+  .inner {
+    display: grid;
+    grid-auto-flow: column; 
+  
+    grid-auto-columns: 270px;
+    gap: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .inner2 {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(155px, 1fr));
+    gap: 30px;
+  }
