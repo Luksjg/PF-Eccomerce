@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { useState, useRef, useEffect } from "react";
 import styles from "./Carrusel.module.css";
@@ -14,9 +15,6 @@ const Carrusel = ({ slides }) => {
   const gap = 10; //in px
   const slideWidth = 270; //in px, width of the card
   const numberOfSlides = slidesContainer.current.children.length;
-  const numberOfSlidesToShow = Math.ceil(
-    carrusel.current.offsetWidth / slideWidth
-  );
 
   const getScrollPosition = (arg) => {
     const maxScroll =
@@ -24,14 +22,14 @@ const Carrusel = ({ slides }) => {
 
     if (arg === "forward") {
       const x = state + slideWidth + gap;
-      console.log(
-        "carrusel",
-        x,
-        maxScroll,
-        x <= maxScroll,
-        carrusel.current.offsetWidth,
-        (slideWidth + gap) * numberOfSlides
-      );
+      // console.log(
+      //   "carrusel",
+      //   x,
+      //   maxScroll,
+      //   x <= maxScroll,
+      //   carrusel.current.offsetWidth,
+      //   (slideWidth + gap) * numberOfSlides
+      // );
       return x <= Math.abs(maxScroll) ? x : 0;
     } else if (arg === "backward") {
       const x = state - slideWidth - gap;
@@ -51,7 +49,7 @@ const Carrusel = ({ slides }) => {
         return getScrollPosition(0);
       })
     );
-  }, []);
+    }, []);
 
   function handleClick(arg) {
     return function () {
@@ -88,6 +86,7 @@ const Carrusel = ({ slides }) => {
         <div className={styles.inner} ref={slidesContainer}>
           {productsToShow?.map((e, i) => {
             return (
+              <div key={i}>
               <Link to={"/producto/" + e.id}>
                 <ProductCard
                 key={i}
@@ -98,6 +97,7 @@ const Carrusel = ({ slides }) => {
                 stock={e.stock}
               />
               </Link>
+              </div>
             );
           })}
         </div>

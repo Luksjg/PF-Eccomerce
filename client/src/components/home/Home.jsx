@@ -25,25 +25,19 @@ export default function Home() {
       <div>
         <Welcome />
       </div>
-
-      {/*   <div>{    <MapProducts productsToShow={productsToShow} /> }</div> */}
-
-      <Carrusel slide={true} />
+        <Carrusel slide={true} />
       <div>
         <PaymentInfo />
       </div>
-
       <div>
         <AboutMe/>
       </div>
-
       <div>
         <Subscribe />
       </div>
       <div>
         <NavBar />
       </div>
-
       <footer>
         <Footer />
       </footer>

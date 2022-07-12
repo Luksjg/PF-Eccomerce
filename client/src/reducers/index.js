@@ -4,7 +4,6 @@ const InitialState={
     allProducts : [],
     products: [],
     product: [],
-    outsandingProducts:[],
     user: [],
     reviews: [],
     subs: []

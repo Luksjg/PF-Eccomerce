@@ -8,12 +8,12 @@ import NavBar from "../navbar/NavBar"
 export default function CreateProduct(){
     const[input,setInput]=useState({
         name:"",
-        images:[],
+        image:"",
         price:0,
         category:"",
         stock:0,
         description:"",
-        outstanding:"no"
+        outsanding:""
     })
 
     const history =useHistory()
@@ -27,15 +27,6 @@ export default function CreateProduct(){
         })
     }
 
-    // function handleImages(e){
-    //     setInput({
-    //         ...input, 
-    //         // [e.target.name]: [...input.images, e.target.value]
-    //         [e.target.name]: e.target.value
-    //     })
-    // }
-    // no sirve subir imagenes
-
     async function handleSubmit(e){
         if(!input.name || !input.price ){
             e.preventDefault()
@@ -48,7 +39,7 @@ export default function CreateProduct(){
             history.push("/")
             setInput({
                 name:"",
-                image:[],
+                image:"",
                 price:0,
                 category:"",
                 stock:0,
@@ -61,6 +52,7 @@ export default function CreateProduct(){
     return(
         <div>
             <NavBar/>
+            <br/><br/>
             <div>-------------------------------------------------------------------------</div>
             <h2>Crear nuevo producto</h2>
             <div>
@@ -69,17 +61,17 @@ export default function CreateProduct(){
                         <p>Nombre del articulo</p>
                         <input type="text" value={input.name} name='name' onChange={e=>handleChange(e)}/>
                     </div>
-
-                    {/* <div>
-                        <p>Imagenes del producto</p>
-                        <input type="file" name="images" onChange={e=>handleImages(e)} accept="image/png, image/gif, image/jpeg" />
-                        
+                    <div>
+                        <p>Descripción del articulo</p>
+                        <input type="text" value={input.description} name='description' onChange={e=>handleChange(e)}/>
+                    </div>
+                    <div>
+                        {/* <p>Imagenes del producto</p>
+                        <input type="file" value={input.image} name="image" onChange={e=>handleChange(e)} accept="image/png, image/gif, image/jpeg" />
+                        <br/> */}
                     </div>
 
-                    Buscar como postear imagenes
-                    
-                    */}
-                      <div>
+                    <div>
                         <p>imagen por ahora</p>
                         <input type="text" value={input.image} name='image' onChange={e=>handleChange(e)}/>
                     </div>
@@ -115,10 +107,13 @@ export default function CreateProduct(){
                         <input type="number" value={input.stock} name="stock" onChange={e=>handleChange(e)} min="1" max="10000"/>
                     <div>
                         <p>¿Destacar producto?</p>
-                        <label><input type="radio" value={input.outstanding} key="si" name="outsanding"/>si</label>
-                        <label><input type="radio" value={input.outstanding} key="no" name="outsanding"/>no</label>
+                        <select value={input.outsanding} name="outsanding" onChange={e=>handleChange(e)}>
+                            <option></option>
+                            <option>true</option>
+                            <option>false</option>
+                        </select>
                     </div>
-                    <button type="submit">Crear actividad</button>
+                    <button type="submit">Crear producto</button>
                 </form>
             </div>
             <div>-------------------------------------------------------------------------</div>

@@ -14,9 +14,9 @@ export default function NavBar() {
         <Link to='/nosotros'>
           <label>Nosotros</label>
         </Link>
-        {/* <Link to='/create'>
+        <Link to='/crearproducto'>
           <label>Crear producto </label>
-        </Link>{" "} */}
+        </Link>
         <label>🔎</label>
       </div>
       {/* Only visible in admin user */}

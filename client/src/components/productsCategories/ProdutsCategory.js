@@ -14,8 +14,8 @@ export default function ProductsCategory(){
     const dispatch = useDispatch()
 
     const productsToShow = useSelector(state=> state.products)
-    console.log(productsToShow)
-    console.log(category)
+
+
     useEffect(()=>{
         dispatch(getByCategory(category)) 
       },[dispatch,category])
@@ -23,15 +23,13 @@ export default function ProductsCategory(){
 
     return(
         <div>
-        <div>
             <NavBar/>
-            <div>-------------------------------------------------------------------------</div>
+            <br/>
             <MapProducts productsToShow={productsToShow}/>
-            <div>-------------------------------------------------------------------------</div>
+
             <Categories/>
-            <div>-------------------------------------------------------------------------</div>
+
             <Footer/>
-        </div>
         </div>
     )
 }
