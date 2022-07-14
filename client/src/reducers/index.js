@@ -5,6 +5,7 @@ const InitialState={
     products: [],
     product: [],
     user: [],
+    userInfo: [],
     reviews: [],
     subs: []
 }
@@ -63,6 +64,21 @@ function rootReducer(state = InitialState, action){
             return{
                 ...state,
                 users: users
+            }
+        case LOGIN:
+            return{
+                ...state,
+                userInfo: action.payload
+            }
+        case LOGIN_GOOGLE:
+            return{
+                ...state,
+                userInfo: action.payload
+            }
+        case REGISTER:
+            return{
+                ...state,
+                userInfo: action.payload
             }
         default:
             return state
