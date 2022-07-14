@@ -1,0 +1,68 @@
+.container{
+    display: grid;
+    grid-template-columns: repeat(3, 270px);
+    gap: 100px;
+    padding: 40px;
+    justify-content: center;
+    margin-top: 30px;
+}
+.cards{
+    background :linear-gradient(135deg,rgba(255,255,255,0.1),rgba(255,255,255,0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37); ;
+    width: 70%;
+   
+    margin-top: 5px;
+       margin-bottom: 30px;
+       margin-left: 18%;
+       margin-right: 5px;
+   
+    border-left: 1px solid black;
+       border-right: 1px solid black;
+       border-bottom: 1px solid black;
+       border-top: 1px solid black;
+   
+       height: 500px;
+       width: 350px;
+   }
+   .cards:hover{
+       transform: scale(1.05);
+       
+   }
+   .nombre h3{
+         font-size: 25px;
+         font-weight: bold;
+         text-align: center;
+         margin-top: 10px;
+         margin-bottom: 10px;
+         color: rgb(0, 0, 0);
+         margin-top: 20px;
+   }
+   .nombre h2{
+         font-size: 35px;
+         font-weight: bold;
+         text-align: center;
+         margin-top: 10px;
+         margin-bottom: 10px;
+         color: rgb(0, 0, 0);
+         margin-top: 20px;
+   }
+   .imagen{
+        position: relative;
+        top: 25vh;
+        left: 120px;
+   }
+   .foto{
+    position: absolute;
+    margin-left: 65px;
+   }
+   .fotoGian{
+  
+        position: absolute;
+        margin-left: 50px;
+       
+      
+   }

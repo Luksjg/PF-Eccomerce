@@ -6,6 +6,9 @@ import Footer from "../footer/Footer"
 import NavBar from "../navbar/NavBar"
 
 export default function CreateProduct(){
+
+    // const [imagen,setimagen]=useState("")
+
     const[input,setInput]=useState({
         name:"",
         image:"",
@@ -15,6 +18,7 @@ export default function CreateProduct(){
         description:"",
         outsanding:""
     })
+
 
     const history =useHistory()
 
@@ -26,6 +30,29 @@ export default function CreateProduct(){
             [e.target.name]: e.target.value
         })
     }
+
+    async function uploadImage(e){
+        const files = e.target.files
+        const data = new FormData()
+        data.append("file", files[0])
+        data.append("upload_preset","images")
+        const res = await fetch(
+            "https://api.cloudinary.com/v1_1/dbgreenshop/image/upload",
+            {
+                method:"POST",
+                body:data
+            }
+        )
+        const file = await res.json()
+        const aux = file.secure_url
+        setInput({
+            ...input,
+            image: aux
+        })
+    }
+
+    
+
 
     async function handleSubmit(e){
         if(!input.name || !input.price ){
@@ -51,10 +78,12 @@ export default function CreateProduct(){
 
     return(
         <div>
+            
             <NavBar/>
             <br/><br/>
             <div>-------------------------------------------------------------------------</div>
             <h2>Crear nuevo producto</h2>
+
             <div>
                 <form onSubmit={(e) => handleSubmit(e)}>
                     <div>
@@ -66,14 +95,13 @@ export default function CreateProduct(){
                         <input type="text" value={input.description} name='description' onChange={e=>handleChange(e)}/>
                     </div>
                     <div>
-                        {/* <p>Imagenes del producto</p>
-                        <input type="file" value={input.image} name="image" onChange={e=>handleChange(e)} accept="image/png, image/gif, image/jpeg" />
-                        <br/> */}
-                    </div>
-
-                    <div>
-                        <p>imagen por ahora</p>
-                        <input type="text" value={input.image} name='image' onChange={e=>handleChange(e)}/>
+                        <p>Imagenes del producto</p>
+                        <div>
+                            {input.image? <img src={input.image} alt="not"/>:<label>imagen</label>}
+                        </div>
+                        <input type="file" id="file"  name="image" onChange={uploadImage}/>
+                        <br/>
+                        
                     </div>
 
                     <div>
@@ -109,8 +137,8 @@ export default function CreateProduct(){
                         <p>¿Destacar producto?</p>
                         <select value={input.outsanding} name="outsanding" onChange={e=>handleChange(e)}>
                             <option></option>
-                            <option>true</option>
-                            <option>false</option>
+                            <option>si</option>
+                            <option>no</option>
                         </select>
                     </div>
                     <button type="submit">Crear producto</button>
@@ -118,6 +146,8 @@ export default function CreateProduct(){
             </div>
             <div>-------------------------------------------------------------------------</div>
             <Footer/>
+            
         </div>
     )
+    
 }

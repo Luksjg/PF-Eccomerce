@@ -1,4 +1,44 @@
 .container{
-    margin: 50px;
-    margin-bottom: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    flex-direction: column;
+    margin-top: 150px;
+    border: solid 4px rgba(192, 192, 192, 0.404);
+    width: 30vw;
+    height: 46.6vh;
+    padding: 30px;
+    background-color: rgba(59, 12, 47, 0.7);
+    border-radius: 15px;
+    backdrop-filter: blur(7px);
+    margin-bottom: 18px;
+}
+
+.name{
+    font-size: 30px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 30px;
+}
+.price{
+    font-size: 25px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 10px;
+}
+.description{
+    font-size: 20px;
+    color: #000;
+    margin-top: 10px;
+}
+.stock{
+    font-size: 20px;
+    color: #000;
+    margin-top: 10px;
+}
+.categories{
+    font-size: 20px;
+    color: #000;
+    margin-top: 10px;
 }

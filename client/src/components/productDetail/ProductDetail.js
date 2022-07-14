@@ -1,53 +1,70 @@
-import React, { useEffect } from "react"
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getProduct } from "../../actions";
-import styles from "./../productDetail/ProductDetail.module.css"
+// import Categories from "../categories/Categories";
 import Footer from "../footer/Footer";
 import NavBar from "../navbar/NavBar";
+import style from "./ProductDetail.module.css";
+import prueba from "./img.jpg";
 
-export default function ProductDetail(){
-    const {id} = useParams();
-    const dispatch = useDispatch();
-    
-    
-    useEffect(() => {
-        dispatch(getProduct(id));
-      }, [dispatch, id]);
+export default function ProductDetail() {
+  const { id } = useParams();
+  const dispatch = useDispatch();
 
-    const product = useSelector(state => state.product)
+  useEffect(() => {
+    dispatch(getProduct(id));
+  }, [dispatch, id]);
 
+  const product = useSelector((state) => state.product);
+  console.log(product);
 
-    // if(loading){
-    //     return(
-    //         <div>cargando</div>
-    //     )
-    // }else{
-    return(
-        <div> 
-                <div>
-                <br/><br/>
-                <NavBar/>
+  // if(loading){
+  //     return(
+  //         <div>cargando</div>
+  //     )
+  // }else{
+  return (
+    <div>
+      <div>
+        <NavBar />
 
-                <div className={styles.container}>
-                <img src={product.image} alt={"Imagenotfound1"}/>
-                {/* <img src={product.images} alt={"Imagenotfound2"}/>
-                <img src={product.images} alt={"Imagenotfound3"}/> */}
-                <p>{product.name}</p>
-                <p>{product.price}</p>
-                <p>{product.description} </p>
-                <p>{product.stock > 0 ? product.stock : <label>Sin stock</label>}</p>
-                <p>Categoria: <Link to={`/categoria/${product.category}`}>{product.category}</Link></p>     
-
-                </div>
-
-
-                {/* <Categories/> */}
-
-                <Footer/>
-                
-                </div>  
+        <div className={style.container}>
+          {product.image? <img src={product.image} alt="imagen1"/> : <img src={prueba} alt={"Imagenotfound1"} />}
+          <div className={style.name}>
+            <p>{product.name}</p>
+          </div>
+          <div className={style.price}>
+            <p>{"U$D " + product.price}</p>
+          </div>
+          <div className={style.description}>
+            <p>{"Descripcion: " + product.description} </p>
+          </div>
+          <div className={style.stock}>
+            <p>
+              {product.stock > 0 ? (
+                "Productos en Stock: " + product.stock
+              ) : (
+                <label>Sin stock</label>
+              )}
+            </p>
+          </div>
+          <div className={style.categories}>
+            <p>
+              Categoria:{" "}
+              <Link to={`/categoria/${product.category}`}>
+                {product.category}
+              </Link>
+            </p>
+          </div>
         </div>
-        ) 
-    }
+
+        {/*  <Categories /> */}
+        {/*         comente categorias porque le meti absolute en store y se superpone */}
+
+        <Footer />
+      </div>
+    </div>
+  );
+}
 // }
