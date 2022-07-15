@@ -12,6 +12,7 @@ const Carrusel = ({ slides }) => {
   const carrusel = useRef(document.createElement("div"));
   const slidesContainer = useRef(document.createElement("div"));
   const [state, setState] = useState(0);
+  const dispatch = useDispatch();
 
   const dispatch = useDispatch()
 
@@ -37,7 +38,8 @@ const Carrusel = ({ slides }) => {
   };
 
   useEffect(() => {
-    dispatch(getOutsandingProducts())
+    dispatch(getOutsandingProducts());
+
     const slides = slidesContainer.current;
     window.addEventListener("resize", () =>
       setState(() => {
@@ -45,9 +47,11 @@ const Carrusel = ({ slides }) => {
         return getScrollPosition(0);
       })
     );
+
     }, []);
   
   const productsToShow = useSelector(state=>state.outsandingProducts);
+
 
   function handleClick(arg) {
     return function () {
@@ -58,7 +62,7 @@ const Carrusel = ({ slides }) => {
       });
     };
   }
-  
+
   return (
     <>
       <div className={styles.texto}>
@@ -84,22 +88,22 @@ const Carrusel = ({ slides }) => {
         <div className={styles.inner} ref={slidesContainer}>
           {productsToShow?.map((e, i) => {
             return (
-              <div key={i}>
-              <Link to={"/producto/" + e.id}>
-                <ProductCard
-                key={i}
-                id={e.id}
-                img={e.img}
-                name={e.name}
-                price={e.price}
-                stock={e.stock}
-              />
-              </Link>
+              <div classname={styles.pasarela} key={i}>
+                <Link to={"/producto/" + e.id}>
+                  <ProductCard
+                    key={i}
+                    id={e.id}
+                    image={e.image}
+                    name={e.name}
+                    price={e.price}
+                    stock={e.stock}
+                  />
+                </Link>
               </div>
             );
           })}
         </div>
-        <div></div>
+
         <Link to={"/tienda"}>
           <button className={styles.botonProduct}>Todos los productos</button>
         </Link>

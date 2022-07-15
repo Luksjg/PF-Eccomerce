@@ -30,7 +30,9 @@ export default function ProductDetail() {
         <NavBar />
 
         <div className={style.container}>
+
           {product.image? <img src={product.image} alt="imagen1" height="250" width="250"/> : <img src={prueba} alt={"Imagenotfound1"} />}
+
           <div className={style.name}>
             <p>{product.name}</p>
           </div>

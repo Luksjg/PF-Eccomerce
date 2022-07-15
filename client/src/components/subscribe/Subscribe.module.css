@@ -5,10 +5,11 @@
 }
 
 h1{
-  color: black;
+  color: rgb(255, 255, 255);
 }
 h3{
-  color: black;
+  color: rgb(255, 255, 255);
+  margin-top: 15px;
 }
 .contenedor{
   background-image: url("./violeta.jpg");
@@ -27,7 +28,7 @@ h3{
   color: white;
   font-family: 'Roboto', sans-serif;
   text-align: center;
-  margin-top: 15vh;
+  margin-top: 25vh;
 }
 .formSubtitle{
   color: white;

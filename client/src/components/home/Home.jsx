@@ -13,24 +13,23 @@ import { useDispatch } from "react-redux";
 import { getOutsandingProducts } from "../../actions";
 
 export default function Home() {
-  const dispatch = useDispatch();
+  /*  const dispatch = useDispatch(); */
 
-  useEffect(() => {
+  /*   useEffect(() => {
     dispatch(getOutsandingProducts());
-  }, [dispatch]);
-
+  }, [dispatch]); */
 
   return (
     <div>
       <div>
         <Welcome />
       </div>
-        <Carrusel slide={true} />
+      <Carrusel slide={true} />
       <div>
         <PaymentInfo />
       </div>
       <div>
-        <AboutMe/>
+        <AboutMe />
       </div>
       <div>
         <Subscribe />
