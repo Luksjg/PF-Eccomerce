@@ -14,10 +14,10 @@
     bottom: -150px;
     left: -100px;
     width: 120vw;
-    height: 30%;
+    height: 28%;
     position: absolute;
     transform: rotate(183deg);
-    background-color:#fff;
+    background-color:rgb(255, 255, 255);
 }
 .logoN{
     height: 60vh;

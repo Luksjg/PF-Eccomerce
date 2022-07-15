@@ -72,7 +72,9 @@
   .inner {
     display: grid;
     grid-auto-flow: column; 
-  
+    height: 35vh;
+    width: 200000vw;
+    overflow: hidden;
     grid-auto-columns: 270px;
     gap: 10px;
     transition: all 0.3s ease;
@@ -83,3 +85,5 @@
     grid-template-columns: repeat(5, minmax(155px, 1fr));
     gap: 30px;
   }
+
+  

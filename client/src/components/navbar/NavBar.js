@@ -1,6 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import S from "./NavBar.module.css";
+import { BsSearch } from "react-icons/bs";
 export default function NavBar() {
   return (
     <div className={S.container}>
@@ -17,7 +17,9 @@ export default function NavBar() {
         <Link to='/crearproducto'>
           <label>Crear producto </label>
         </Link>
-        <label>🔎</label>
+        <label>
+          <BsSearch />
+        </label>
       </div>
       {/* Only visible in admin user */}
     </div>

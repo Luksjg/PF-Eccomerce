@@ -45,5 +45,7 @@
 }
 .stock span:hover{
     background-color: #66688D;
+    transition: .5s;
     color: white;
+ 
 }

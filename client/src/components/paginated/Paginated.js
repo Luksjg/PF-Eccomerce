@@ -4,7 +4,7 @@ import style from "./Paginated.module.css";
 export default function Paginated({ allProducts, setCurrentPage }) {
   const pageNumbers = [];
 
-  for (let i = 1; i <= Math.ceil(allProducts / 9); i++) {
+  for (let i = 1; i <= Math.ceil(allProducts / 10); i++) {
     pageNumbers.push(i);
   }
 
