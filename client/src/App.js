@@ -8,6 +8,8 @@ import StorePage from "./components/storePage/StorePage"
 import WeAre from "./components/weAre/WeAre"
 import Page404 from "./components/page404/Page404"
 import ProductsCategory from "./components/productsCategories/ProdutsCategory"
+import Login from './components/Login/Login.jsx'
+import Register from './components/Register/Register'
 
 
 function App() {
@@ -15,7 +17,8 @@ function App() {
     <div className='App'>
       <BrowserRouter>
         <Switch>
-
+          <Route path='/register' component={Register}/>
+          <Route path='/loginjwt' component={Login}/>
           <Route exact path="/" component={Home}/>
           <Route exact path="/tienda" component={StorePage}/> 
           <Route path="/producto/:id" component={ProductDetail}/>
@@ -23,7 +26,6 @@ function App() {
           <Route path="/crearproducto" component={CreateProduct}/> 
           <Route path="/nosotros" component={WeAre}/>
           <Route path='*' component={Page404}/>
-
         </Switch>
       </BrowserRouter>
     </div>

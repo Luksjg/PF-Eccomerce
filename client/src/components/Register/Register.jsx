@@ -1,112 +1,87 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as Yup from "yup";
-import { useHistory } from "react-router-dom";
+import axios from "axios";
+import { useRef } from "react";
+import { useState } from "react";
+import { useHistory,Link } from "react-router-dom";
 
-function Register() {
-  // form validation rules
+export default function Register() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
   const history = useHistory();
 
-  const validationSchema = Yup.object().shape({
-    password: Yup.string()
-      .required("⚠ Password is required")
-      .min(6, "⚠ Password must be at least 6 characters"),
-    confirmPassword: Yup.string()
-      .required("⚠ Confirm Password is required")
-      .oneOf([Yup.ref("password")], "⚠ Passwords must match"),
-    username: Yup.string()
-      .required("⚠ Name is required")
-      .min(3, "⚠ Name must be at least 3 characters")
-      .max(15, "⚠ Name must be less than 20 characters"),
-    email: Yup.string()
-      .required("⚠ Email is required")
-      .email("⚠ Email is invalid"),
-  });
-  const formOptions = { resolver: yupResolver(validationSchema) };
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const usernameRef = useRef();
 
-  // get functions to build form with useForm() hook
-  const { register, handleSubmit, formState } = useForm(formOptions);
-  const { errors } = formState;
+  const handleStart = () => {
+    setEmail(emailRef.current.value);
+  };
+  const handleFinish = async (e) => {
+    e.preventDefault();
+    setPassword(passwordRef.current.value);
+    setUsername(usernameRef.current.value);
+    try {
+      await axios.post("http://localhost:3001/user/register", { email,username, password });
+      history.push("/loginjwt");
+    } catch (err) {}
+  };
 
   
 
-  function onSubmit(e) {
-    // alert when form is submitted successfully and redirect to login page
-    if(Object.keys(errors).length === 0) {
-      alert("Form Submitted Successfully");
-      history.push("/login");
-      register(e);
-    } else {
-      alert("Form is invalid");
-    }
-  }
-
   return (
-    <section>
-      <div className="register">
-        <div className="col-1">
-          <h2>Sign in</h2>
-          <p>register and enjoy to servises</p>
-
-          <form
-            id="form"
-            className="flex flex-col"
-            onSubmit={handleSubmit(onSubmit)}
-          >
-            <input
-              type="text"
-              {...register("username", { required: true, maxLength: 10 })}
-              placeholder="username"
-            />
-            <p>{errors.name?.message}</p>
-            
-            <input
-              type="text"
-              {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
-              placeholder="email"
-            />
-            <p>{errors.email?.message}</p>
-
-            <input
-              placeholder="password"
-              name="password"
-              type="password"
-              {...register("password")}
-              className={`form-control ${errors.password ? "is-invalid" : ""}`}
-            />
-            <div className="invalid-feedback">
-              <p>{errors.password?.message}</p>
+    <div className="register">
+      <div className="register__container">
+        <div className="register__container__title">
+          <h1>Register</h1>
+          <form action="">
+            <div className="register__container__title__input">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                ref={emailRef}
+                onChange={handleStart}
+              />
             </div>
-
-            <input
-              placeholder="confirm password"
-              name="confirmPassword"
-              type="password"
-              {...register("confirmPassword")}
-              className={`form-control ${
-                errors.confirmPassword ? "is-invalid" : ""
-              }`}
-            />
-            <div className="invalid-feedback">
-              <p>{errors.confirmPassword?.message}</p>
-            </div>  
-              <div >
-                  <a href={'http://localhost:3000/auth/github'}>
-                            <img src='https://w7.pngwing.com/pngs/326/85/png-transparent-google-logo-google-text-trademark-logo.png' width="60" alt="github" className='linkGithub' />
-                        </a>
-                        <a href={'http://localhost:3000/auth/google'}>
-                            <img src='https://cdn-icons-png.flaticon.com/512/25/25231.png' width="60" alt="google" className='linkGithub' />
-                        </a>
-                  </div>
-                  
-
-            <button className="btn">Sig in</button>
+            <div className="register__container__title__input">
+              <label htmlFor="username">Username</label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                ref={usernameRef}
+                onChange={handleStart}
+              />
+            </div>
+            <div className="register__container__title__input">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                ref={passwordRef}
+                onChange={handleStart}
+              />
+            </div>
+            <div>
+              <label htmlFor="password">Confirm Password</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                ref={passwordRef}
+                onChange={handleStart}
+              />
+            </div>
+            <div className="register__container__title__input">
+              <button type="submit" onClick={handleFinish}>
+                Register
+              </button>
+            </div>
           </form>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
-
-export default Register;

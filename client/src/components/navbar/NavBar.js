@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import S from "./NavBar.module.css";
+import LoginBtn from "./loginBTN/LoginBtn";
+
 export default function NavBar() {
   return (
     <div className={S.container}>
@@ -17,7 +19,11 @@ export default function NavBar() {
         <Link to='/crearproducto'>
           <label>Crear producto </label>
         </Link>
+        <Link to='/loginjwt'>
+          <label>Login</label>
+        </Link>
         <label>🔎</label>
+        <LoginBtn />
       </div>
       {/* Only visible in admin user */}
     </div>

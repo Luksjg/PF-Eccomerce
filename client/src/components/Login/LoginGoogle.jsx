@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../../actions/index.js";
 
-
 export default function LoginGoogle() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -15,17 +14,16 @@ export default function LoginGoogle() {
       dispatch(login(response.profileObj));
       history.push("/");
     }
-  }
+  };
 
   return (
     <div>
       <GoogleLogin
-        clientId="452630924754-ikt9iioti4hii72c4onotovoupqv99qd.apps.googleusercontent.com"
-        buttonText="Login with Google"
+        clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+        buttonText="Login"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
         cookiePolicy={"single_host_origin"}
-        redirectUri={"http://localhost:3000/"}
       />
     </div>
   );

@@ -7,9 +7,9 @@ function LoginBtn() {
     <div>
         {
             isAuthenticated ? (
-              <button onClick={() => logout({returnTo: window.location.origin})}>Logout</button>
+              <button onClick={() => logout({returnTo: window.location.origin})}>Logout Whit Auth0</button>
             ) : (
-              <button onClick={() => loginWithRedirect()}>Login</button>
+              <button onClick={() => loginWithRedirect()}>Login Whit Auth0</button>
             )
         }
     </div>
