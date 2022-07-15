@@ -3,6 +3,7 @@ import {GET_ALL_PRODUCTS,GET_OUTSADING_PRODUCTS, GET_BY_CATEGORY, GET_PRODUCT, G
 const InitialState={
     allProducts : [],
     products: [],
+    outsandingProducts:[],
     product: [],
     user: [],
     reviews: [],

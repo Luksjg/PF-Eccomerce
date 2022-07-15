@@ -71,7 +71,7 @@ export default function CreateProduct(){
                 category:"",
                 stock:0,
                 description:"",
-                outstanding:""
+                outsanding:""
             })
         }
     }
