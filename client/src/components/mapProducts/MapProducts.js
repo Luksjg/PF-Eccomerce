@@ -19,7 +19,7 @@ export default function MapProducts({ productsToShow }) {
             <Link to={"/producto/" + product.id}>
               <ProductCard
                 id={product.id}
-                img={product.img}
+                image={product.image}
                 name={product.name}
                 price={product.price}
                 stock={product.stock}

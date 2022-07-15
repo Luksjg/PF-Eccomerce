@@ -14,6 +14,13 @@
     padding-bottom:50px;
     margin-top: 20vh;
     font-size: 2rem;
+   
+  }
+  .texto h1{
+    font-size: 4rem;
+    color: #000;
+    font-weight: bold;
+    text-align: center;
   }
   .botonProduct{
     background: rgb(2,0,36);
@@ -65,7 +72,9 @@
   .inner {
     display: grid;
     grid-auto-flow: column; 
-  
+    height: 35vh;
+    width: 200000vw;
+    overflow: hidden;
     grid-auto-columns: 270px;
     gap: 10px;
     transition: all 0.3s ease;
@@ -76,3 +85,5 @@
     grid-template-columns: repeat(5, minmax(155px, 1fr));
     gap: 30px;
   }
+
+  

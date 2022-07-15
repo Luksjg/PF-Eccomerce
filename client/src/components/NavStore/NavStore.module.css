@@ -1,0 +1,119 @@
+.navSup{
+  height: 7vh ;
+  background-color: #3f13a4;
+
+}
+
+.logos{
+  height: 5vh ;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  
+/*   background-color: #7f7792; */
+
+}
+.logos img{
+  height: 100%;
+  width: 300px;
+}
+
+.search{
+position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+  margin-right: 20px;
+  
+
+
+}
+.search input{
+  height: 3vh;
+  width: 27.5vw;
+  border: none;
+      color: #66688D ;
+  font-size: 1vw;
+  padding-left: 1vw;
+}
+.search button{
+  height: 3vh;
+  width: 2vw;
+  border: none;
+  cursor: pointer;
+  font-size: 1vw;
+  border-left: #7f7792 1px solid;
+}
+.botones{
+  position: relative;
+  display: flex;
+  width: 11vw;
+  margin-left: 20px;
+/*   background-color: #261e39; */
+
+}
+
+.botones label{
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  margin-right: 1.2rem;
+  cursor: pointer;
+
+
+}
+  .botones label:hover{
+      color: #a486ec ;;
+  }
+
+
+
+/* -------------------NavInferior----------------------------- */
+
+.container{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      height: 5vh;
+      background-color: #3f13a4;
+    }
+    
+    .categorias{
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      margin-top: 50px;
+      margin-left: 100px;
+
+  }
+
+.Selectores{
+  background-color: #3f13a4;
+  width: 100%;
+  height: 5vh;
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+
+}
+.Selectores select{
+background-color: transparent;
+border-color: transparent;
+color: aliceblue;
+font-size: 1.1rem;
+}
+.Selectores option{
+  background-color: #6b35e8 ;
+}
+.buttonSelectP{
+  width: 80px;
+}
+.usuario h3{
+  margin-bottom:15px;
+
+}
+.carrito{
+  margin-bottom:8px;
+  font-size: 1.2rem;
+}

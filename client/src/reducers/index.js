@@ -84,6 +84,7 @@ function rootReducer(state = InitialState, action){
         default:
             return state
         }
+
 }
 
-export default rootReducer
+export default rootReducer;

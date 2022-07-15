@@ -1,19 +1,22 @@
+
 .container{
-    width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    position: absolute;
-    width: 20vw;
-    margin-top: -130vh;
-    margin-left: 2vw;
-    padding-bottom: 10px;
+    justify-content: space-between;
+    height: 100vh;   
+ /*    margin-top: -141vh */; 
+ /*    display: block; */
+    
 }
-.container Link{
-    font-size: 2.5vw;
-    font-weight: bold;
-    color: #fff;
-    margin-top: 10px;
+.container img {
+    width: 250px;
+  
+}
+.container h2{
+    font-size: 1.5rem;  
     margin-bottom: 10px;
+}
+.container p{
+    color: #66688D ;
+    
 }

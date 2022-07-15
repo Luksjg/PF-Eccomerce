@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import Categories from "../categories/Categories";
 import Footer from "../footer/Footer";
 import MapProducts from "../mapProducts/MapProducts";
-import NavBar from "../navbar/NavBar";
+
 import { getAllProducts, order } from "../../actions";
 
 import style from "./StorePage.module.css";
+import NavStore from "../NavStore/NavStore";
 
 export default function StorePage() {
   const dispatch = useDispatch();
@@ -22,10 +23,10 @@ export default function StorePage() {
   }, [dispatch]);
 
   return (
-    <div>
-      <NavBar />
+    <div className={style.container}>
+      <NavStore />
 
-      <div className={style.container}>
+      {/*    <div className={style.container}>
         <label></label>
         <select onChange={(e) => handleSort(e)}>
           <option value='asc'>Orden alfabetico</option>
@@ -35,11 +36,16 @@ export default function StorePage() {
           <option value='maxValoration'>Mayor valoracion</option>
           <option value='minValoration'>Menor valoracion</option>
         </select>
+      </div> */}
+
+      <div className={style.columnaContainer}>
+        <div className={style.columna}>
+          <MapProducts productsToShow={productsToShow} />
+        </div>
+        <div className={style.columnaC}>
+          <Categories />
+        </div>
       </div>
-
-      <MapProducts productsToShow={productsToShow} />
-
-      <Categories />
 
       <Footer />
     </div>
