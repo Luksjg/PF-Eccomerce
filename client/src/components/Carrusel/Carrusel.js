@@ -8,11 +8,13 @@ import { Link } from "react-router-dom";
 import { getOutsandingProducts } from "../../actions";
 
 const Carrusel = ({ slides }) => {
-  const productsToShow = useSelector((state) => state.outsandingProducts);
+
   const carrusel = useRef(document.createElement("div"));
   const slidesContainer = useRef(document.createElement("div"));
   const [state, setState] = useState(0);
   const dispatch = useDispatch();
+
+  const dispatch = useDispatch()
 
   const gap = 10; //in px
   const slideWidth = 270; //in px, width of the card
@@ -24,14 +26,6 @@ const Carrusel = ({ slides }) => {
 
     if (arg === "forward") {
       const x = state + slideWidth + gap;
-      // console.log(
-      //   "carrusel",
-      //   x,
-      //   maxScroll,
-      //   x <= maxScroll,
-      //   carrusel.current.offsetWidth,
-      //   (slideWidth + gap) * numberOfSlides
-      // );
       return x <= Math.abs(maxScroll) ? x : 0;
     } else if (arg === "backward") {
       const x = state - slideWidth - gap;
@@ -45,6 +39,7 @@ const Carrusel = ({ slides }) => {
 
   useEffect(() => {
     dispatch(getOutsandingProducts());
+
     const slides = slidesContainer.current;
     window.addEventListener("resize", () =>
       setState(() => {
@@ -52,7 +47,11 @@ const Carrusel = ({ slides }) => {
         return getScrollPosition(0);
       })
     );
-  }, []);
+
+    }, []);
+  
+  const productsToShow = useSelector(state=>state.outsandingProducts);
+
 
   function handleClick(arg) {
     return function () {

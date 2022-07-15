@@ -11,6 +11,10 @@ export const EDIT_USER_ADMIN = "EDIT_USER_ADMIN"
 export const NEW_SUB = "NEW_SUB"
 export const GET_OUTSADING_PRODUCTS = "GET_OUTSADING_PRODUCTS"
 export const ORDER = "ORDER"
+export const LOGIN = "LOGIN"
+export const REGISTER = "REGISTER"
+export const LOGIN_GOOGLE = "LOGIN_GOOGLE"
+
 
 export function getAllProducts(){
     return async function(dispatch){
@@ -72,12 +76,20 @@ export function postProduct(payload){
     }
 }
 
-export function getReviews(){
+export function postReview(payload){
+    return async function(){
+        let data = await axios.post(`http://localhost:3001/review/POST`, payload)
+        return data
+    }
+}
+
+
+export function getReviews(id){
     return async function(dispatch){
-        let data = await axios.get(`http://localhost:3001/review`)
+        let data = await axios.get(`http://localhost:3001/review/${id}`)
         return dispatch({
             type: GET_REVIEWS,
-            payload: data
+            payload: data.data
         })
     }
 }
@@ -115,6 +127,36 @@ export function editUserAdmin(id){
         let data = await axios.put(`http://localhost:3001/user/${id}`)
         return dispatch({
             tye: EDIT_USER_ADMIN,
+            payload: data
+        })
+    }
+}
+
+export function login(payload){
+    return async function(dispatch){
+        let data = await axios.post(`http://localhost:3001/user/login`, payload)
+        return dispatch({
+            type: LOGIN,
+            payload: data
+        })
+    }
+}
+
+export function register(payload){
+    return async function(dispatch){
+        let data = await axios.post(`http://localhost:3001/user/register`, payload)
+        return dispatch({
+            type: REGISTER,
+            payload: data
+        })
+    }
+}
+
+export function loginGoogle(payload){
+    return async function(dispatch){
+        let data = await axios.post(`http://localhost:3001/auth/google`, payload)
+        return dispatch({
+            type: LOGIN_GOOGLE,
             payload: data
         })
     }

@@ -72,6 +72,7 @@ export default function CreateProduct() {
     }
   }
 
+
   return (
     <div className={styles.container}>
       <NavBar />
@@ -81,6 +82,7 @@ export default function CreateProduct() {
         <div className={styles.titulin}>
           <h1>Crear nuevo producto</h1>
         </div>
+
 
         <div>
           <form onSubmit={(e) => handleSubmit(e)}>
