@@ -1,5 +1,21 @@
 .container{
+  background-color: #EDEDED;
+}
+
+
+.columnaContainer{
+
   display: flex;
+  flex-direction: row-reverse;
   justify-content: center;
-  margin-top: 10vh;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 30px;
+
+}
+.columna{
+background-color: #fff;
+margin-top: 50px;
+
 }

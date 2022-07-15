@@ -1,1 +1,49 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+.titulo{
+    align-items: center ;
+    justify-content: center;
+    display: flex;
+    width: 25vh;
+}
 
+.titulo h3{
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: black ;
+}
+.precio{
+    align-items: center ;
+    justify-content: center;
+    display: flex;
+    width: 25vh;
+}
+.precio h3{
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: black ;
+}
+.stock{
+    align-items: center ;
+    justify-content: center;
+    display: flex;
+    width: 25vh;
+    
+}
+.stock span{
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    width: 15vh;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black ;
+    background-color: #E3EDFB;
+}
+.stock span:hover{
+    background-color: #66688D;
+    color: white;
+}

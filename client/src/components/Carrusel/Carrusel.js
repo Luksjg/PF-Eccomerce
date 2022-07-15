@@ -3,14 +3,16 @@ import React from "react";
 import { useState, useRef, useEffect } from "react";
 import styles from "./Carrusel.module.css";
 import ProductCard from "../productCard/ProductCard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { getOutsandingProducts } from "../../actions";
 
 const Carrusel = ({ slides }) => {
   const productsToShow = useSelector((state) => state.outsandingProducts);
   const carrusel = useRef(document.createElement("div"));
   const slidesContainer = useRef(document.createElement("div"));
   const [state, setState] = useState(0);
+  const dispatch = useDispatch();
 
   const gap = 10; //in px
   const slideWidth = 270; //in px, width of the card
@@ -42,6 +44,7 @@ const Carrusel = ({ slides }) => {
   };
 
   useEffect(() => {
+    dispatch(getOutsandingProducts());
     const slides = slidesContainer.current;
     window.addEventListener("resize", () =>
       setState(() => {
@@ -49,7 +52,7 @@ const Carrusel = ({ slides }) => {
         return getScrollPosition(0);
       })
     );
-    }, []);
+  }, []);
 
   function handleClick(arg) {
     return function () {
@@ -60,7 +63,7 @@ const Carrusel = ({ slides }) => {
       });
     };
   }
-  
+
   return (
     <>
       <div className={styles.texto}>
@@ -87,16 +90,16 @@ const Carrusel = ({ slides }) => {
           {productsToShow?.map((e, i) => {
             return (
               <div key={i}>
-              <Link to={"/producto/" + e.id}>
-                <ProductCard
-                key={i}
-                id={e.id}
-                img={e.img}
-                name={e.name}
-                price={e.price}
-                stock={e.stock}
-              />
-              </Link>
+                <Link to={"/producto/" + e.id}>
+                  <ProductCard
+                    key={i}
+                    id={e.id}
+                    img={e.img}
+                    name={e.name}
+                    price={e.price}
+                    stock={e.stock}
+                  />
+                </Link>
               </div>
             );
           })}
