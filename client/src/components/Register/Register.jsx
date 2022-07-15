@@ -23,7 +23,10 @@ export default function Register() {
     try {
       await axios.post("http://localhost:3001/user/register", { email,username, password });
       history.push("/loginjwt");
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+      alert("Error registering");
+    }
   };
 
   
@@ -39,7 +42,6 @@ export default function Register() {
               <input
                 type="email"
                 name="email"
-                id="email"
                 ref={emailRef}
                 onChange={handleStart}
               />
@@ -49,7 +51,6 @@ export default function Register() {
               <input
                 type="text"
                 name="username"
-                id="username"
                 ref={usernameRef}
                 onChange={handleStart}
               />
@@ -59,7 +60,6 @@ export default function Register() {
               <input
                 type="password"
                 name="password"
-                id="password"
                 ref={passwordRef}
                 onChange={handleStart}
               />
@@ -69,7 +69,6 @@ export default function Register() {
               <input
                 type="password"
                 name="password"
-                id="password"
                 ref={passwordRef}
                 onChange={handleStart}
               />

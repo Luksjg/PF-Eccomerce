@@ -5,6 +5,7 @@ import { useHistory } from "react-router";
 import validarEmail from "./validateEmail";
 import validatePassword from "./validatePassword";
 import LoginGoogle from './LoginGoogle'
+import axios from "axios";
 
 
 function validate(email, password) {
@@ -25,6 +26,7 @@ function validate(email, password) {
 
   return objeto;
 }
+
 
 export default function Loguin() {
   const errorEmail = useSelector((state) => state.errorEmail);
@@ -85,13 +87,23 @@ export default function Loguin() {
       alert("Login Successful");
       if (errorEmail) {
         e.preventDefault();
-        alert("Login Failed");
       } else {
         dispatch({ type: "RESET_ERROR_EMAIL" });
         history.push("/");
       }
     } else setErrors(val);
   };
+
+  const handleFinish = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:3001/user/login", usuario);
+      history.push("/");
+    } catch (error) {
+      console.log(error);
+      alert("usuario o contraseña incorrectos");
+    }
+  }
 
   
   return (
@@ -106,8 +118,8 @@ export default function Loguin() {
               {errors.email && <p className="error">{errors.email}</p>}
               <input type="password" name="password" placeholder="Password" onChange={handleChangePassword} value={usuario.password} />
               {errors.password && <p className="error">{errors.password}</p>}
-              <LoginGoogle/>
-              <button type="submit">Login</button>
+              <LoginGoogle/>  
+              <button type="submit" onClick={handleFinish}>Login</button>
             </form>
             <Link to="/olvide-password/" className="a">
               {" "}
