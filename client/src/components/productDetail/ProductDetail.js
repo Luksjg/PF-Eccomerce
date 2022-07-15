@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getProduct } from "../../actions";
 // import Categories from "../categories/Categories";
+import Comments from "./../comments/Comments"
 import Footer from "../footer/Footer";
 import NavBar from "../navbar/NavBar";
 import style from "./ProductDetail.module.css";
@@ -17,7 +18,6 @@ export default function ProductDetail() {
   }, [dispatch, id]);
 
   const product = useSelector((state) => state.product);
-  console.log(product);
 
   // if(loading){
   //     return(
@@ -30,7 +30,7 @@ export default function ProductDetail() {
         <NavBar />
 
         <div className={style.container}>
-          {product.image? <img src={product.image} alt="imagen1"/> : <img src={prueba} alt={"Imagenotfound1"} />}
+          {product.image? <img src={product.image} alt="imagen1" height="250" width="250"/> : <img src={prueba} alt={"Imagenotfound1"} />}
           <div className={style.name}>
             <p>{product.name}</p>
           </div>
@@ -58,10 +58,9 @@ export default function ProductDetail() {
             </p>
           </div>
         </div>
-
-        {/*  <Categories /> */}
-        {/*         comente categorias porque le meti absolute en store y se superpone */}
-
+        <div>
+          <Comments/>
+        </div>
         <Footer />
       </div>
     </div>

@@ -12,6 +12,7 @@ export const NEW_SUB = "NEW_SUB"
 export const GET_OUTSADING_PRODUCTS = "GET_OUTSADING_PRODUCTS"
 export const ORDER = "ORDER"
 
+
 export function getAllProducts(){
     return async function(dispatch){
         let data = await axios.get('http://localhost:3001/products');
@@ -72,12 +73,20 @@ export function postProduct(payload){
     }
 }
 
-export function getReviews(){
+export function postReview(payload){
+    return async function(){
+        let data = await axios.post(`http://localhost:3001/review/POST`, payload)
+        return data
+    }
+}
+
+
+export function getReviews(id){
     return async function(dispatch){
-        let data = await axios.get(`http://localhost:3001/review`)
+        let data = await axios.get(`http://localhost:3001/review/${id}`)
         return dispatch({
             type: GET_REVIEWS,
-            payload: data
+            payload: data.data
         })
     }
 }
