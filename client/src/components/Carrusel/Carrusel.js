@@ -14,7 +14,7 @@ const Carrusel = ({ slides }) => {
   const [state, setState] = useState(0);
   const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
+
 
   const gap = 10; //in px
   const slideWidth = 270; //in px, width of the card

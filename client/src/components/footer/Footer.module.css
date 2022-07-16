@@ -1,14 +1,14 @@
 .contenedor{
     height: 40vh;
     background-color: #636363;
-    display: flex;
-    position: relative;
+    display: inline-block;
+    position: absolute;
+    top:1500px;
     bottom: 0px;
     width: 100%;
     
 }
 .subCont{
-    
     display: flex;
     justify-content:space-evenly ;
     width: 60vw;

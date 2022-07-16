@@ -25,7 +25,7 @@ export default function NavBar() {
 
         <label>
           <BsSearch />
-
+        </label>
         <Link to='/loginjwt'>
           <label>Login</label>
         </Link>

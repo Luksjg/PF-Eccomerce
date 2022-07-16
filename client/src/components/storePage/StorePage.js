@@ -4,7 +4,7 @@ import Categories from "../categories/Categories";
 import Footer from "../footer/Footer";
 import MapProducts from "../mapProducts/MapProducts";
 
-import { getAllProducts, order } from "../../actions";
+import { getAllProducts } from "../../actions";
 
 import style from "./StorePage.module.css";
 import NavStore from "../NavStore/NavStore";
@@ -14,9 +14,9 @@ export default function StorePage() {
 
   const productsToShow = useSelector((state) => state.products);
 
-  function handleSort(e) {
-    dispatch(order(e.target.value));
-  }
+  // function handleSort(e) {
+  //   dispatch(order(e.target.value));
+  // }
 
   useEffect(() => {
     dispatch(getAllProducts());
@@ -26,8 +26,7 @@ export default function StorePage() {
     <div className={style.container}>
       <NavStore />
 
-      {/*    <div className={style.container}>
-        <label></label>
+      {/* <div className={style.container}>
         <select onChange={(e) => handleSort(e)}>
           <option value='asc'>Orden alfabetico</option>
           <option value='desc'>Orden alfabetico descendente</option>
