@@ -5,7 +5,7 @@ import MapProducts from "../mapProducts/MapProducts";
 import { getByCategory } from "../../actions";
 import Categories from "../categories/Categories";
 import Footer from "../footer/Footer";
-import style from "./StorePage.module.css";
+import style from "./ProdutsCategory.module.css";
 import NavStore from "./../NavStore/NavStore"
 
 export default function ProductsCategory(){
