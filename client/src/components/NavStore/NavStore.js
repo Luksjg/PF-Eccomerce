@@ -1,24 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import S from "./NavStore.module.css";
 import { FiShoppingCart } from "react-icons/fi";
-import { BsSearch } from "react-icons/bs";
+// import { BsSearch } from "react-icons/bs";
 import logo from "./logoShop.png";
+import { useDispatch } from "react-redux";
+import { getByName } from "../../actions";
 
 const NavStore = () => {
+  const [name, setName] = useState("");
+  const dispatch = useDispatch()
+  
+  function handleInputChange(e) {
+    e.preventDefault();
+    setName(e.target.value);
+  }
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    dispatch(getByName(name));
+    setName("")
+  };
+
   return (
     <div>
       <div className={S.navSup}>
         <div className={S.logos}>
           <img src={logo} alt='logoSolo' />
           <div className={S.search}>
-            <input
-              type='text'
-              placeholder='Buscar productos, marcas y mas...'
-            />
-            <button>
-              <BsSearch />
-            </button>
+            <form onSubmit={(e) => handleClick(e)}>
+              <input type='text' value={name} placeholder='Buscar productos, marcas y mas...' onChange={(e) => handleInputChange(e)}/>
+              <button type="submit">buscar</button>
+            </form>
           </div>
           <div className={S.botones}>
             <Link to='/crearproducto'>

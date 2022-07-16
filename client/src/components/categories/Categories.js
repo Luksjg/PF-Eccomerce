@@ -1,13 +1,25 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { getAllProducts } from "../../actions";
 import style from "./Categories.module.css";
 import logo from "./logo.png";
 
 export default function Categories() {
+  const dispatch = useDispatch()
+
+  function getAll(e){
+    dispatch(getAllProducts())
+  }
+  
   return (
     <div className={style.container}>
       <img src={logo} alt='logoSolo' />
       <h2>Categorias</h2>
+      <br />
+      <Link to={"/tienda"}>
+        <p onClick={e=>getAll(e)}>Todos</p>
+      </Link>
 
       <br />
       <Link to={"/categoria/abonos"}>

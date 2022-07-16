@@ -14,6 +14,7 @@ export const ORDER = "ORDER"
 export const LOGIN = "LOGIN"
 export const REGISTER = "REGISTER"
 export const LOGIN_GOOGLE = "LOGIN_GOOGLE"
+export const GET_BY_NAME = "GET_BY_NAME"
 
 
 export function getAllProducts(){
@@ -63,6 +64,24 @@ export function getProduct(id){
             type: GET_PRODUCT,
             payload: data.data
         })
+    }
+}
+
+export function getByName(name){
+    return async function(dispatch){
+        try {
+            let json = await axios.get('https://green--shop.herokuapp.com/products?name=' + name);
+            console.log(json)
+            if(json.data.length<1){
+                return alert("Pais no encontrado :(")
+            }else{
+            return dispatch({
+                type: GET_BY_NAME,
+                payload: json.data
+            })}
+        } catch (error) {
+            console.log('No se pudo encontrar el pais')
+        }
     }
 }
 
