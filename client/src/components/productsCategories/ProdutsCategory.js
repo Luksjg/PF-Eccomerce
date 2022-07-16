@@ -5,7 +5,8 @@ import MapProducts from "../mapProducts/MapProducts";
 import { getByCategory } from "../../actions";
 import Categories from "../categories/Categories";
 import Footer from "../footer/Footer";
-import NavBar from "../navbar/NavBar";
+import style from "./StorePage.module.css";
+import NavStore from "./../NavStore/NavStore"
 
 export default function ProductsCategory(){
 
@@ -21,15 +22,20 @@ export default function ProductsCategory(){
       },[dispatch,category])
 
 
-    return(
-        <div>
-            <NavBar/>
-            <br/>
-            <MapProducts productsToShow={productsToShow}/>
-
-            <Categories/>
-
-            <Footer/>
+      return (
+        <div className={style.container}>
+          <NavStore />
+    
+          <div className={style.columnaContainer}>
+            <div className={style.columna}>
+              <MapProducts productsToShow={productsToShow} />
+            </div>
+            <div className={style.columnaC}>
+              <Categories />
+            </div>
+          </div>
+    
+          <Footer />
         </div>
-    )
+      );
 }

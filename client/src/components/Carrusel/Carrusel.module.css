@@ -21,6 +21,9 @@
     color: #000;
     font-weight: bold;
     text-align: center;
+    font-family : Rubik, sans-serif; 
+    text-transform : uppercase; 
+    padding-bottom: 80px;
   }
   .botonProduct{
     background: rgb(2,0,36);

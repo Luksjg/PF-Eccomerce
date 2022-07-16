@@ -8,13 +8,10 @@ import { Link } from "react-router-dom";
 import { getOutsandingProducts } from "../../actions";
 
 const Carrusel = ({ slides }) => {
-
   const carrusel = useRef(document.createElement("div"));
   const slidesContainer = useRef(document.createElement("div"));
   const [state, setState] = useState(0);
   const dispatch = useDispatch();
-
-
 
   const gap = 10; //in px
   const slideWidth = 270; //in px, width of the card
@@ -47,11 +44,9 @@ const Carrusel = ({ slides }) => {
         return getScrollPosition(0);
       })
     );
+  }, []);
 
-    }, []);
-  
-  const productsToShow = useSelector(state=>state.outsandingProducts);
-
+  const productsToShow = useSelector((state) => state.outsandingProducts);
 
   function handleClick(arg) {
     return function () {

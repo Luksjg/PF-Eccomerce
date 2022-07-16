@@ -48,10 +48,9 @@ const NavStore = () => {
               <option value='minValoration'>Menor valoracion</option>
             </select>
             <div className={S.usuario}>
-              <select>
-                <option value='null'>😎 Usuario</option>
-                <option value='Logout'>Salir</option>
-              </select>
+              <Link to='/loginjwt'>
+                <label>Login</label>
+              </Link>
             </div>
             <div className={S.carrito}>
               <h3>

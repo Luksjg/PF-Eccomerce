@@ -6,7 +6,7 @@ import style from "./MapProducts.module.css";
 export default function MapProducts({ productsToShow }) {
   const [currentPage, setCurrentPage] = useState(1);
 
-  let productsPage = 9;
+  let productsPage = 8;
   const LastProduct = currentPage * productsPage;
   const FirstProduct = LastProduct - productsPage;
   const currentProducts = productsToShow.slice(FirstProduct, LastProduct);

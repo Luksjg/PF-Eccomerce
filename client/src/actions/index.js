@@ -18,7 +18,7 @@ export const LOGIN_GOOGLE = "LOGIN_GOOGLE"
 
 export function getAllProducts(){
     return async function(dispatch){
-        let data = await axios.get('http://localhost:3001/products');
+        let data = await axios.get('https://green--shop.herokuapp.com/products');
         return dispatch({
             type: GET_ALL_PRODUCTS,
             payload: data.data
@@ -28,7 +28,7 @@ export function getAllProducts(){
 
 export function getOutsandingProducts(){
     return async function(dispatch){
-        let data = await axios.get('http://localhost:3001/products/destacado')
+        let data = await axios.get('https://green--shop.herokuapp.com/products/destacado')
         return dispatch({
             type: GET_OUTSADING_PRODUCTS,
             payload: data.data
@@ -38,7 +38,7 @@ export function getOutsandingProducts(){
 
 export function getByCategory(category){
     return async function(dispatch){
-    let data = await axios.get(`http://localhost:3001/filters/category/${category}`)
+    let data = await axios.get(`https://green--shop.herokuapp.com/filters/category/${category}`)
     return dispatch({
         type: GET_BY_CATEGORY,
         payload: data.data
@@ -48,7 +48,7 @@ export function getByCategory(category){
 
 export function order(order){
     return async function(dispatch){
-        let data = await axios.get(`http://localhost:3001/filters/${order}`)
+        let data = await axios.get(`https://green--shop.herokuapp.com/filters/${order}`)
         return dispatch({
             type: ORDER,
             payload: data.data
@@ -58,7 +58,7 @@ export function order(order){
 
 export function getProduct(id){
     return async function(dispatch){
-        let data = await axios.get(`http://localhost:3001/products/${id}`)
+        let data = await axios.get(`https://green--shop.herokuapp.com/products/${id}`)
         return dispatch({
             type: GET_PRODUCT,
             payload: data.data
@@ -68,7 +68,7 @@ export function getProduct(id){
 
 export function postProduct(payload){
     return async function(dispatch){
-        let data = await axios.post(`http://localhost:3001/products`, payload)
+        let data = await axios.post(`https://green--shop.herokuapp.com/products`, payload)
         return dispatch({
             type: GET_PRODUCT,
             payload: data.data
@@ -78,7 +78,7 @@ export function postProduct(payload){
 
 export function postReview(payload){
     return async function(){
-        let data = await axios.post(`http://localhost:3001/review/POST`, payload)
+        let data = await axios.post(`https://green--shop.herokuapp.com/review/POST`, payload)
         return data
     }
 }
@@ -86,7 +86,7 @@ export function postReview(payload){
 
 export function getReviews(id){
     return async function(dispatch){
-        let data = await axios.get(`http://localhost:3001/review/${id}`)
+        let data = await axios.get(`https://green--shop.herokuapp.com/review/${id}`)
         return dispatch({
             type: GET_REVIEWS,
             payload: data.data
@@ -96,7 +96,7 @@ export function getReviews(id){
 
 export function getUser(id){
     return async function(dispatch){
-        let data = await axios.get(`http://localhost:3001/user/${id}` );
+        let data = await axios.get(`https://green--shop.herokuapp.com/user/${id}` );
         return dispatch({
             type: GET_ALL_PRODUCTS,
             payload: data
@@ -107,7 +107,7 @@ export function getUser(id){
 
 export function deleteUser(id){
     return async function(dispatch){
-        let data = await fetch(`http://localhost:3001/user/${id}`, { method: 'DELETE' });
+        let data = await fetch(`https://green--shop.herokuapp.com/user/${id}`, { method: 'DELETE' });
         return dispatch({
             type: DELETE_USER,
             payload: data
@@ -124,7 +124,7 @@ export function newSub(payload){
 
 export function editUserAdmin(id){
     return async function(dispatch){
-        let data = await axios.put(`http://localhost:3001/user/${id}`)
+        let data = await axios.put(`https://green--shop.herokuapp.com/user/${id}`)
         return dispatch({
             tye: EDIT_USER_ADMIN,
             payload: data
@@ -134,7 +134,7 @@ export function editUserAdmin(id){
 
 export function login(payload){
     return async function(dispatch){
-        let data = await axios.post(`http://localhost:3001/user/login`, payload)
+        let data = await axios.post(`https://green--shop.herokuapp.com/user/login`, payload)
         return dispatch({
             type: LOGIN,
             payload: data
@@ -144,7 +144,7 @@ export function login(payload){
 
 export function register(payload){
     return async function(dispatch){
-        let data = await axios.post(`http://localhost:3001/user/register`, payload)
+        let data = await axios.post(`https://green--shop.herokuapp.com/user/register`, payload)
         return dispatch({
             type: REGISTER,
             payload: data
@@ -154,7 +154,7 @@ export function register(payload){
 
 export function loginGoogle(payload){
     return async function(dispatch){
-        let data = await axios.post(`http://localhost:3001/auth/google`, payload)
+        let data = await axios.post(`https://green--shop.herokuapp.com/auth/google`, payload)
         return dispatch({
             type: LOGIN_GOOGLE,
             payload: data
