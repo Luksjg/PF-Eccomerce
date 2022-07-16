@@ -26,17 +26,6 @@ export default function StorePage() {
     <div className={style.container}>
       <NavStore />
 
-      {/* <div className={style.container}>
-        <select onChange={(e) => handleSort(e)}>
-          <option value='asc'>Orden alfabetico</option>
-          <option value='desc'>Orden alfabetico descendente</option>
-          <option value='maxPrice'>Menor precio</option>
-          <option value='minPrice'>Mayor precio</option>
-          <option value='maxValoration'>Mayor valoracion</option>
-          <option value='minValoration'>Menor valoracion</option>
-        </select>
-      </div> */}
-
       <div className={style.columnaContainer}>
         <div className={style.columna}>
           <MapProducts productsToShow={productsToShow} />
