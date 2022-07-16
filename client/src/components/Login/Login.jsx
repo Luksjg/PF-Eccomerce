@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import validarEmail from "./validateEmail";
 import validatePassword from "./validatePassword";
 import LoginGoogle from './LoginGoogle'
