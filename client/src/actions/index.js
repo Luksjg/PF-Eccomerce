@@ -13,7 +13,6 @@ export const GET_OUTSADING_PRODUCTS = "GET_OUTSADING_PRODUCTS"
 export const ORDER = "ORDER"
 export const LOGIN = "LOGIN"
 export const REGISTER = "REGISTER"
-export const LOGIN_GOOGLE = "LOGIN_GOOGLE"
 export const GET_BY_NAME = "GET_BY_NAME"
 export const EDIT_PRODUCT = "EDIT_PRODUCT"
 
@@ -175,16 +174,6 @@ export function register(payload){
         let data = await axios.post(`https://green--shop.herokuapp.com/user/register`, payload)
         return dispatch({
             type: REGISTER,
-            payload: data
-        })
-    }
-}
-
-export function loginGoogle(payload){
-    return async function(dispatch){
-        let data = await axios.post(`https://green--shop.herokuapp.com/auth/google`, payload)
-        return dispatch({
-            type: LOGIN_GOOGLE,
             payload: data
         })
     }

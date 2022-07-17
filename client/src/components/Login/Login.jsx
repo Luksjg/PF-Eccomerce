@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router";
 import validarEmail from "./validateEmail";
 import validatePassword from "./validatePassword";
-import LoginGoogle from './LoginGoogle'
 import axios from "axios";
-
+import { authentication } from "../firebase/config/firebase-config.js";
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  GithubAuthProvider,
+} from "firebase/auth";
 
 function validate(email, password) {
   let objeto = {};
@@ -26,7 +30,6 @@ function validate(email, password) {
 
   return objeto;
 }
-
 
 export default function Loguin() {
   const errorEmail = useSelector((state) => state.errorEmail);
@@ -103,23 +106,64 @@ export default function Loguin() {
       console.log(error);
       alert("usuario o contraseña incorrectos");
     }
-  }
+  };
 
-  
+  const handleClickGoogle = async () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(authentication, provider)
+      .then((result) => {
+        console.log(result);
+        history.push("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleClickGithub = async () => {
+    const provider = new GithubAuthProvider();
+    signInWithPopup(authentication, provider)
+      .then((result) => {
+        console.log(result);
+        history.push("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="contRegister">
-      
       <div className="flex">
         <div className="contLogin">
           <div className="contLogin-content">
             <h3>Login</h3>
             <form onSubmit={handleSubmit}>
-              <input type="email" name="email" placeholder="Email" onChange={handleChangeEmail} value={usuario.email} />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                onChange={handleChangeEmail}
+                value={usuario.email}
+              />
               {errors.email && <p className="error">{errors.email}</p>}
-              <input type="password" name="password" placeholder="Password" onChange={handleChangePassword} value={usuario.password} />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                onChange={handleChangePassword}
+                value={usuario.password}
+              />
               {errors.password && <p className="error">{errors.password}</p>}
-              <LoginGoogle/>  
-              <button type="submit" onClick={handleFinish}>Login</button>
+              <div>
+                <button onClick={handleClickGoogle}>Google</button>
+              </div>
+              <div>
+                <button onClick={handleClickGithub}>Github</button>
+              </div>
+              <button type="submit" onClick={handleFinish}>
+                Login
+              </button>
             </form>
             <Link to="/olvide-password/" className="a">
               {" "}
