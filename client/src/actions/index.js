@@ -13,8 +13,6 @@ export const GET_OUTSADING_PRODUCTS = "GET_OUTSADING_PRODUCTS"
 export const ORDER = "ORDER"
 export const LOGIN = "LOGIN"
 export const REGISTER = "REGISTER"
-export const LOGIN_GOOGLE = "LOGIN_GOOGLE"
-
 
 export function getAllProducts(){
     return async function(dispatch){
@@ -152,15 +150,7 @@ export function register(payload){
     }
 }
 
-export function loginGoogle(payload){
-    return async function(dispatch){
-        let data = await axios.post(`http://localhost:3001/auth/google`, payload)
-        return dispatch({
-            type: LOGIN_GOOGLE,
-            payload: data
-        })
-    }
-}
+
 
 
 

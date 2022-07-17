@@ -6,10 +6,10 @@ import CreateProduct from "./components/createProduct/CreateProduct"
 import ProductDetail from "./components/productDetail/ProductDetail"
 import StorePage from "./components/storePage/StorePage"
 import WeAre from "./components/weAre/WeAre"
-import Page404 from "./components/page404/Page404"
 import ProductsCategory from "./components/productsCategories/ProdutsCategory"
 import Login from './components/Login/Login.jsx'
 import Register from './components/Register/Register'
+import page404 from './components/page404/Page404.js'
 
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
           <Route path="/categoria/:category" component={ProductsCategory}/>
           <Route path="/crearproducto" component={CreateProduct}/> 
           <Route path="/nosotros" component={WeAre}/>
-          <Route path='*' component={Page404}/>
+          <Route path="*" component={page404}/>
         </Switch>
       </BrowserRouter>
     </div>
