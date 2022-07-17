@@ -81,6 +81,13 @@ export default function ProductDetail() {
               ) : (
                 <Link to={`/producto/${id}`}></Link>
               )}
+
+              <div>
+                <Link to={`/editar_producto/${id}`}>
+                  Editar producto
+                </Link>
+              </div>
+
             </div>
           </div>
         </div>

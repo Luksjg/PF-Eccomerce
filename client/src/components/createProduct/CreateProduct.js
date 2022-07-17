@@ -185,9 +185,6 @@ export default function CreateProduct() {
           </form>
         </div>
       </div>
-      <div>
-        -------------------------------------------------------------------------
-      </div>
       <Footer />
     </div>
   );

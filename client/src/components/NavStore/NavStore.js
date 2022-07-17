@@ -37,7 +37,7 @@ const NavStore = ({setCurrentPage}) => {
           </Link>
           <div className={S.search}>
             <form onSubmit={(e) => handleClick(e)}>
-              <input type='text' value={name} placeholder='Buscar productos, marcas y mas...' onChange={(e) => handleInputChange(e)}/>
+              <input type='text' value={name} placeholder='Buscar productos...' onChange={(e) => handleInputChange(e)}/>
               <button type="submit">buscar</button>
             </form>
           </div>
@@ -52,9 +52,8 @@ const NavStore = ({setCurrentPage}) => {
         </div>
       </div>
       <div className={S.container}>
-        <div className={S.categorias}>
           <div className={S.Selectores}>
-            <label>Orden</label>
+            <label>Orden </label>
             <select onSubmit={e=>handleSort(e)}>
               <option value='az'>Ascendente</option>
               <option value='za'>Descendente</option>
@@ -74,7 +73,6 @@ const NavStore = ({setCurrentPage}) => {
               </h3>
             </div>
           </div>
-        </div>
       </div>
     </div>
   );

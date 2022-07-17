@@ -10,7 +10,7 @@ import Page404 from "./components/page404/Page404"
 import ProductsCategory from "./components/productsCategories/ProdutsCategory"
 import Login from './components/Login/Login.jsx'
 import Register from './components/Register/Register'
-
+import ProductEdit from "./components/productEdit/ProductEdit"
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
           <Route exact path="/tienda" component={StorePage}/> 
           <Route path="/producto/:id" component={ProductDetail}/>
           <Route path="/categoria/:category" component={ProductsCategory}/>
+          <Route path="/editar_producto/:id" component={ProductEdit}/>
           <Route path="/crearproducto" component={CreateProduct}/> 
           <Route path="/nosotros" component={WeAre}/>
           <Route path='*' component={Page404}/>

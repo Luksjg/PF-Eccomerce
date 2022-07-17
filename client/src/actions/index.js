@@ -15,6 +15,7 @@ export const LOGIN = "LOGIN"
 export const REGISTER = "REGISTER"
 export const LOGIN_GOOGLE = "LOGIN_GOOGLE"
 export const GET_BY_NAME = "GET_BY_NAME"
+export const EDIT_PRODUCT = "EDIT_PRODUCT"
 
 
 export function getAllProducts(){
@@ -88,6 +89,16 @@ export function postProduct(payload){
         let data = await axios.post(`https://green--shop.herokuapp.com/products`, payload)
         return dispatch({
             type: GET_PRODUCT,
+            payload: data.data
+        })
+    }
+}
+
+export function editProduct(payload,id){
+    return async function(dispatch){
+        let data = await axios.put(`https://green--shop.herokuapp.com/products/putProducto/${id}`, payload)
+        return dispatch({
+            type: EDIT_PRODUCT,
             payload: data.data
         })
     }

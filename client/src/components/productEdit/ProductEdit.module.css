@@ -1,0 +1,99 @@
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulin h1{
+    color: #050505;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 3em;
+    margin-top: 20px;
+  }
+  
+.footer{
+    width: 100%;
+    height: 100px;
+    background-color: #f2f2f2;
+ 
+}
+  .boton{
+    position: relative;
+    font-size: 25px;
+    margin-bottom:65px;
+    margin-top: 100px;
+    padding: 50px;
+    width: 20vw;
+    height: 5vh;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    background-color: #6b35e8;
+    cursor: pointer;
+    transition: .5s;
+    overflow: hidden;
+
+  }
+  .boton:hover{
+    color: rgb(255, 255, 255);
+    
+  }
+  .boton span{
+    position: absolute;
+    background: #fff;
+  
+    transition: 0.5s;
+  }
+  .boton span:nth-child(1){
+    width: 100%;
+    height: 3px;
+    top: 0;
+    left: -100%;
+  }
+  .boton span:nth-child(2){
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    right: -100%;
+  }
+  
+  .boton span:nth-child(3){
+    width: 3px;
+    height: 100%;
+    bottom: -100%;
+    left: 0;
+  }
+  .boton span:nth-child(4){
+    width: 3px;
+    height: 100%;
+    top: -100%;
+    right: 0;
+  }
+
+  .image{
+    max-width: 450px;
+    max-height: 450px;
+  }
+  
+  .boton:hover span:nth-child(1){
+    left: 0;
+  
+  }
+  .boton:hover span:nth-child(2){
+    right: 0;
+  
+  }
+  
+  .boton:hover span:nth-child(3){
+    bottom: 0;
+  
+  }
+  
+  .boton:hover span:nth-child(4){
+    top: 0;
+  
+  }
