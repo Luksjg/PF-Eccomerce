@@ -73,7 +73,7 @@ export function getByName(name){
             let json = await axios.get('https://green--shop.herokuapp.com/products?name=' + name);
             console.log(json)
             if(json.data.length<1){
-                return alert("Pais no encontrado :(")
+                return alert("No pa ese no lo tenemo")
             }else{
             return dispatch({
                 type: GET_BY_NAME,
