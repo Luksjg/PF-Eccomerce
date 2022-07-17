@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Categories from "../categories/Categories";
 import Footer from "../footer/Footer";
@@ -14,9 +14,12 @@ export default function StorePage() {
 
   const productsToShow = useSelector((state) => state.products);
 
-  // function handleSort(e) {
-  //   dispatch(order(e.target.value));
-  // }
+  const [currentPage, setCurrentPage] = useState(1);
+
+  let productsPage = 8;
+  const LastProduct = currentPage * productsPage;
+  const FirstProduct = LastProduct - productsPage;
+  const currentProducts = productsToShow.slice(FirstProduct, LastProduct);
 
   useEffect(() => {
     dispatch(getAllProducts());
@@ -24,11 +27,11 @@ export default function StorePage() {
 
   return (
     <div className={style.container}>
-      <NavStore />
+      <NavStore setCurrentPage={setCurrentPage}/>
 
       <div className={style.columnaContainer}>
         <div className={style.columna}>
-          <MapProducts productsToShow={productsToShow} />
+          <MapProducts productsToShow={productsToShow} setCurrentPage={setCurrentPage} currentProducts={currentProducts}/>
         </div>
         <div className={style.columnaC}>
           <Categories />

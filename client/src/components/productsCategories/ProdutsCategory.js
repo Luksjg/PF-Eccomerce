@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import MapProducts from "../mapProducts/MapProducts";
@@ -16,6 +16,12 @@ export default function ProductsCategory(){
 
     const productsToShow = useSelector(state=> state.products)
 
+    const [currentPage, setCurrentPage] = useState(1);
+
+    let productsPage = 8;
+    const LastProduct = currentPage * productsPage;
+    const FirstProduct = LastProduct - productsPage;
+    const currentProducts = productsToShow.slice(FirstProduct, LastProduct);
 
     useEffect(()=>{
         dispatch(getByCategory(category)) 
@@ -28,7 +34,7 @@ export default function ProductsCategory(){
     
           <div className={style.columnaContainer}>
             <div className={style.columna}>
-              <MapProducts productsToShow={productsToShow} />
+              <MapProducts productsToShow={productsToShow} setCurrentPage={setCurrentPage} currentProducts={currentProducts}/>
             </div>
             <div className={style.columnaC}>
               <Categories />

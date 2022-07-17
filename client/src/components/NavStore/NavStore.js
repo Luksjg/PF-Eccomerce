@@ -7,7 +7,7 @@ import logo from "./logoShop.png";
 import { useDispatch } from "react-redux";
 import { getByName } from "../../actions";
 
-const NavStore = () => {
+const NavStore = ({setCurrentPage}) => {
   const [name, setName] = useState("");
   const dispatch = useDispatch()
   
@@ -19,6 +19,7 @@ const NavStore = () => {
   const handleClick = (e) => {
     e.preventDefault();
     dispatch(getByName(name));
+    setCurrentPage(1)
     setName("")
   };
 
@@ -50,13 +51,8 @@ const NavStore = () => {
               <option value='null'>Orden Alfabetico</option>
               <option value='az'>Ascendente</option>
               <option value='za'>Descendente</option>
-            </select>
-            <select className={S.buttonSelectP}>
-              <option value='null'>Precio</option>
               <option value='maxPrice'>Menor precio</option>
               <option value='minPrice'>Mayor precio</option>
-            </select>
-            <select>
               <option value='maxValoration'>Mayor valoracion</option>
               <option value='minValoration'>Menor valoracion</option>
             </select>

@@ -1,15 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Paginated from "../paginated/Paginated";
 import ProductCard from "./../productCard/ProductCard";
 import style from "./MapProducts.module.css";
-export default function MapProducts({ productsToShow }) {
-  const [currentPage, setCurrentPage] = useState(1);
+export default function MapProducts({ productsToShow,setCurrentPage,currentProducts }) {
 
-  let productsPage = 8;
-  const LastProduct = currentPage * productsPage;
-  const FirstProduct = LastProduct - productsPage;
-  const currentProducts = productsToShow.slice(FirstProduct, LastProduct);
+
 
   return (
     <div>
