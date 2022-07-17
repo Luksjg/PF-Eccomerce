@@ -11,6 +11,16 @@ const InitialState={
     subs: []
 }
 
+function orderP( a, b ) {
+    if ( a.price < b.price ){
+      return -1;
+    }
+    if ( a.price > b.price ){
+      return 1;
+    }
+    return 0;
+}
+
 function rootReducer(state = InitialState, action){
     switch(action.type){
         case GET_ALL_PRODUCTS:
@@ -39,11 +49,16 @@ function rootReducer(state = InitialState, action){
                 ...state,
                 products: action.payload
             } 
-        case ORDER:
+        case ORDER:                
+        let sortedProducts  
+            if(action.payload === 'az')sortedProducts = state.products.sort((a,b) => a.name.localeCompare(b.name))
+            else if(action.payload === "za")sortedProducts = state.products.sort((a,b) => b.name.localeCompare(a.name));
+            else if(action.payload === "maxPrice")sortedProducts = state.products.sort(orderP)
+            else if(action.payload === "minPrice")sortedProducts = state.products.sort(orderP).reverse()
             return{
-            ...state,
-            products: action.payload
-            } 
+                ...state,
+                products: sortedProducts
+            }   
         case NEW_SUB:
             let subs = state.subs.filter(s=> s.email !== action.payload.email)
             return{

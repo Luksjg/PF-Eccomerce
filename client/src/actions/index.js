@@ -47,13 +47,11 @@ export function getByCategory(category){
     }
 }
 
-export function order(order){
-    return async function(dispatch){
-        let data = await axios.get(`https://green--shop.herokuapp.com/filters/${order}`)
-        return dispatch({
-            type: ORDER,
-            payload: data.data
-        })
+export function order(payload){
+    console.log(payload)
+    return {
+        type: ORDER,
+        payload
     }
 }
 
