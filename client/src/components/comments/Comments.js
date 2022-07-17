@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { getReviews, postReview } from "../../actions";
 import style from "./Comments.module.css";
 
 export default function Comments() {
   const idProduct = useParams();
+  const history = useHistory()
 
   const [input, setInput] = useState({
     productId: idProduct.id,
@@ -24,7 +25,7 @@ export default function Comments() {
     });
   }
   async function handleSubmit(e) {
-    if (!input.review) {
+    if (!input.review || input.valoration === 0) {
       e.preventDefault();
       return alert("Complete todos los campos para poder continuar");
     } else {
@@ -38,13 +39,14 @@ export default function Comments() {
         review: "",
         valoration: 0,
       });
+      history.push("/tienda")
     }
   }
 
   useEffect(() => {
     dispatch(getReviews(idProduct.id));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [input]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]);
 
   return (
     <div className={style.cont}>
@@ -74,13 +76,6 @@ export default function Comments() {
               value={input.valoration}
             />{" "}
             <span> {input.valoration + "⭐"}</span>
-            {/*   <option></option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </input> */}
           </div>
           <div className={style.boton}>
             <button type='submit'>Comentar</button>

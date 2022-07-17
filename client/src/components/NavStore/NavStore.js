@@ -2,7 +2,7 @@ import React, {  useState } from "react";
 import { Link } from "react-router-dom";
 import S from "./NavStore.module.css";
 import { FiShoppingCart } from "react-icons/fi";
-// import { BsSearch } from "react-icons/bs";
+import { BsSearch } from "react-icons/bs";
 import logo from "./logoShop.png";
 import { useDispatch } from "react-redux";
 import { getByName, order } from "../../actions";
@@ -38,7 +38,7 @@ const NavStore = ({setCurrentPage}) => {
           <div className={S.search}>
             <form onSubmit={(e) => handleClick(e)}>
               <input type='text' value={name} placeholder='Buscar productos...' onChange={(e) => handleInputChange(e)}/>
-              <button type="submit">buscar</button>
+              <button type="submit"><BsSearch/></button>
             </form>
           </div>
           <div className={S.botones}>
@@ -53,7 +53,6 @@ const NavStore = ({setCurrentPage}) => {
       </div>
       <div className={S.container}>
           <div className={S.Selectores}>
-            <label>Orden </label>
             <select onSubmit={e=>handleSort(e)}>
               <option value='az'>Ascendente</option>
               <option value='za'>Descendente</option>

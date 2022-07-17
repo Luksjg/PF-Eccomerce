@@ -38,7 +38,7 @@ export default function Categories() {
         <p>Destacados</p>
       </Link>
       <br />
-      <p>Fertilizantes</p>
+      <p className={style.separador}>Fertilizantes</p>
       <br />
       <Link to={"/categoria/control-plagas-hongos"}>
         <p>Control de plagas y hongos</p>
@@ -56,7 +56,7 @@ export default function Categories() {
         <p>Iluminacion</p>
       </Link>
       <br />
-      <p>Parafernalia y accesorios</p>
+      <p className={style.separador} >Parafernalia y accesorios</p>
       <br />
       <Link to={"/categoria/armadores"}>
         <p>Armadores</p>
