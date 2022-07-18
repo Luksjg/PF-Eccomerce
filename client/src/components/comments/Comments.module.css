@@ -62,3 +62,50 @@
     color: white;
     transition: .6s;
 }
+.review{
+   /*  background-color: #0ead69; */
+    position: relative;
+    margin-top: -93vh;
+    width: 20vw;
+    height: 40vh;
+    margin-left: 50vw;
+    box-shadow: 5px 5px 15px 5px #000000;
+    border-radius: 10px;
+    border:#595959 solid 1px;
+    
+}
+.review p{
+    font-size: 1rem;
+    margin-left: 10px;
+    margin-top: 10px;
+    color:#050505;
+    font-family : Rubik, sans-serif; 
+    text-transform : lowercase; 
+}
+.review label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 25px;
+}
+.review h2{
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color:#050505;
+    font-family : Rubik, sans-serif; 
+    text-transform : uppercase; 
+    display: flex;
+    justify-content: center;
+}
+.caja textarea{
+    font-size: 20px;
+    height: 15vh;
+    /* width: 100%; */
+    text-align: initial;
+    border-color: #0ead69;
+    outline: transparent;
+    padding:10px;
+    box-sizing: border-box;
+    
+    }

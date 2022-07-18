@@ -6,6 +6,7 @@ export default function Welcome() {
   return (
     <div>
       <div className={S.contImg}>
+        <div className={S.before}></div>
         <div className={S.logoN}>
           <img className={S.logo} src={logo} alt='logo' />
         </div>

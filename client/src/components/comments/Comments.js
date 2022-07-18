@@ -6,7 +6,7 @@ import style from "./Comments.module.css";
 
 export default function Comments() {
   const idProduct = useParams();
-  const history = useHistory()
+  const history = useHistory();
 
   const [input, setInput] = useState({
     productId: idProduct.id,
@@ -39,13 +39,13 @@ export default function Comments() {
         review: "",
         valoration: 0,
       });
-      history.push("/tienda")
+      history.push("/tienda");
     }
   }
 
   useEffect(() => {
     dispatch(getReviews(idProduct.id));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   return (
@@ -82,12 +82,13 @@ export default function Comments() {
           </div>
         </form>
       </div>
-      <div>
+      <div className={style.review}>
+        <h2>Reseñas</h2>
         {reviews &&
           reviews.map((r, i) => (
             <div key={i}>
+              <label>{r.valoration + " ⭐"}</label>
               <p>{r.review}</p>
-              <label>{r.valoration}</label>
             </div>
           ))}
       </div>

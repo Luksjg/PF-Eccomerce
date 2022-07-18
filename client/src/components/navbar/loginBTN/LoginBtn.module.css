@@ -1,0 +1,8 @@
+.container label{
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-right: 1.2rem;
+    cursor: pointer;
+
+}
