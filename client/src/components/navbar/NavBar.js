@@ -28,9 +28,9 @@ export default function NavBar() {
           <label>Crear producto </label>
         </Link>
 
-        <Link to='/loginjwt'>
+        {/*  <Link to='/loginjwt'>
           <label>Login</label>
-        </Link>
+        </Link> */}
 
         <LoginBtn />
       </div>

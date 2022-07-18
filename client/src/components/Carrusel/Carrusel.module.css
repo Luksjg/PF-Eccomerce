@@ -75,7 +75,7 @@
   .inner {
     display: grid;
     grid-auto-flow: column; 
-    height: 35vh;
+    height: 36vh;
     width: 200000vw;
     overflow: hidden;
     grid-auto-columns: 270px;
