@@ -22,7 +22,7 @@ const NavStore = ({setCurrentPage}) => {
     setCurrentPage(1)
     setName("")
   };
-
+  
   function handleSort(e){
     dispatch(order(e.target.value))
     setCurrentPage(1)

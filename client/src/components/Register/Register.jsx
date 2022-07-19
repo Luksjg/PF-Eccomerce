@@ -22,6 +22,7 @@ export default function Register() {
     setUsername(usernameRef.current.value);
     try {
       await axios.post("http://localhost:3001/user/register", { email,username, password });
+      alert("Register Successful");
       history.push("/loginjwt");
     } catch (err) {
       console.log(err);
