@@ -82,12 +82,11 @@ export default function ProductDetail() {
                 <Link to={`/producto/${id}`}></Link>
               )}
 
-              <div>
+              <div className={style.editar}>
                 <Link to={`/editar_producto/${id}`}>
-                  Editar producto
+                  <span>Editar producto</span>
                 </Link>
               </div>
-
             </div>
           </div>
         </div>

@@ -12,8 +12,8 @@ const AboutMe = () => {
       <div className={style.texto}>
         <strong>Quiénes Somos</strong>
         <p>
-          En <Link to='/nosotros'>Henry Green Shop</Link>, nos dedicamos hace
-          mas de 15 dias a la venta de productos para cultivos
+          En {/* <Link to='/nosotros'> */}Henry Green Shop{/* </Link> */}, nos
+          dedicamos hace mas de 15 dias a la venta de productos para cultivos
         </p>
         <p>
           Contamos con la más amplia variedad de productos, todos de la mejor

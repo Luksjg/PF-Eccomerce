@@ -43,6 +43,7 @@
     text-transform : uppercase; 
   /*   background-color: #0ead69; */
     max-height: 10vh;
+    max-width:22vw ;
     height: 10vh;
 }
 
@@ -58,7 +59,9 @@
     text-transform : uppercase; 
     font-weight : 500; 
     line-height : 30px; 
-    color : rgb(0, 0, 0); 
+    color : rgb(0, 0, 0);
+    margin-top : 20px;
+    margin-bottom : 20px; 
 }
 
 .stock h3{
@@ -109,4 +112,27 @@
     line-height : 30px; 
     color : rgb(0, 0, 0); 
     text-transform : uppercase; 
+}
+.editar{
+    margin-top: 35px;
+    margin-bottom: 35px;
+    width: 15vh;
+
+}
+.editar:hover{
+    background-color: #66688D;
+    transition: .5s;
+    color: white;
+}
+.editar span{
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    width: 15vh;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black ;
+    background-color: #E3EDFB;
+    cursor: pointer;
 }

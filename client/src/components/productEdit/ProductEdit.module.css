@@ -1,99 +1,195 @@
 .container{
-    width: 100%;
-    height: 100%;
+  width: 45vw;
+  height: 100vh;
+  margin-left: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  /* background-color: #6b35e8; */
+/*     border-left: #636363 solid 2px;
+  border-right: #636363 solid 2px; */
+  border: #636363 solid 2px;
+
+  
+}
+.container form{
+  width: 80%;
+  margin-top: 20px;
+  
+}
+.container p{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #636363;
+  margin-bottom: 10px;
+}
+.cuadroImg{
+margin-left: 32%;
+position: relative;
+margin-top: 25px;
+
+}
+.botonimg{
+margin-left:32%;
+position: relative;
+}
+
+ .titulin{
+margin-top: 100px;
+position: absolute;
+  top: -15px;
+  left: 39.3vw;
+ }
+.titulin h1{
+  color: #050505;
+  font-family: 'Source Sans Pro', sans-serif ;
+  text-transform: uppercase;
+  font-size: 3em;
+  margin-top: -20px;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.footer{
+  width: 100%;
+  height: 100px;
+  background-color: #f2f2f2;
+
+}
+
+.nombre input{
+font-size: 20px;
+height: 35px;
+width: 100%;
+border-color: #6b35e8;
+outline: transparent;
+box-sizing: border-box;
+}
+.nombre ::placeholder{
+font-size: 20px;
+margin-top: -5px;
+padding-left: 10px;
+}
+
+
+
+.description{
+margin-top: 25px;
+}
+.description textarea{
+font-size: 20px;
+height: 15vh;
+width: 100%;
+text-align: initial;
+border-color: #6b35e8;
+outline: transparent;
+padding:10px;
+box-sizing: border-box;
+
+}
+/* .description ::placeholder{
+font-size: 20px;
+padding-left: 10px;
+padding-top: 10px;
+} */
+.precio input{
+  font-size: 20px;
+  height: 35px;
+  width: 100%;
+  border-color: #6b35e8;
+  outline: transparent;
+  box-sizing: border-box;
+}
+.precio ::placeholder{
+
+  padding-left: 10px;
+}
+
+.category{
+  margin-top: 25px;
+}
+.category select{
+  font-size: 20px;
+  height: 35px;
+  width: 100%;
+  border-color: #6b35e8;
+  outline: transparent;
+  box-sizing: border-box;
+}
+.stock{
+  margin-top: 25px;
+}
+.stock input{
+  font-size: 20px;
+  height: 35px;
+  width: 100%;
+  border-color: #6b35e8;
+  outline: transparent;
+  box-sizing: border-box;
+}
+.destacar select{
+  font-size: 20px;
+  height: 35px;
+  width: 100%;
+  border-color: #6b35e8;
+  outline: transparent;
+  box-sizing: border-box;
+}
+
+
+.crear{
+  margin-top: 25px;
+
+}
+.crear span{
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    width: 15vh;
+    height: 5vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: black ;
+    background-color: #E3EDFB;
+    cursor: pointer;
 }
-
-.titulin h1{
-    color: #050505;
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 3em;
-    margin-top: 20px;
-  }
-  
-.footer{
-    width: 100%;
-    height: 100px;
-    background-color: #f2f2f2;
+.crear span:hover{
+    background-color: #66688D;
+    transition: .5s;
+    color: white;
  
 }
-  .boton{
-    position: relative;
-    font-size: 25px;
-    margin-bottom:65px;
-    margin-top: 100px;
-    padding: 50px;
-    width: 20vw;
-    height: 5vh;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 10px;
-    outline: none;
-    background-color: #6b35e8;
-    cursor: pointer;
-    transition: .5s;
-    overflow: hidden;
+.cancelar{
+  margin-top: 25px;
 
-  }
-  .boton:hover{
-    color: rgb(255, 255, 255);
-    
-  }
-  .boton span{
-    position: absolute;
-    background: #fff;
   
-    transition: 0.5s;
-  }
-  .boton span:nth-child(1){
-    width: 100%;
-    height: 3px;
-    top: 0;
-    left: -100%;
-  }
-  .boton span:nth-child(2){
-    width: 100%;
-    height: 3px;
-    bottom: 0;
-    right: -100%;
-  }
   
-  .boton span:nth-child(3){
-    width: 3px;
-    height: 100%;
-    bottom: -100%;
-    left: 0;
-  }
-  .boton span:nth-child(4){
-    width: 3px;
-    height: 100%;
-    top: -100%;
-    right: 0;
-  }
-
-  .image{
-    max-width: 450px;
-    max-height: 450px;
-  }
+}
+.cancelar span{
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  width: 15vh;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black ;
+  background-color: #E3EDFB;
+  cursor: pointer;
+}
+.cancelar span:hover{
+  background-color: #66688D;
+  transition: .5s;
+  color: white;
+}
+.botones{
+  display: flex;
+/* background-color: #6b35e8; */
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
   
-  .boton:hover span:nth-child(1){
-    left: 0;
-  
-  }
-  .boton:hover span:nth-child(2){
-    right: 0;
-  
-  }
-  
-  .boton:hover span:nth-child(3){
-    bottom: 0;
-  
-  }
-  
-  .boton:hover span:nth-child(4){
-    top: 0;
-  
-  }
+}
