@@ -62,7 +62,6 @@ export default function UserDataEdit(){
             <NavBar/>
             <br/><br/>
             <div>---------------------------------------</div>
-            {console.log(input)}
             <form onSubmit={(e) => handleSubmit(e)}>
                 <img src={input.profile_img} alt='not' width='250' height='250'/>
                 <br/>

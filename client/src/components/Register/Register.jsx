@@ -1,86 +1,104 @@
-import axios from "axios";
-import { useRef } from "react";
-import { useState } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 
-export default function Register() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
+function Register() {
+  // form validation rules
   const history = useHistory();
 
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  const usernameRef = useRef();
+  const validationSchema = Yup.object().shape({
+    password: Yup.string()
+      .required("⚠ Password is required")
+      .min(6, "⚠ Password must be at least 6 characters"),
+    confirmPassword: Yup.string()
+      .required("⚠ Confirm Password is required")
+      .oneOf([Yup.ref("password")], "⚠ Passwords must match"),
+    username: Yup.string()
+      .required("⚠ Name is required")
+      .min(3, "⚠ Name must be at least 3 characters")
+      .max(15, "⚠ Name must be less than 20 characters"),
+    email: Yup.string()
+      .required("⚠ Email is required")
+      .email("⚠ Email is invalid"),
+  });
+  const formOptions = { resolver: yupResolver(validationSchema) };
 
-  const handleStart = () => {
-    setEmail(emailRef.current.value);
-  };
-  const handleFinish = async (e) => {
-    e.preventDefault();
-    setPassword(passwordRef.current.value);
-    setUsername(usernameRef.current.value);
-    try {
-      await axios.post("http://localhost:3001/user/register", { email,username, password });
-      history.push("/loginjwt");
-    } catch (err) {
-      console.log(err);
-      alert("Error registering");
+  // get functions to build form with useForm() hook
+  const { register, handleSubmit, formState } = useForm(formOptions);
+  const { errors } = formState;
+
+
+
+  const onSubmit = async (e) => {
+    // alert when form is submitted successfully and redirect to login page
+    if(Object.keys(errors).length === 0) {
+      await axios.post("http://localhost:3001/user/register", e);
+      alert("Form Submitted Successfully");
+      history.push("/login");
+      register(e);
+    } else {
+      alert("Form is invalid");
     }
-  };
-
-  
+  }
 
   return (
-    <div className="register">
-      <div className="register__container">
-        <div className="register__container__title">
-          <h1>Register</h1>
-          <form action="">
-            <div className="register__container__title__input">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                name="email"
-                ref={emailRef}
-                onChange={handleStart}
-              />
+    <section>
+      <div className="register">
+        <div className="col-1">
+          <h2>Sign in</h2>
+          <p>register and enjoy to servises</p>
+
+          <form
+            id="form"
+            className="flex flex-col"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <input
+              type="text"
+              {...register("username", { required: true, maxLength: 10 })}
+              placeholder="username"
+            />
+            <p>{errors.name?.message}</p>
+
+            <input
+              type="text"
+              {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
+              placeholder="email"
+            />
+            <p>{errors.email?.message}</p>
+
+            <input
+              placeholder="password"
+              name="password"
+              type="password"
+              {...register("password")}
+              className={`form-control ${errors.password ? "is-invalid" : ""}`}
+            />
+            <div className="invalid-feedback">
+              <p>{errors.password?.message}</p>
             </div>
-            <div className="register__container__title__input">
-              <label htmlFor="username">Username</label>
-              <input
-                type="text"
-                name="username"
-                ref={usernameRef}
-                onChange={handleStart}
-              />
-            </div>
-            <div className="register__container__title__input">
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                name="password"
-                ref={passwordRef}
-                onChange={handleStart}
-              />
-            </div>
-            <div>
-              <label htmlFor="password">Confirm Password</label>
-              <input
-                type="password"
-                name="password"
-                ref={passwordRef}
-                onChange={handleStart}
-              />
-            </div>
-            <div className="register__container__title__input">
-              <button type="submit" onClick={handleFinish}>
-                Register
-              </button>
-            </div>
+
+            <input
+              placeholder="confirm password"
+              name="confirmPassword"
+              type="password"
+              {...register("confirmPassword")}
+              className={`form-control ${
+                errors.confirmPassword ? "is-invalid" : ""
+              }`}
+            />
+            <div className="invalid-feedback">
+              <p>{errors.confirmPassword?.message}</p>
+            </div>  
+            <button className="btn">Sig in</button>
           </form>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
+
+export default Register;

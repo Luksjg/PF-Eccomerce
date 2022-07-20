@@ -1,4 +1,4 @@
-/* import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
@@ -101,6 +101,8 @@ export default function Loguin() {
     e.preventDefault();
     try {
       await axios.post("http://localhost:3001/user/login", usuario);
+      localStorage.setItem("token", token);
+      console.log(token);
       history.push("/");
     } catch (error) {
       console.log(error);
@@ -113,6 +115,7 @@ export default function Loguin() {
     signInWithPopup(authentication, provider)
       .then((result) => {
         console.log(result);
+        localStorage.setItem("token", result.user.uid);
         history.push("/");
       })
       .catch((error) => {
@@ -125,6 +128,7 @@ export default function Loguin() {
     signInWithPopup(authentication, provider)
       .then((result) => {
         console.log(result);
+        localStorage.setItem("token", result.user.uid);
         history.push("/");
       })
       .catch((error) => {
@@ -178,4 +182,3 @@ export default function Loguin() {
     </div>
   );
 }
- */
