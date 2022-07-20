@@ -4,10 +4,10 @@ export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS"
 export const GET_BY_CATEGORY = "GET_BY_CATEGORY"
 export const GET_PRODUCT = "GET_PRODUCT"
 export const GET_ALL_USERS = "GET_ALL_USERS"
-export const GET_USER = "GET_USER"
+export const GET_USERS = "GET_USERS"
 export const DELETE_USER = "DELETE_USER"
 export const GET_REVIEWS = "GET_REVIEWS"
-export const EDIT_USER_ADMIN = "EDIT_USER_ADMIN" 
+export const EDIT_USER = "EDIT_USER" 
 export const NEW_SUB = "NEW_SUB"
 export const GET_OUTSADING_PRODUCTS = "GET_OUTSADING_PRODUCTS"
 export const ORDER = "ORDER"
@@ -15,6 +15,7 @@ export const LOGIN = "LOGIN"
 export const REGISTER = "REGISTER"
 export const GET_BY_NAME = "GET_BY_NAME"
 export const EDIT_PRODUCT = "EDIT_PRODUCT"
+export const GET_USER = "GET_USER"
 
 
 export function getAllProducts(){
@@ -121,16 +122,35 @@ export function getReviews(id){
     }
 }
 
-export function getUser(id){
+export function getUsers(name){
     return async function(dispatch){
-        let data = await axios.get(`https://green--shop.herokuapp.com/user/${id}` );
+        let data = await axios.get(`https://green--shop.herokuapp.com/user?name=${name}` );
         return dispatch({
-            type: GET_ALL_PRODUCTS,
-            payload: data
+            type: GET_USERS,
+            payload: data.data
         })
     }
 }
 
+export function getUser(id){
+    return async function(dispatch){
+        let data = await axios.get(`https://green--shop.herokuapp.com/user/${id}` );
+        return dispatch({
+            type: GET_USER,
+            payload: data.data
+        })
+    }
+}
+
+export function putUser(id,payload){
+    return async function(dispatch){
+        let data = await axios.put(`https://green--shop.herokuapp.com/user/modified/${id}`, payload );
+        return dispatch({
+            type: EDIT_USER,
+            payload: data.data
+        })
+    }
+}
 
 export function deleteUser(id){
     return async function(dispatch){
@@ -146,16 +166,6 @@ export function newSub(payload){
     return{
         type: NEW_SUB,
         payload: payload
-    }
-}
-
-export function editUserAdmin(id){
-    return async function(dispatch){
-        let data = await axios.put(`https://green--shop.herokuapp.com/user/${id}`)
-        return dispatch({
-            tye: EDIT_USER_ADMIN,
-            payload: data
-        })
     }
 }
 

@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getProduct } from "../../actions";
-// import Categories from "../categories/Categories";
 import Comments from "./../comments/Comments";
 import Footer from "../footer/Footer";
 import NavBar from "../navbar/NavBar";
@@ -19,11 +18,6 @@ export default function ProductDetail() {
 
   const product = useSelector((state) => state.product);
 
-  // if(loading){
-  //     return(
-  //         <div>cargando</div>
-  //     )
-  // }else{
   return (
     <div className={style.grandContainer}>
       <div>
@@ -99,4 +93,4 @@ export default function ProductDetail() {
     </div>
   );
 }
-// }
+
