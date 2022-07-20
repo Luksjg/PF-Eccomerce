@@ -3,6 +3,7 @@ import S from "./NavBar.module.css";
 import { BsSearch } from "react-icons/bs";
 
 export default function NavBar() {
+
   function logOut(){
     localStorage.removeItem("token");
     window.location.reload();
@@ -10,7 +11,14 @@ export default function NavBar() {
   return (
     <div className={S.container}>
       <div className={S.botones}>
-        <Link to="/">
+        <div className={S.search}>
+          <input type='text' placeholder='Buscar productos...' />
+          <button>
+            <BsSearch />
+          </button>
+        </div>
+        <Link to='/'>
+
           <label>Home</label>
         </Link>
         <Link to="/tienda">
@@ -36,6 +44,7 @@ export default function NavBar() {
             </Link>
           }
         </div>
+
       </div>
       {/* Only visible in admin user */}
     </div>

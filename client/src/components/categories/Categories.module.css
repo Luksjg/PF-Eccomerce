@@ -8,9 +8,13 @@
  /*    display: block; */
     
 }
+.separador{
+    border-bottom: #66688D 1px solid;
+    margin: 10px;
+}
+
 .container img {
     width: 250px;
-  
 }
 .container h2{
     font-size: 1.5rem;  

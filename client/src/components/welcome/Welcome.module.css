@@ -9,7 +9,7 @@
     overflow: hidden;
     
 }
-.contImg ::before{
+.before {
     content: "";
     bottom: -150px;
     left: -100px;

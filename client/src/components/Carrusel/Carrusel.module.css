@@ -28,7 +28,7 @@
   .botonProduct{
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgb(36, 31, 133) 0%, rgb(98, 7, 73) 100%, rgba(0,212,255,1) 100%);
-    
+    cursor: pointer;
     border: none;
     font-weight: 999;
     opacity: 0.9;
@@ -48,7 +48,7 @@
     color: #ffffff;
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgb(36, 31, 133) 0%, rgb(98, 7, 73) 100%, rgba(0,212,255,1) 100%);
-    
+    cursor: pointer;
     border: none;
     font-weight: 999;
     opacity: 0.9;
@@ -75,7 +75,7 @@
   .inner {
     display: grid;
     grid-auto-flow: column; 
-    height: 35vh;
+    height: 36vh;
     width: 200000vw;
     overflow: hidden;
     grid-auto-columns: 270px;

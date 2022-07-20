@@ -83,7 +83,7 @@ const Carrusel = ({ slides }) => {
         <div className={styles.inner} ref={slidesContainer}>
           {productsToShow?.map((e, i) => {
             return (
-              <div classname={styles.pasarela} key={i}>
+              <div className={styles.pasarela} key={i}>
                 <Link to={"/producto/" + e.id}>
                   <ProductCard
                     key={i}
