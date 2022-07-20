@@ -24,9 +24,11 @@ const NavStore = ({ setCurrentPage }) => {
     setName("");
   };
 
+
   function handleSort(e) {
     dispatch(order(e.target.value));
     setCurrentPage(1);
+
   }
 
   return (
