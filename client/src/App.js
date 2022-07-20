@@ -11,7 +11,7 @@ import ProductsCategory from "./components/productsCategories/ProdutsCategory"
 // import Login from './components/Login/Login.jsx'
 import Register from './components/Register/Register'
 import ProductEdit from "./components/productEdit/ProductEdit"
-import EditUser from "./components/editUser/EditUser"
+import Users from "./components/users/Users"
 import UserDataEdit from "./components/userDataEdit/UserDataEdit"
 import UserData from "./components/userData/UserData"
 
@@ -26,7 +26,7 @@ function App() {
           {/* <Route path='/loginjwt' component={Login}/> */}
           <Route path="/usuario/:id" component={UserData}/>
           <Route path="/usuarioedit/:id" component={UserDataEdit}/> 
-          <Route path="/usuarios" component={EditUser}/> 
+          <Route path="/usuarios" component={Users}/> 
           <Route path="/producto/:id" component={ProductDetail}/>
           <Route path="/categoria/:category" component={ProductsCategory}/>
           <Route path="/editar_producto/:id" component={ProductEdit}/>
