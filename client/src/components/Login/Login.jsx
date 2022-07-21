@@ -169,7 +169,7 @@ export default function Loguin() {
                 Login
               </button>
             </form>
-            <Link to="/olvide-password/" className="a">
+            <Link to="/forgotPassword/" className="a">
               {" "}
               <h4>forget your password</h4>
             </Link>

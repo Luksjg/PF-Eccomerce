@@ -13,6 +13,7 @@ import {
   GET_BY_NAME,
   GET_USERS,
   GET_USER,
+  RESET_PASSWORD,
 } from "../actions/index";
 
 const InitialState = {
@@ -126,6 +127,11 @@ function rootReducer(state = InitialState, action) {
         ...state,
         userInfo: action.payload,
       };
+      case RESET_PASSWORD:
+            return{
+                ...state,
+                userInfo: action.payload
+            }
     default:
       return state;
   }
