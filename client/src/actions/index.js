@@ -124,7 +124,7 @@ export function getReviews(id){
 
 export function getUsers(name){
     return async function(dispatch){
-        let data = await axios.get(`https://green--shop.herokuapp.com/user?name=${name}` );
+        let data = await axios.get(`https://green--shop.herokuapp.com/user?userName=${name}` );
         return dispatch({
             type: GET_USERS,
             payload: data.data

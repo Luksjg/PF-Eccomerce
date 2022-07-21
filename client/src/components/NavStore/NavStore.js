@@ -5,8 +5,8 @@ import { FiShoppingCart } from "react-icons/fi";
 import { BsSearch } from "react-icons/bs";
 import logo from "./logoShop.png";
 import { useDispatch } from "react-redux";
-import { getByName, order } from "../../actions";
-import LoginBtn from "../navbar/loginBTN/LoginBtn";
+import { getByName } from "../../actions";
+// import LoginBtn from "../navbar/loginBTN/LoginBtn";
 
 const NavStore = ({ setCurrentPage }) => {
   const [name, setName] = useState("");
@@ -24,10 +24,7 @@ const NavStore = ({ setCurrentPage }) => {
     setName("");
   };
 
-  function handleSort(e) {
-    dispatch(order(e.target.value));
-    setCurrentPage(1);
-  }
+
   function logOut() {
     localStorage.removeItem("token");
     window.location.reload();
@@ -65,20 +62,6 @@ const NavStore = ({ setCurrentPage }) => {
       </div>
       <div className={S.container}>
         <div className={S.Selectores}>
-          {/* <select onSubmit={(e) => handleSort(e)}>
-            <option value="null">Orden Alfabetico</option>
-            <option value="az">Ascendente</option>
-            <option value="za">Descendente</option>
-          </select>
-          <select onSubmit={(e) => handleSort(e)}>
-            <option value="null">Precio</option>
-            <option value="maxPrice">Menor precio</option>
-            <option value="minPrice">Mayor precio</option>
-          </select>
-          <select>
-            <option value="maxValoration">Mayor valoracion</option>
-            <option value="minValoration">Menor valoracion</option>
-          </select> */}
           <div className={S.usuario}>
             {localStorage.getItem("token") ? (
               <label onClick={logOut}>Logout</label>
