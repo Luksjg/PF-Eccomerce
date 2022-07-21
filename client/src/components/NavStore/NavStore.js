@@ -24,11 +24,13 @@ const NavStore = ({ setCurrentPage }) => {
     setName("");
   };
 
-
   function handleSort(e) {
     dispatch(order(e.target.value));
     setCurrentPage(1);
-
+  }
+  function logOut() {
+    localStorage.removeItem("token");
+    window.location.reload();
   }
 
   return (
@@ -36,26 +38,26 @@ const NavStore = ({ setCurrentPage }) => {
       <div className={S.navSup}>
         <div className={S.logos}>
           <Link to={"/"}>
-            <img src={logo} alt='logoSolo' />
+            <img src={logo} alt="logoSolo" />
           </Link>
           <div className={S.search}>
             <form onSubmit={(e) => handleClick(e)}>
               <input
-                type='text'
+                type="text"
                 value={name}
-                placeholder='Buscar productos...'
+                placeholder="Buscar productos..."
                 onChange={(e) => handleInputChange(e)}
               />
-              <button type='submit'>
+              <button type="submit">
                 <BsSearch />
               </button>
             </form>
           </div>
           <div className={S.botones}>
-            <Link to='/crearproducto'>
+            <Link to="/crearproducto">
               <label>Crear producto </label>
             </Link>
-            <Link to='/'>
+            <Link to="/">
               <label>Home</label>
             </Link>
           </div>
@@ -64,24 +66,27 @@ const NavStore = ({ setCurrentPage }) => {
       <div className={S.container}>
         <div className={S.Selectores}>
           <select onSubmit={(e) => handleSort(e)}>
-            <option value='null'>Orden Alfabetico</option>
-            <option value='az'>Ascendente</option>
-            <option value='za'>Descendente</option>
+            <option value="null">Orden Alfabetico</option>
+            <option value="az">Ascendente</option>
+            <option value="za">Descendente</option>
           </select>
           <select onSubmit={(e) => handleSort(e)}>
-            <option value='null'>Precio</option>
-            <option value='maxPrice'>Menor precio</option>
-            <option value='minPrice'>Mayor precio</option>
+            <option value="null">Precio</option>
+            <option value="maxPrice">Menor precio</option>
+            <option value="minPrice">Mayor precio</option>
           </select>
           <select>
-            <option value='maxValoration'>Mayor valoracion</option>
-            <option value='minValoration'>Menor valoracion</option>
+            <option value="maxValoration">Mayor valoracion</option>
+            <option value="minValoration">Menor valoracion</option>
           </select>
           <div className={S.usuario}>
-            {/*   <Link to='/loginjwt'>
+            {localStorage.getItem("token") ? (
+              <label onClick={logOut}>Logout</label>
+            ) : (
+              <Link to="/login">
                 <label>Login</label>
-              </Link> */}
-            <LoginBtn />
+              </Link>
+            )}
           </div>
           <div className={S.carrito}>
             <h3>
