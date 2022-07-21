@@ -65,7 +65,7 @@ const NavStore = ({ setCurrentPage }) => {
       </div>
       <div className={S.container}>
         <div className={S.Selectores}>
-          <select onSubmit={(e) => handleSort(e)}>
+          {/* <select onSubmit={(e) => handleSort(e)}>
             <option value="null">Orden Alfabetico</option>
             <option value="az">Ascendente</option>
             <option value="za">Descendente</option>
@@ -78,7 +78,7 @@ const NavStore = ({ setCurrentPage }) => {
           <select>
             <option value="maxValoration">Mayor valoracion</option>
             <option value="minValoration">Menor valoracion</option>
-          </select>
+          </select> */}
           <div className={S.usuario}>
             {localStorage.getItem("token") ? (
               <label onClick={logOut}>Logout</label>
