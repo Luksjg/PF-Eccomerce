@@ -10,19 +10,8 @@ import foto from "../createProduct/agregarfoto.png";
 export default function ProductEdit() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const history = useHistory();
+  const history = useHistory()
 
-  const product = useSelector((state) => state.product);
-
-  const [input, setInput] = useState({
-    name: product.name,
-    image: product.image,
-    price: product.price,
-    category: product.category,
-    stock: product.stock,
-    description: product.description,
-    outsanding: product.outsanding,
-  });
 
   async function uploadImage(e) {
     const files = e.target.files;
@@ -47,9 +36,7 @@ export default function ProductEdit() {
   async function handleSubmit(e) {
     e.preventDefault();
     dispatch(editProduct(input, id));
-    console.log(input);
     alert("Producto editado exitosamente");
-    console.log(input);
     history.push(`/producto/${id}`);
   }
 
@@ -62,11 +49,23 @@ export default function ProductEdit() {
 
   useEffect(() => {
     dispatch(getProduct(id));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
+  }, [dispatch,id]);
+
+  const product = useSelector((state) => state.product);
+
+  const [input, setInput] = useState({
+    name: product.name,
+    image: product.image,
+    price: product.price,
+    category: product.category,
+    stock: product.stock,
+    description: product.description,
+    outsanding: product.outsanding,
+  });
 
   return (
     <div>
+      {console.log(product)}
       <NavBar />
       <br />
       <br />
@@ -179,7 +178,7 @@ export default function ProductEdit() {
           </div>
           <div className={styles.botones}>
             <div className={styles.crear}>
-              <span type='submit'>Editar producto</span>
+              <button type='submit'>Editar producto</button>
             </div>
             <div className={styles.cancelar}>
               <span>
