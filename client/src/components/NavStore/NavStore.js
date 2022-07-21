@@ -24,7 +24,6 @@ const NavStore = ({ setCurrentPage }) => {
     setName("");
   };
 
-
   function logOut() {
     localStorage.removeItem("token");
     window.location.reload();
@@ -35,32 +34,32 @@ const NavStore = ({ setCurrentPage }) => {
       <div className={S.navSup}>
         <div className={S.logos}>
           <Link to={"/"}>
-            <img src={logo} alt="logoSolo" />
+            <img src={logo} alt='logoSolo' />
           </Link>
           <div className={S.search}>
             <form onSubmit={(e) => handleClick(e)}>
               <input
-                type="text"
+                type='text'
                 value={name}
-                placeholder="Buscar productos..."
+                placeholder='Buscar productos...'
                 onChange={(e) => handleInputChange(e)}
               />
-              <button type="submit">
+              <button type='submit'>
                 <BsSearch />
               </button>
             </form>
           </div>
           <div className={S.botones}>
-            <Link to="/crearproducto">
+            <Link to='/crearproducto'>
               <label>Crear producto </label>
             </Link>
-            <Link to="/">
+            <Link to='/'>
               <label>Home</label>
             </Link>
           </div>
         </div>
       </div>
-      <div className={S.container}>
+      {/*      <div className={S.container}>
         <div className={S.Selectores}>
           <div className={S.usuario}>
             {localStorage.getItem("token") ? (
@@ -77,7 +76,7 @@ const NavStore = ({ setCurrentPage }) => {
             </h3>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
