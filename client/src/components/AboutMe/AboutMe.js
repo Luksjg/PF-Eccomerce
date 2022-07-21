@@ -1,7 +1,6 @@
 import React from "react";
 import style from "./AboutMe.module.css";
 import local from "./local.jpg";
-import { Link } from "react-router-dom";
 
 const AboutMe = () => {
   return (
