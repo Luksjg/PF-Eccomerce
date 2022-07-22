@@ -36,6 +36,7 @@ export default function Loguin() {
   const dispatch = useDispatch();
   const history = useHistory();
   const token = localStorage.getItem("token");
+  //const is_admin = localStorage.getItem("is_admin");
 
   const [usuario, setUsuario] = useState({
     email: "",
@@ -102,7 +103,9 @@ export default function Loguin() {
     try {
       await axios.post("http://localhost:3001/user/login", usuario);
       localStorage.setItem("token", token);
-      console.log(token);
+      console.log("token", token);
+      const is_admin = localStorage.setItem("is_admin", usuario.is_admin);
+      console.log("isadmin", is_admin);
       history.push("/");
     } catch (error) {
       console.log(error);
