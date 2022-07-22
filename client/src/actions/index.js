@@ -15,6 +15,23 @@ export const LOGIN = "LOGIN"
 export const REGISTER = "REGISTER"
 export const GET_BY_NAME = "GET_BY_NAME"
 export const EDIT_PRODUCT = "EDIT_PRODUCT"
+export const RESET_PASSWORD = "RESET_PASSWORD"
+
+export const resetPassword = (id,token) => {
+    return dispatch => {
+        axios.post(`/api/users/resetPassword/${id}/${token}`)
+        .then(res => {
+            dispatch({
+                type: RESET_PASSWORD,
+                payload: res.data
+            })
+        }).catch(err => {
+            console.log(err)
+        }
+        )
+    }
+}
+
 
 
 export function getAllProducts(){

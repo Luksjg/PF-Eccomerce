@@ -11,12 +11,16 @@ import ProductsCategory from "./components/productsCategories/ProdutsCategory"
 import Login from './components/Login/Login.jsx'
 import Register from './components/Register/Register'
 import ProductEdit from "./components/productEdit/ProductEdit"
+import forgot from "./components/Forgot/forgotPassword.jsx"
+import resetPassword from "./components/Forgot/resetPassword"
 
 function App() {
   return (
     <div className='App'>
       <BrowserRouter>
         <Switch>
+        <Route path='/resetPassword' component={resetPassword} />
+          <Route path='/forgotPassword' component={forgot} />
           <Route path='/register' component={Register}/>
           <Route path='/login' component={Login}/>
           <Route exact path="/" component={Home}/>
