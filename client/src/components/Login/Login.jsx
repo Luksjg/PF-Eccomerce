@@ -78,12 +78,17 @@ export default function Loguin() {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          //console.log("usuario", data);
           if (data.error) {
             alert(data.error);
           } else {
-            localStorage.setItem("accessToken", data.accessToken);
-            console.log(data.accessToken);
+            localStorage.setItem(
+              "accessToken",
+              JSON.stringify(data.accessToken)
+            );
+            localStorage.setItem("currentUser", JSON.stringify(data));
+            //console.log("token", data.accessToken);
+            //console.log("currentUser", data);
             alert("Login Successful");
             history.push("/");
           }

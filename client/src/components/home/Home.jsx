@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Footer from "../footer/Footer";
 import Subscribe from "../subscribe/Subscribe";
@@ -11,8 +12,24 @@ import AboutMe from "./../AboutMe/AboutMe";
 import Welcome from "./../welcome/Welcome";
 
 export default function Home() {
-  const user = useSelector((state) => state.user);
-  console.log("user: ", user);
+  //estados locales
+  const [accessToken, setAccessToken] = useState("");
+  const [currentUser, setCurrentUser] = useState("");
+  //seteo de estados
+  useEffect(() => {
+    const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+    if (accessToken) {
+      setAccessToken(accessToken);
+    }
+  }, []);
+  useEffect(() => {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (currentUser) {
+      setCurrentUser(currentUser);
+    }
+  }, []);
+  //console.log("user", currentUser);
+
   return (
     <div>
       <div>
@@ -28,7 +45,9 @@ export default function Home() {
       <div>
         <Subscribe />
       </div>
-      <div>{user && user.is_admin ? <NavBar /> : <NavBarClient />}</div>
+      <div>
+        {currentUser && currentUser.isAdmin ? <NavBar /> : <NavBarClient />}
+      </div>
       <footer>
         <Footer />
       </footer>
