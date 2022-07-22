@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import validarEmail from "./validateEmail";
 import validatePassword from "./validatePassword";
-import axios from "axios";
 import { authentication } from "../firebase/config/firebase-config.js";
 import {
   signInWithPopup,
@@ -32,11 +30,7 @@ function validate(email, password) {
 }
 
 export default function Loguin() {
-  const errorEmail = useSelector((state) => state.errorEmail);
-  const dispatch = useDispatch();
   const history = useHistory();
-  const token = localStorage.getItem("token");
-  //const is_admin = localStorage.getItem("is_admin");
 
   const [usuario, setUsuario] = useState({
     email: "",
@@ -47,14 +41,6 @@ export default function Loguin() {
     email: "",
     password: "",
   });
-
-  useEffect(() => {
-    // eslint-disable-next-line no-unused-expressions
-    token ? history.push("/") : null;
-    return () => {
-      dispatch({ type: "RESET_ERROR_EMAIL" });
-    };
-  }, [dispatch, history, token]);
 
   function handleChangeEmail(e) {
     setUsuario({
@@ -80,36 +66,30 @@ export default function Loguin() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    let val = validate(usuario.email, usuario.password);
-    if (Object.keys(val).length === 0) {
-      dispatch({ type: "LOGIN_REQUEST", payload: usuario });
-      setUsuario({
-        email: "",
-        password: "",
-      });
-      alert("Login Successful");
-      if (errorEmail) {
-        e.preventDefault();
-      } else {
-        dispatch({ type: "RESET_ERROR_EMAIL" });
-        history.push("/");
-      }
-    } else setErrors(val);
-  };
-
-  const handleFinish = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post("http://localhost:3001/user/login", usuario);
-      localStorage.setItem("token", token);
-      console.log("token", token);
-      const is_admin = localStorage.setItem("is_admin", usuario.is_admin);
-      console.log("isadmin", is_admin);
-      history.push("/");
-    } catch (error) {
-      console.log(error);
-      alert("usuario o contraseña incorrectos");
+    const objeto = validate(usuario.email, usuario.password);
+    setErrors(objeto);
+    if (Object.keys(objeto).length === 0) {
+      fetch("http://localhost:3001/user/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(usuario),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.error) {
+            alert(data.error);
+          } else {
+            localStorage.setItem("accessToken", data.accessToken);
+            console.log(data.accessToken);
+            alert("Login Successful");
+            history.push("/");
+          }
+        });
+    } else {
+      alert("Login Failed");
     }
   };
 
@@ -168,11 +148,11 @@ export default function Loguin() {
               <div>
                 <button onClick={handleClickGithub}>Github</button>
               </div>
-              <button type="submit" onClick={handleFinish}>
+              <button type="submit" onClick={handleSubmit}>
                 Login
               </button>
             </form>
-            <Link to="/olvide-password/" className="a">
+            <Link to="/forgotPassword/" className="a">
               {" "}
               <h4>forget your password</h4>
             </Link>

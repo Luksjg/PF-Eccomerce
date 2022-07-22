@@ -4,10 +4,7 @@ import { BsSearch } from "react-icons/bs";
 
 export default function NavBar() {
 
-  function logOut(){
-    localStorage.removeItem("token");
-    window.location.reload();
-  }
+  
   return (
     <div className={S.container}>
       <div className={S.botones}>
@@ -32,13 +29,10 @@ export default function NavBar() {
           </label>
         </Link>
         <div>
-          {
-            localStorage.getItem("token") ? 
-            <label onClick={logOut}>Logout</label> :
-            <Link to="/login">
+          <Link to="/login">
               <label>Login</label>
             </Link>
-          }
+          
         </div>
 
       </div>
