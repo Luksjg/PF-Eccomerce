@@ -69,7 +69,7 @@ export default function Loguin() {
     const objeto = validate(usuario.email, usuario.password);
     setErrors(objeto);
     if (Object.keys(objeto).length === 0) {
-      fetch("http://localhost:3001/user/login", {
+      fetch("https://green--shop.herokuapp.com/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

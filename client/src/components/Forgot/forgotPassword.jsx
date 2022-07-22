@@ -15,7 +15,7 @@ function forgotPassword() {
         // si hay un email valido, se envia una peticion al servidor
         if (email.length > 0) {
             e.preventDefault()
-            const res = await axios.post('http://localhost:3001/user/forgotPassword', { email })
+            const res = await axios.post('https://green--shop.herokuapp.com/user/forgotPassword', { email })
             if (res.data.success) {
                 alert('Se ha enviado un correo con las instrucciones para restablecer la contraseña')
             } else {

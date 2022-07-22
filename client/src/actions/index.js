@@ -21,7 +21,7 @@ export const GET_USER = "GET_USER"
 
 export const resetPassword = (id,token) => {
     return dispatch => {
-        axios.post(`/api/users/resetPassword/${id}/${token}`)
+        axios.post(`https://green--shop.herokuapp.com/users/resetPassword/${id}/${token}`)
         .then(res => {
             dispatch({
                 type: RESET_PASSWORD,
