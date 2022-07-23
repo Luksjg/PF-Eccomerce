@@ -72,9 +72,11 @@ const NavStore = ({ setCurrentPage }) => {
             )}
           </div>
           <div className={S.carrito}>
+            <Link to="/carrito">
             <h3>
               <FiShoppingCart />
             </h3>
+            </Link>
           </div>
         </div>
       </div>

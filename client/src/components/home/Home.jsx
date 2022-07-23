@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import Footer from "../footer/Footer";
 import Subscribe from "../subscribe/Subscribe";
 import PaymentInfo from "../paymentInfo/PaymentInfo";

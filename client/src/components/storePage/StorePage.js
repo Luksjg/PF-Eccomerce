@@ -44,8 +44,7 @@ export default function StorePage() {
               <option value='za'>Descendente</option>
               <option value='maxPrice'>Menor precio</option>
               <option value='minPrice'>Mayor precio</option>
-              {/* <option value='maxValoration'>Mayor valoracion</option>
-              <option value='minValoration'>Menor valoracion</option> */}
+
             </select>
       </div>
 
