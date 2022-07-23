@@ -14,7 +14,8 @@ export default function ProductsCategory(){
 
     const dispatch = useDispatch()
 
-    const productsToShow = useSelector(state=> state.products)
+    let aux = useSelector(state => state.products)
+    let productsToShow = aux.filter(p=>p.disabled === "no")
 
     const [currentPage, setCurrentPage] = useState(1);
 
