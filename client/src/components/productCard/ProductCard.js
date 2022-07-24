@@ -1,4 +1,4 @@
-import React from "react";
+import { React } from "react";
 import { Link } from "react-router-dom";
 import style from "./ProductCard.module.css";
 
@@ -8,9 +8,9 @@ export default function ProductCard({ id, image, name, price, stock }) {
       <div className={style.img}>
         <img
           src={image}
-          alt='imagen no encontrada'
-          width='250px'
-          height='300px'
+          alt="imagen no encontrada"
+          width="250px"
+          height="300px"
         />
       </div>
       <div className={style.titulo}>
@@ -20,11 +20,11 @@ export default function ProductCard({ id, image, name, price, stock }) {
         <h3>{"$ " + price}</h3>
       </div>
       <div className={style.stock}>
-        {stock > 0 ? (
-          <span>Añadir al carrito</span>
+        {/* {stock > 0 ? (
+          <button onClick={() => handleProduct(id)}>Agregar al carrito</button>
         ) : (
           <Link to={`/producto/${id}`}>Ver producto</Link>
-        )}
+        )} */}
       </div>
     </div>
   );

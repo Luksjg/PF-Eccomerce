@@ -1,31 +1,46 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Paginated from "../paginated/Paginated";
 import ProductCard from "./../productCard/ProductCard";
 import style from "./MapProducts.module.css";
+//var carro = [];
 
-export default function MapProducts({ productsToShow,setCurrentPage,currentProducts }) {
+export default function MapProducts({
+  productsToShow,
+  setCurrentPage,
+  currentProducts,
+}) {
+  //estados locales
+  const [carrito, setCarrito] = useState([]);
 
+  //seteo de estados
+  useEffect(() => {
+    const carrito = JSON.parse(localStorage.getItem("carrito"));
+    setCarrito(carrito);
+    console.log(carrito);
+  }, []);
 
-  function handleProduct(product){
-    console.log(product)
-    let products = JSON.parse(localStorage.getItem("Cart"))
-    console.log(localStorage)
-    let aux; 
-    if(products){
-      aux = products.find(p=>p.id === product.id)
-      if(aux)alert("Producto ya en carrito")  
-    }else{
-      products = [product]
+  function handleProduct(product) {
+    if (!localStorage.getItem("carrito")) {
+      var a = [];
+      a.push(product);
+      localStorage.setItem("carrito", JSON.stringify(a));
+      alert("Producto agregado al carrito", product.name);
+      window.location.reload();
+    } else {
+      var a = [];
+      a = JSON.parse(localStorage.getItem("carrito") || []);
+      let repetido = a.find((e) => product.id == e.id);
+      if (!repetido) {
+        a.push(product);
+        localStorage.setItem("carrito", JSON.stringify(a));
+        alert("Producto agregado al carrito", product.name);
+        window.location.reload();
+      } else {
+        alert("El producto ya está en el carrito");
+      }
     }
-    console.log(products)
-    // localStorage.setItem("Cart",JSON.stringify(products))
-    console.log(localStorage)
   }
-  
-  useEffect(()=>{
-
-  },[])
 
   return (
     <div>
@@ -41,7 +56,9 @@ export default function MapProducts({ productsToShow,setCurrentPage,currentProdu
                 stock={product.stock}
               />
             </Link>
-            <button onClick={()=>handleProduct(product)}>agregar</button>
+            <button onClick={() => handleProduct(product)}>
+              Agregar al carrito
+            </button>
           </div>
         ))}
       </ul>
