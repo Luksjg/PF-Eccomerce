@@ -21,6 +21,7 @@ export default function UserDataEdit(){
         email: user.email,
         profile_img: user.profile_img,
         is_admin: user.is_admin,
+        disabled: user.disabled
       });
 
     async function handleSubmit(e) {
@@ -73,6 +74,10 @@ export default function UserDataEdit(){
                 <br/>
                 <input type="text" value={input.is_admin} name="is_admin" onChange={(e) => handleChange(e)}/>
                 <br/>
+                <select value={input.disabled} name="disabled" onChange={e=>handleChange(e)}>
+                    <option>no</option>
+                    <option>si</option>
+                </select>
                 <button type="submit">Modificar</button>
             </form>
             <span><Link to={`/usuario/${id}`}>Cancelar</Link></span>

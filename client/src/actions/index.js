@@ -44,6 +44,21 @@ export function getAllProducts(){
     }
 }
 
+export function addToCart(product,id){
+    return async function(){
+        let data = await axios.post(`https://green--shop.herokuapp.com/tadeo/${id}`, product)
+        return data
+    }
+}
+
+export function SumToCart(product,id,amount){
+    return async function(){
+        let productId = product.id
+        let data = await axios.put(`https://green--shop.herokuapp.com/tadeo/${id}`, productId, amount )
+        return data
+    }
+}
+
 export function getOutsandingProducts(){
     return async function(dispatch){
         let data = await axios.get('https://green--shop.herokuapp.com/products/destacado')

@@ -27,7 +27,6 @@ export default function Home() {
       setCurrentUser(currentUser);
     }
   }, []);
-  //console.log("user", currentUser);
 
   return (
     <div>
