@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import S from "./NavStore.module.css";
 import { FiShoppingCart } from "react-icons/fi";
@@ -25,9 +25,27 @@ const NavStore = ({ setCurrentPage }) => {
   };
 
   function logOut() {
-    localStorage.removeItem("token");
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("currentUser");
+    alert("Bye bye boss!");
     window.location.reload();
   }
+  //estados locales
+  const [accessToken, setAccessToken] = useState("");
+  const [currentUser, setCurrentUser] = useState("");
+  //seteo de estados
+  useEffect(() => {
+    const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+    if (accessToken) {
+      setAccessToken(accessToken);
+    }
+  }, []);
+  useEffect(() => {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (currentUser) {
+      setCurrentUser(currentUser);
+    }
+  }, []);
 
   return (
     <div>
@@ -62,7 +80,7 @@ const NavStore = ({ setCurrentPage }) => {
       {/*      <div className={S.container}>
         <div className={S.Selectores}>
           <div className={S.usuario}>
-            {localStorage.getItem("token") ? (
+            {accessToken ? (
               <label onClick={logOut}>Logout</label>
             ) : (
               <Link to="/login">
@@ -71,9 +89,11 @@ const NavStore = ({ setCurrentPage }) => {
             )}
           </div>
           <div className={S.carrito}>
-            <h3>
-              <FiShoppingCart />
-            </h3>
+            <Link to="/carrito">
+              <h3>
+                <FiShoppingCart />
+              </h3>
+            </Link>
           </div>
         </div>
       </div> */}

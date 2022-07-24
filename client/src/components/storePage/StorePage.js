@@ -15,7 +15,8 @@ export default function StorePage() {
 
   const dispatch = useDispatch();
 
-  const productsToShow = useSelector((state) => state.products);
+  let aux = useSelector((state) => state.products);
+  let productsToShow = aux.filter((p) => p.disabled === "no");
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -30,7 +31,12 @@ export default function StorePage() {
     setOrder1(e);
     setCurrentPage(1);
   }
-
+  function nextPage() {
+    setCurrentPage(currentPage + 1);
+  }
+  function prevPage() {
+    setCurrentPage(currentPage - 1);
+  }
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
@@ -69,6 +75,9 @@ export default function StorePage() {
             productsToShow={productsToShow}
             setCurrentPage={setCurrentPage}
             currentProducts={currentProducts}
+            currentPage={currentPage}
+            nextPage={nextPage}
+            prevPage={prevPage}
           />
         </div>
         <div className={style.columnaC}>
@@ -76,7 +85,7 @@ export default function StorePage() {
         </div>
       </div>
 
-      {/*   <Footer /> */}
+      <Footer />
     </div>
   );
 }

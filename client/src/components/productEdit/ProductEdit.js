@@ -61,6 +61,7 @@ export default function ProductEdit() {
     stock: product.stock,
     description: product.description,
     outsanding: product.outsanding,
+    disabled: product.disabled
   });
 
   return (
@@ -163,6 +164,12 @@ export default function ProductEdit() {
               min='1'
               max='10000'
             />
+          </div>
+          <div>
+            <select value={input.disabled} onChange={e=>handleChange(e)} name="disabled">
+              <option>no</option>
+              <option>si</option>
+            </select>
           </div>
           <div className={styles.destacar}>
             <p>¿Destacar producto?</p>
