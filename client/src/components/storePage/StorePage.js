@@ -30,7 +30,12 @@ export default function StorePage() {
     setOrder1(e);
     setCurrentPage(1);
   }
-
+  function nextPage() {
+    setCurrentPage(currentPage + 1);
+  }
+  function prevPage() {
+    setCurrentPage(currentPage - 1);
+  }
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
@@ -69,6 +74,9 @@ export default function StorePage() {
             productsToShow={productsToShow}
             setCurrentPage={setCurrentPage}
             currentProducts={currentProducts}
+            currentPage={currentPage}
+            nextPage={nextPage}
+            prevPage={prevPage}
           />
         </div>
         <div className={style.columnaC}>
@@ -76,7 +84,7 @@ export default function StorePage() {
         </div>
       </div>
 
-      {/*   <Footer /> */}
+      <Footer />
     </div>
   );
 }

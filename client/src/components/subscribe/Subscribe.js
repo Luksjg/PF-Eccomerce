@@ -63,7 +63,7 @@ export default function Subscribe() {
   return (
     <div className={style.contenedor}>
       {/*  <a href={"https://www.instagram.com/"}><img src={"https://149440826.v2.pressablecdn.com/wp-content/uploads/2020/03/instagram-png-instagram-png-logo-1455.png"} alt="instagram Link" width="100" height="100"></img></a> */}
-      <a href={"https://www.whatsapp.com/"}>
+      <a href={"https://wa.me/543541297187"}>
         <img
           src={"http://assets.stickpng.com/images/580b57fcd9996e24bc43c543.png"}
           alt='whatsapp Link'
@@ -86,27 +86,30 @@ export default function Subscribe() {
         <div className={style.formInput}>
           <form onSubmit={(e) => handleSubmit(e)}>
             <div className={style.formInputGroup}>
-              <p>Nombre</p>
+              {/*         <p>Nombre</p> */}
               <input
                 type='text'
                 value={input.name}
                 name='name'
+                placeholder='Nombre'
                 onChange={(e) => handleChange(e)}
               />
             </div>
             <div className={style.formInputGroup}>
-              <p>Email</p>
+              {/*     <p>Email</p> */}
               <input
                 type='text'
                 value={input.mail}
+                placeholder='Email'
                 name='mail'
                 onChange={(e) => handleChange(e)}
               />
               {errors.mail ? <label>{errors.mail}</label> : null}
             </div>
             <div className={style.formInputGroup}>
-              <p>Mensaje</p>
+              {/*   <p>Mensaje</p> */}
               <input
+                placeholder='Mensaje'
                 type='text'
                 value={input.message}
                 size='100'
