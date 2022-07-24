@@ -30,31 +30,29 @@ export default function NavBar() {
   return (
     <div className={S.container}>
       <div className={S.botones}>
-        <Link to="/usuarios">
+        <Link to='/usuarios'>
           <label>Usuarios</label>
         </Link>
-        <Link to="/">
+        <Link to='/'>
           <label>Home</label>
-        </Link>
-        <Link to="/tienda">
+        </Link>{" "}
+        <Link to='/tienda'>
           <label>Tienda</label>
         </Link>
-        <Link to="/nosotros">
+        <Link to='/nosotros'>
           <label>Nosotros</label>
         </Link>
-        <Link to="/crearproducto">
+        <Link to='/crearproducto'>
           <label>Crear producto </label>
         </Link>
-        <Link to="/tienda">
-          <label>
-            <BsSearch />
-          </label>
+        <Link to='/usuarios'>
+          <label>Usuarios</label>
         </Link>
         <div>
           {accessToken ? (
             <label onClick={logOut}>Logout</label>
           ) : (
-            <Link to="/login">
+            <Link to='/login'>
               <label>Login</label>
             </Link>
           )}

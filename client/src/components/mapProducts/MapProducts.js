@@ -9,6 +9,9 @@ export default function MapProducts({
   productsToShow,
   setCurrentPage,
   currentProducts,
+  currentPage,
+  prevPage,
+  nextPage,
 }) {
   //estados locales
   const [carrito, setCarrito] = useState([]);
@@ -44,6 +47,14 @@ export default function MapProducts({
 
   return (
     <div>
+      <Paginated
+        allProducts={productsToShow.length}
+        setCurrentPage={setCurrentPage}
+        currentProducts={currentProducts}
+        currentPage={currentPage}
+        nextPage={nextPage}
+        prevPage={prevPage}
+      />
       <ul className={style.container}>
         {currentProducts.map((product) => (
           <div key={product.id}>
@@ -62,10 +73,6 @@ export default function MapProducts({
           </div>
         ))}
       </ul>
-      <Paginated
-        allProducts={productsToShow.length}
-        setCurrentPage={setCurrentPage}
-      />
     </div>
   );
 }

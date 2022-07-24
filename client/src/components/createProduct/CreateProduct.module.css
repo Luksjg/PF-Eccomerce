@@ -168,7 +168,7 @@
   display: flex;
   justify-content: center;
 }
-.crear span{
+.crear button{
     font-size: 1.1rem;
     margin-bottom: 10px;
     width: 15vh;
@@ -180,7 +180,7 @@
     background-color: #E3EDFB;
     cursor: pointer;
 }
-.crear span:hover{
+.crear button:hover{
     background-color: #66688D;
     transition: .5s;
     color: white;

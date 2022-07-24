@@ -1,7 +1,7 @@
 .navSup{
   height: 7vh ;
-  background-color: #3f13a4;
-
+ /*  background-color: #3f13a4; */
+ background-color: #000000c5;
 }
 
 .logos{
@@ -63,7 +63,7 @@ position: relative;
 
 }
   .botones label:hover{
-      color: #a486ec ;;
+      color:#9FC54C;
   }
 
 

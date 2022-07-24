@@ -40,24 +40,45 @@ h3{
 .formInputGroup{
    display: flex;
   flex-direction: column;
+  margin-top: 50px;
   margin-left: 27%;
   width: 20vw;
 
+
 }
 
-.formInputGroup p{
+/* .formInputGroup p{
   color: white;
   font-family: 'Roboto', sans-serif;
   margin-top: 40px;
   display: flex;
   justify-content: center;
-}
+} */
 .formInputGroup input{
   background-color: transparent;
   border: none;
+  color: #fff;
+  font-size: 15px;
   border-bottom: 2px solid white;
+  height: 30px;
+}
+.formInput label{
+  color: rgba(241, 31, 31, 0.918);
+  font-family: 'Roboto', sans-serif;
+  margin-top: 30px;
+  position: absolute;
+  margin-top: 40px;
+  padding-left: 10px;
 }
 
+.formInputGroup input::placeholder{
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  padding-left: 10px;
+}
+.formInputGroup input:focus{
+  outline: none;
+}
 
 .botonCont{
   display: flex;
