@@ -35,7 +35,7 @@ function Register() {
   const onSubmit = async (e) => {
     // alert when form is submitted successfully and redirect to login page
     if(Object.keys(errors).length === 0) {
-      await axios.post("http://localhost:3001/user/register", e);
+      await axios.post("https://green--shop.herokuapp.com/user/register", e);
       alert("Form Submitted Successfully");
       history.push("/login");
       register(e);

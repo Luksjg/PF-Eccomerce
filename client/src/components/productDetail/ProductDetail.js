@@ -69,13 +69,15 @@ export default function ProductDetail() {
             <div className={style.compra}>
               <p>Cómpralo hoy y recíbelo en 48-72hs</p>
             </div>
+            <div>
+              {product.disabled === "si" ? <p>Producto desabilitado</p> : null}
+            </div>
             <div className={style.stock}>
               {product.stock > 0 ? (
                 <span>Añadir al carrito</span>
               ) : (
                 <Link to={`/producto/${id}`}></Link>
               )}
-
               <div className={style.editar}>
                 <Link to={`/editar_producto/${id}`}>
                   <span>Editar producto</span>

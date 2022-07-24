@@ -1,3 +1,4 @@
+
 import "./App.module.css";
 import Home from "./components/home/Home.jsx";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -13,12 +14,17 @@ import ProductEdit from "./components/productEdit/ProductEdit";
 import Users from "./components/users/Users";
 import UserDataEdit from "./components/userDataEdit/UserDataEdit";
 import UserData from "./components/userData/UserData";
+import forgot from "./components/Forgot/forgotPassword.jsx"
+import resetPassword from "./components/Forgot/resetPassword"
+import Cart from "./components/cart/Cart"
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Switch>
+        <Switch> 
+          <Route path='/resetPassword' component={resetPassword} />
+          <Route path='/forgotPassword' component={forgot} />
           <Route exact path="/" component={Home} />
           <Route exact path="/tienda" component={StorePage} />
           <Route path="/register" component={Register} />
@@ -26,6 +32,7 @@ function App() {
           <Route path="/usuario/:id" component={UserData} />
           <Route path="/usuarioedit/:id" component={UserDataEdit} />
           <Route path="/usuarios" component={Users} />
+          <Route path="/carrito" component={Cart} />
           <Route path="/producto/:id" component={ProductDetail} />
           <Route path="/categoria/:category" component={ProductsCategory} />
           <Route path="/editar_producto/:id" component={ProductEdit} />

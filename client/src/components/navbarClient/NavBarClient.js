@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import S from "./NavBar.module.css";
+import S from "./NavBarClient.module.css";
 import { BsSearch } from "react-icons/bs";
 
 export default function NavBar() {
   function logOut() {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("currentUser");
-    alert("Bye bye boss!");
+    alert("See ya king! ;)");
     window.location.reload();
   }
   //estados locales
@@ -30,29 +30,25 @@ export default function NavBar() {
   return (
     <div className={S.container}>
       <div className={S.botones}>
-        <Link to='/usuarios'>
-          <label>Usuarios</label>
-        </Link>
-        <Link to='/'>
+        <Link to="/">
           <label>Home</label>
-        </Link>{" "}
-        <Link to='/tienda'>
+        </Link>
+        <Link to="/tienda">
           <label>Tienda</label>
         </Link>
-        <Link to='/nosotros'>
+        <Link to="/nosotros">
           <label>Nosotros</label>
         </Link>
-        <Link to='/crearproducto'>
-          <label>Crear producto </label>
-        </Link>
-        <Link to='/usuarios'>
-          <label>Usuarios</label>
+        <Link to="/tienda">
+          <label>
+            <BsSearch />
+          </label>
         </Link>
         <div>
           {accessToken ? (
             <label onClick={logOut}>Logout</label>
           ) : (
-            <Link to='/login'>
+            <Link to="/login">
               <label>Login</label>
             </Link>
           )}
