@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import S from "./NavStore.module.css";
 import { FiShoppingCart } from "react-icons/fi";
@@ -24,11 +24,26 @@ const NavStore = ({ setCurrentPage }) => {
     setName("");
   };
 
-
   function logOut() {
     localStorage.removeItem("token");
     window.location.reload();
   }
+
+  const [accessToken, setAccessToken] = useState("");
+  const [currentUser, setCurrentUser] = useState("");
+  //seteo de estados
+  useEffect(() => {
+    const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+    if (accessToken) {
+      setAccessToken(accessToken);
+    }
+  }, []);
+  useEffect(() => {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (currentUser) {
+      setCurrentUser(currentUser);
+    }
+  }, []);
 
   return (
     <div>
@@ -51,9 +66,11 @@ const NavStore = ({ setCurrentPage }) => {
             </form>
           </div>
           <div className={S.botones}>
-            <Link to="/crearproducto">
-              <label>Crear producto </label>
-            </Link>
+            {currentUser && currentUser.isAdmin ? (
+              <Link to="/crearproducto">
+                <label>Crear producto </label>
+              </Link>
+            ) : null}
             <Link to="/">
               <label>Home</label>
             </Link>
@@ -73,9 +90,9 @@ const NavStore = ({ setCurrentPage }) => {
           </div>
           <div className={S.carrito}>
             <Link to="/carrito">
-            <h3>
-              <FiShoppingCart />
-            </h3>
+              <h3>
+                <FiShoppingCart />
+              </h3>
             </Link>
           </div>
         </div>
