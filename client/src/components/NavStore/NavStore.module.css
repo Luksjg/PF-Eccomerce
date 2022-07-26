@@ -36,6 +36,9 @@ position: relative;
   font-size: 1.1vw;
   padding-left: 1vw;
 }
+.search input:focus{
+  outline: none;
+}
 .search button{
   height: 3vh;
   width: 2vw;

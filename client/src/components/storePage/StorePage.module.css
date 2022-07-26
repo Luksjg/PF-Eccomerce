@@ -18,8 +18,10 @@
 }
 .columna{
 background-color: #fff;
+display: block;
 margin-top: 50px;
 margin-left: 230px;
+height: 240vh;
 
 }
 .columnaC{

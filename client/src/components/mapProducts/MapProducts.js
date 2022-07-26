@@ -67,9 +67,11 @@ export default function MapProducts({
                 stock={product.stock}
               />
             </Link>
-            <button onClick={() => handleProduct(product)}>
-              Agregar al carrito
-            </button>
+            <div className={style.agregar}>
+              <button onClick={() => handleProduct(product)}>
+                Agregar al carrito
+              </button>
+            </div>
           </div>
         ))}
       </ul>

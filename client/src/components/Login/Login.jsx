@@ -152,6 +152,7 @@ export default function Loguin() {
                   onChange={handleChangePassword}
                   value={usuario.password}
                 />
+                {errors.password && <p className='error'>{errors.password}</p>}
               </div>
               <div className={style.bottonLogin}>
                 <button type='submit' onClick={handleSubmit}>
@@ -159,23 +160,23 @@ export default function Loguin() {
                 </button>
               </div>
               <div className={style.olvido}>
-                <Link to='/olvide-password/' className='a'>
+                <Link to='/forgotPassword' className='a'>
                   {" "}
                   <h4>forget your password ?</h4>
                 </Link>
               </div>
-              {errors.password && <p className='error'>{errors.password}</p>}
+
               <div className={style.buttons}>
                 <div className={style.botonGoogle}>
                   <button onClick={handleClickGoogle}>
                     <img src={google} alt='google' />
                   </button>
                 </div>
-                <div className={style.botonGithub}>
+                {/*    <div className={style.botonGithub}>
                   <button onClick={handleClickGithub}>
                     <img src={gith} alt='github' />
                   </button>
-                </div>
+                </div> */}
               </div>
             </form>
             <div className={style.registro}>

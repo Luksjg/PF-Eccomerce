@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./Paginated.module.css";
-
+import { GrNext } from "react-icons/gr";
+import { GrPrevious } from "react-icons/gr";
 export default function Paginated({
   nextPage,
   prevPage,
@@ -14,26 +15,26 @@ export default function Paginated({
   }
  */
   let matematic = allProducts / 8;
-  //arreglar siguiente
+  //arreglar
 
   return (
     <div className={style.paginated}>
-      <div className={style.paginated__left}>
+      <div className={style.paginatedLeft}>
         <button
           onClick={() => prevPage()}
           disabled={currentPage == 1 ? "true" : ""}
         >
           {" "}
-          Anterior{" "}
+          <GrPrevious /> Anterior{" "}
         </button>
       </div>
-      <div className={style.paginated__right}>
+      <div className={style.paginatedRight}>
         <button
           onClick={() => nextPage()}
           disabled={currentPage == allProducts ? "true" : ""}
         >
           {" "}
-          Siguiente{" "}
+          Siguiente <GrNext />{" "}
         </button>
       </div>
     </div>
