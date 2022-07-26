@@ -29,7 +29,7 @@ export default function MapProducts({
       a.push(product);
       localStorage.setItem("carrito", JSON.stringify(a));
       alert("Producto agregado al carrito", product.name);
-      window.location.reload();
+      /*   window.location.reload(); */
     } else {
       var a = [];
       a = JSON.parse(localStorage.getItem("carrito") || []);
@@ -38,7 +38,7 @@ export default function MapProducts({
         a.push(product);
         localStorage.setItem("carrito", JSON.stringify(a));
         alert("Producto agregado al carrito", product.name);
-        window.location.reload();
+        /*       window.location.reload(); */
       } else {
         alert("El producto ya está en el carrito");
       }
@@ -75,6 +75,16 @@ export default function MapProducts({
           </div>
         ))}
       </ul>
+      <div className={style.pagination}>
+        <Paginated
+          allProducts={productsToShow.length}
+          setCurrentPage={setCurrentPage}
+          currentProducts={currentProducts}
+          currentPage={currentPage}
+          nextPage={nextPage}
+          prevPage={prevPage}
+        />
+      </div>
     </div>
   );
 }

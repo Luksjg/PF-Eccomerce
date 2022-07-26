@@ -9,13 +9,13 @@ h1{
 }
 h3{
   color: rgb(255, 255, 255);
-  margin-top: 15px;
+  margin-top: 40px;
 }
 .contenedor{
   background-image: url("./violeta.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+ 
   height: 60vh;
   width: 100%;
   margin-top: 60px;
@@ -28,13 +28,13 @@ h3{
   color: white;
   font-family: 'Roboto', sans-serif;
   text-align: center;
-  margin-top: 25vh;
+  margin-top: 17vh;
 }
 .formSubtitle{
   color: white;
   font-family: 'Roboto', sans-serif;
   text-align: center;
-  margin-top: 30px;
+  margin-top: 54px;
 }
 
 .formInputGroup{
@@ -99,4 +99,13 @@ h3{
   background-color: rgb(255, 255, 255);
   color: rgb(223, 75, 56);
   transition: .5s;
+}
+
+.pather{
+position: absolute;
+margin-top: -175px;
+
+
+
+
 }
