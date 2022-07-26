@@ -42,6 +42,7 @@ const NavStore = ({ setCurrentPage }) => {
     if (accessToken) {
       setAccessToken(accessToken);
     }
+
     if (currentUser) {
       setCurrentUser(currentUser);
     }
@@ -69,13 +70,12 @@ const NavStore = ({ setCurrentPage }) => {
             </form>
           </div>
           <div className={S.botones}>
-
             {currentUser && currentUser.isAdmin ? (
-              <Link to="/crearproducto">
+              <Link to='/crearproducto'>
                 <label>Crear producto </label>
               </Link>
             ) : null}
-            <Link to="/">
+            <Link to='/'>
               <label>Home</label>
             </Link>
           </div>

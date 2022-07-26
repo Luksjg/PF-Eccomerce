@@ -25,10 +25,14 @@
   margin-left: 10px;
   margin-right: 10px;
   cursor: pointer;
-  margin-top: 0px;
+  margin-top: 20px;
 }
 .agregar button:hover{
   background-color: #E3EDFB;
   transition: .5s;
   color: black;
+}
+
+.pagination{
+  margin-top: 80px;
 }
