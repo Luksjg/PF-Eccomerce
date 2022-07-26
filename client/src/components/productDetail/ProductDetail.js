@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getProduct } from "../../actions";
@@ -7,6 +7,7 @@ import Footer from "../footer/Footer";
 import NavBar from "../navbar/NavBar";
 import style from "./ProductDetail.module.css";
 import prueba from "./img.jpg";
+import NavBarClient from "../navbarClient/NavBarClient";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -18,6 +19,22 @@ export default function ProductDetail() {
 
   const product = useSelector((state) => state.product);
 
+  const [accessToken, setAccessToken] = useState("");
+  const [currentUser, setCurrentUser] = useState("");
+  //seteo de estados
+  useEffect(() => {
+    const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+    if (accessToken) {
+      setAccessToken(accessToken);
+    }
+  }, []);
+  useEffect(() => {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (currentUser) {
+      setCurrentUser(currentUser);
+    }
+  }, []);
+
   return (
     <div className={style.grandContainer}>
       <div>
@@ -26,11 +43,11 @@ export default function ProductDetail() {
             {product.image ? (
               <img
                 src={product.image}
-                alt='imagen1'
-                height='450'
-                width='450'
-                max-width='450'
-                max-height='450'
+                alt="imagen1"
+                height="450"
+                width="450"
+                max-width="450"
+                max-height="450"
               />
             ) : (
               <img src={prueba} alt={"Imagenotfound1"} />
@@ -79,9 +96,9 @@ export default function ProductDetail() {
                 <Link to={`/producto/${id}`}></Link>
               )}
               <div className={style.editar}>
-                <Link to={`/editar_producto/${id}`}>
-                  <span>Editar producto</span>
-                </Link>
+                {currentUser && currentUser.isAdmin ? (
+                  <Link to={`/editar/${id}`}>Editar Producto</Link>
+                ) : null}
               </div>
             </div>
           </div>
@@ -89,10 +106,11 @@ export default function ProductDetail() {
         <div>
           <Comments />
         </div>
-        <NavBar />
+        <div>
+          {currentUser && currentUser.isAdmin ? <NavBar /> : <NavBarClient />}
+        </div>
         <Footer />
       </div>
     </div>
   );
 }
-
