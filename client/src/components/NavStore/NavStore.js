@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import S from "./NavStore.module.css";
-import { FiShoppingCart } from "react-icons/fi";
 import { BsSearch } from "react-icons/bs";
 import logo from "./logoShop.png";
 import { useDispatch } from "react-redux";
@@ -31,42 +30,44 @@ const NavStore = ({ setCurrentPage }) => {
     window.location.reload();
   }
   //estados locales
+  
   const [accessToken, setAccessToken] = useState("");
   const [currentUser, setCurrentUser] = useState("");
   //seteo de estados
+  
   useEffect(() => {
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     if (accessToken) {
       setAccessToken(accessToken);
     }
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     if (currentUser) {
       setCurrentUser(currentUser);
     }
   }, []);
-  
 
   return (
     <div>
       <div className={S.navSup}>
         <div className={S.logos}>
           <Link to={"/"}>
-            <img src={logo} alt="logoSolo" />
+            <img src={logo} alt='logoSolo' />
           </Link>
           <div className={S.search}>
             <form onSubmit={(e) => handleClick(e)}>
               <input
-                type="text"
+                type='text'
                 value={name}
-                placeholder="Buscar productos..."
+                placeholder='Buscar productos...'
                 onChange={(e) => handleInputChange(e)}
               />
-              <button type="submit">
+              <button type='submit'>
                 <BsSearch />
               </button>
             </form>
           </div>
           <div className={S.botones}>
+
             {currentUser && currentUser.isAdmin ? (
               <Link to="/crearproducto">
                 <label>Crear producto </label>
@@ -78,7 +79,7 @@ const NavStore = ({ setCurrentPage }) => {
           </div>
         </div>
       </div>
-      <div className={S.container}>
+      {/*      <div className={S.container}>
         <div className={S.Selectores}>
           <div className={S.usuario}>
             {accessToken ? (
@@ -97,7 +98,7 @@ const NavStore = ({ setCurrentPage }) => {
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

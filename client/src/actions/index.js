@@ -17,6 +17,7 @@ export const GET_BY_NAME = "GET_BY_NAME"
 export const EDIT_PRODUCT = "EDIT_PRODUCT"
 export const RESET_PASSWORD = "RESET_PASSWORD"
 export const GET_USER = "GET_USER"
+export const CART_OF_USER = "CART_OF_USER"
 
 
 export const resetPassword = (id,token) => {
@@ -45,17 +46,23 @@ export function getAllProducts(){
 }
 
 export function addToCart(product,id){
-    return async function(){
-        let data = await axios.post(`https://green--shop.herokuapp.com/tadeo/${id}`, product)
-        return data
+    return async function(dispatch){
+        let data = await axios.post(`https://green--shop.herokuapp.com/tadeo/add/585451b2-931b-400e-b986-72a7d2b9ce3d`, product)
+        return dispatch({
+            type: CART_OF_USER,
+            payload: data
+        })
     }
 }
 
-export function SumToCart(product,id,amount){
-    return async function(){
-        let productId = product.id
-        let data = await axios.put(`https://green--shop.herokuapp.com/tadeo/${id}`, productId, amount )
-        return data
+
+export function getToCart(idUser){
+    return async function(dispatch){
+        let data = await axios.get(`https://green--shop.herokuapp.com/tadeo/users/585451b2-931b-400e-b986-72a7d2b9ce3d/cart`)
+        return dispatch({
+            type: CART_OF_USER,
+            payload: data
+        })
     }
 }
 

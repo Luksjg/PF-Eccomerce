@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { addToCart } from "../../actions";
+import { getToCart, SumToCart } from "../../actions"
 import Paginated from "../paginated/Paginated";
 import ProductCard from "./../productCard/ProductCard";
 import style from "./MapProducts.module.css";
@@ -11,52 +11,85 @@ export default function MapProducts({
   productsToShow,
   setCurrentPage,
   currentProducts,
+  currentPage,
+  prevPage,
+  nextPage,
 }) {
   //estados locales
-  const [carrito, setCarrito] = useState([]);
+  const [carrito,setCarrito] = useState()
   const dispatch = useDispatch()
   const [currentUser,setCurrentUser] = useState("")
+  const [cart,setCart] = useSelector(state=>state.cart)
 
   //seteo de estados
   useEffect(() => {
-    const carrito = JSON.parse(localStorage.getItem("carrito"));
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    if (currentUser) {
-      setCurrentUser(currentUser);
-    }
-    setCarrito(carrito);
-  }, [productsToShow]);
+    setCurrentUser((JSON.parse(localStorage.getItem("currentUser"))));
+    console.log(currentUser)
+    // if (currentUser.userId) {
+    //   let userId = currentUser.userId
+    //   dispatch(getToCart())
+    //   setCarrito(cart);
+    //   console.log(cart)
+    // }else{
+      setCarrito(JSON.parse(localStorage.getItem("carrito")));
+    // }
+  }, []);
 
-  function handleProduct(product) {
-    if (!localStorage.getItem("carrito")) {
-      let a = [];
-      let id = currentUser.userId
-      a.push(product);
-      if(id)// dispatch(addToCart(aux,id))
-      localStorage.setItem("carrito", JSON.stringify(a));
-      alert("Producto agregado al carrito", product.name);
-      // window.location.reload();
-    } else {
-      let a = [];
-      a = JSON.parse(localStorage.getItem("carrito") || []);
-      let repetido = a.find((e) => product.id === e.id);
-      if (!repetido) {
-        a.push(product);
-        let id = currentUser.userId
-        if(id)// dispatch(addToCart(a,id))
-        console.log(a)
-        console.log(id)
-        localStorage.setItem("carrito", JSON.stringify(a));
-        alert("Producto agregado al carrito", product.name);
-        // window.location.reload();
-      } else {
-        alert("El producto ya está en el carrito");
-      }
+  function handleProduct(product){
+    let id = currentUser.userId
+
+    let aux={
+      productId : product.id,
+      amount : product.price,
+      quantity: 1
     }
+
+    let products = cart
+    console.log(cart)
+    // if(id){
+    //   if(!products){
+    //     products.push(aux)
+    //     dispatch(addToCart(id,products))
+    //     alert(`Producto agregado al carrito`)
+    //   }else{
+    //     let repetidoback = products.find(p=>aux.productId === p.id)    
+    //     if(!repetidoback){
+    //       dispatch(addToCart(id,products))
+    //     }else{
+    //       alert("El producto ya está en el carrito");
+    //     }
+    //   }
+    // }else{
+      if (!localStorage.getItem("carrito")) {
+        let a = [];
+        a.push(product);
+        localStorage.setItem("carrito", JSON.stringify(a));
+        alert(`Producto agregado al carrito`);
+      } else {
+        let a = [];
+        a = JSON.parse(localStorage.getItem("carrito") || []);
+        let repetido = a.find((e) => product.id === e.id);
+        if (!repetido) {
+          a.push(product);
+          localStorage.setItem("carrito", JSON.stringify(a));
+          alert("Producto agregado al carrito");
+        } else {
+          alert("El producto ya está en el carrito");
+        }
+      }
+    // }
   }
 
   return (
     <div>
+      <Paginated
+        allProducts={productsToShow.length}
+        setCurrentPage={setCurrentPage}
+        currentProducts={currentProducts}
+        currentPage={currentPage}
+        nextPage={nextPage}
+        prevPage={prevPage}
+      />
       <ul className={style.container}>
         {currentProducts.map((product) => (
           <div key={product.id}>
@@ -69,16 +102,14 @@ export default function MapProducts({
                 stock={product.stock}
               />
             </Link>
-            <button onClick={() => handleProduct(product)}>
-              Agregar al carrito
-            </button>
+            <div className={style.agregar}>
+              <button onClick={() => handleProduct(product)}>
+                Agregar al carrito
+              </button>
+            </div>
           </div>
         ))}
       </ul>
-      <Paginated
-        allProducts={productsToShow.length}
-        setCurrentPage={setCurrentPage}
-      />
     </div>
   );
 }

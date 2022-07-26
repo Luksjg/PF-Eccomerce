@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
-import { SumToCart } from "../../actions"
+import { getToCart, SumToCart } from "../../actions"
 import Footer from "../footer/Footer"
 import NavStore from "../NavStore/NavStore"
 
@@ -12,17 +13,18 @@ export default function Cart(){
     const [totalPrice,setTotalPrice] = useState(1)
     const [carrito,setCarrito] = useState("")
     const [stateAux,setStateAux]= useState("")
-
+    const [cart,setCart] = useSelector(state=>state.cart)
+    const dispatch = useDispatch()
 
     function changeAmount(product,user,boolean){
       let aux= totalPrice
       if(user){
         if(boolean){
           // SumToCart(product,user,)
-          product.stock += 1
+          product.count += 1
           setTotalPrice(aux+=1)
         }else{
-          product.stock -= 1
+          product.count -= 1
           setTotalPrice(aux-=1)
         }
       }
@@ -34,18 +36,24 @@ export default function Cart(){
     
     
     useEffect(function () {
-      setCarrito(JSON.parse(localStorage.getItem("carrito")))
       setCurrentUser(JSON.parse(localStorage.getItem("currentUser")))
-      // setCarrito(data)
+      if(currentUser){
+      dispatch(getToCart(currentUser.userId))
+      setCarrito(cart)
+      console.log(cart)
+      }else{
+        setCarrito(JSON.parse(localStorage.getItem("carrito")))
+      }
       handlePrice()
       // let id = currentUser.userId
       // dispatch(getCartOfUser(id))    
-    },[stateAux])
+    },[currentUser])
+
     
     function handlePrice(){
         let aux = 0 
         setStateAux(aux)
-        carrito && carrito.map(p=>(aux += p.price))
+        // carrito && carrito.map(p=>(aux = Number(aux) + (Number(p.price) * Number(p.count)) ))
         setTotalPrice(aux)
       }
 
@@ -57,20 +65,21 @@ export default function Cart(){
               <p>Bienvenido {currentUser.username}</p>
             </div>
             <div>
-            {carrito && carrito.map((product,i)=>{
+            {/* {carrito && carrito.map((product,i)=>{
               return(
                 <div key={i}>
                   <img src={product.image} alt="product imagen" width="150px" height="150px"/>
+                  {console.log(product)}
                   <label>{product.name}</label>
                   <label> ${product.price}</label>
                   <button onClick={()=>changeAmount(product,currentUser,true)}>+</button>
-                  <label>{product.stock}</label>
+                  <label>{product.count}</label>
                   <button onClick={()=>changeAmount(product,currentUser,false)}>-</button>
                   <label>Remover</label>
                   <button onClick={()=>removeProduct()}>x</button>
                 </div>
               )
-            })}
+            })} */}
             </div>
             <div>
               total price: {totalPrice}

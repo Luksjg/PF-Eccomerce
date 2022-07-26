@@ -44,7 +44,7 @@ export default function Users(){
                         <p>{u.username}</p>
                         <p>{u.email}</p>
                         <p>{u.profile_img}</p>
-                        {u.is_admin ? <div>Es admin</div> : <div>No es admin</div>}
+                        {u.is_admin === "si" ? <div>Es admin</div> : <div>No es admin</div>}
                     </Link>
                     </div>
                 )
