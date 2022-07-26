@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getToCart, SumToCart } from "../../actions"
+import { getToCart, addToCart } from "../../actions"
 import Paginated from "../paginated/Paginated";
 import ProductCard from "./../productCard/ProductCard";
 import style from "./MapProducts.module.css";
@@ -23,17 +23,17 @@ export default function MapProducts({
 
   //seteo de estados
   useEffect(() => {
-    setCurrentUser((JSON.parse(localStorage.getItem("currentUser"))));
-    console.log(currentUser)
-    // if (currentUser.userId) {
-    //   let userId = currentUser.userId
-    //   dispatch(getToCart())
-    //   setCarrito(cart);
-    //   console.log(cart)
-    // }else{
+    const currentUser = (JSON.parse(localStorage.getItem("currentUser")));
+    if (currentUser) {
+      setCurrentUser(currentUser)
+      currentUser && dispatch(getToCart())
+      setCarrito(cart);
+      console.log(cart)
+    }else{
       setCarrito(JSON.parse(localStorage.getItem("carrito")));
-    // }
-  }, []);
+      console.log(cart)
+    }
+  }, [dispatch]);
 
   function handleProduct(product){
     let id = currentUser.userId
@@ -45,21 +45,22 @@ export default function MapProducts({
     }
 
     let products = cart
-    console.log(cart)
-    // if(id){
-    //   if(!products){
-    //     products.push(aux)
-    //     dispatch(addToCart(id,products))
-    //     alert(`Producto agregado al carrito`)
-    //   }else{
-    //     let repetidoback = products.find(p=>aux.productId === p.id)    
-    //     if(!repetidoback){
-    //       dispatch(addToCart(id,products))
-    //     }else{
-    //       alert("El producto ya está en el carrito");
-    //     }
-    //   }
-    // }else{
+    console.log(products)
+
+    if(id){
+      if(!products){
+        products.push(aux)
+        dispatch(addToCart(id,products))
+        alert(`Producto agregado al carrito`)
+      }else{
+        let repetidoback = products.find(p=>aux.productId === p.id)    
+        if(!repetidoback){
+          dispatch(addToCart(id,products))
+        }else{
+          alert("El producto ya está en el carrito");
+        }
+      }
+    }else{
       if (!localStorage.getItem("carrito")) {
         let a = [];
         a.push(product);
@@ -77,7 +78,7 @@ export default function MapProducts({
           alert("El producto ya está en el carrito");
         }
       }
-    // }
+    }
   }
 
   return (
@@ -110,6 +111,16 @@ export default function MapProducts({
           </div>
         ))}
       </ul>
+      <div className={style.pagination}>
+        <Paginated
+          allProducts={productsToShow.length}
+          setCurrentPage={setCurrentPage}
+          currentProducts={currentProducts}
+          currentPage={currentPage}
+          nextPage={nextPage}
+          prevPage={prevPage}
+        />
+      </div>
     </div>
   );
 }

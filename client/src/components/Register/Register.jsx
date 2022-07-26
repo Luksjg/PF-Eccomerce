@@ -5,6 +5,8 @@ import * as Yup from "yup";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
+import style from "./Register.module.css";
+
 function Register() {
   // form validation rules
   const history = useHistory();
@@ -30,11 +32,9 @@ function Register() {
   const { register, handleSubmit, formState } = useForm(formOptions);
   const { errors } = formState;
 
-
-
   const onSubmit = async (e) => {
     // alert when form is submitted successfully and redirect to login page
-    if(Object.keys(errors).length === 0) {
+    if (Object.keys(errors).length === 0) {
       await axios.post("https://green--shop.herokuapp.com/user/register", e);
       alert("Form Submitted Successfully");
       history.push("/login");
@@ -42,62 +42,80 @@ function Register() {
     } else {
       alert("Form is invalid");
     }
-  }
+  };
 
   return (
-    <section>
-      <div className="register">
-        <div className="col-1">
-          <h2>Sign in</h2>
-          <p>register and enjoy to servises</p>
+    <div className={style.container}>
+      <div className={style.flex}>
+        <div className={style.subcontainer}>
+          <div className={style.form}>
+            <section>
+              <div className={style.title}>
+                <h1>Registrate</h1>
+              </div>
+              <h2>Registrate y accede a todos los servicios</h2>
 
-          <form
-            id="form"
-            className="flex flex-col"
-            onSubmit={handleSubmit(onSubmit)}
-          >
-            <input
-              type="text"
-              {...register("username", { required: true, maxLength: 10 })}
-              placeholder="username"
-            />
-            <p>{errors.name?.message}</p>
+              <form
+                id='form'
+                className='flex flex-col'
+                onSubmit={handleSubmit(onSubmit)}
+              >
+                <div className={style.inputs}>
+                  <input
+                    type='text'
+                    {...register("username", {
+                      required: true,
+                      maxLength: 10,
+                    })}
+                    placeholder='username'
+                  />
+                  <p>{errors.username?.message}</p>
 
-            <input
-              type="text"
-              {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
-              placeholder="email"
-            />
-            <p>{errors.email?.message}</p>
+                  <input
+                    type='text'
+                    {...register("email", {
+                      required: true,
+                      pattern: /^\S+@\S+$/i,
+                    })}
+                    placeholder='email'
+                  />
+                  <p>{errors.email?.message}</p>
 
-            <input
-              placeholder="password"
-              name="password"
-              type="password"
-              {...register("password")}
-              className={`form-control ${errors.password ? "is-invalid" : ""}`}
-            />
-            <div className="invalid-feedback">
-              <p>{errors.password?.message}</p>
-            </div>
+                  <input
+                    placeholder='password'
+                    name='password'
+                    type='password'
+                    {...register("password")}
+                    className={`form-control ${
+                      errors.password ? "is-invalid" : ""
+                    }`}
+                  />
+                  <div className='invalid-feedback'>
+                    <p>{errors.password?.message}</p>
+                  </div>
 
-            <input
-              placeholder="confirm password"
-              name="confirmPassword"
-              type="password"
-              {...register("confirmPassword")}
-              className={`form-control ${
-                errors.confirmPassword ? "is-invalid" : ""
-              }`}
-            />
-            <div className="invalid-feedback">
-              <p>{errors.confirmPassword?.message}</p>
-            </div>  
-            <button className="btn">Sig in</button>
-          </form>
+                  <input
+                    placeholder='confirm password'
+                    name='confirmPassword'
+                    type='password'
+                    {...register("confirmPassword")}
+                    className={`form-control ${
+                      errors.confirmPassword ? "is-invalid" : ""
+                    }`}
+                  />
+                  <div className='invalid-feedback'>
+                    <p>{errors.confirmPassword?.message}</p>
+                  </div>
+                </div>
+                <div className={style.boton}>
+                  <button className='btn'>Registrar</button>
+                </div>
+              </form>
+            </section>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

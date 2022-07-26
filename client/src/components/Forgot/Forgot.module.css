@@ -1,0 +1,98 @@
+.container{
+    background-image: url("../Login/login.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100vw;
+    padding: 0;
+    margin-top: -10px;
+}
+
+.flex{
+    background-color: rgba(0,0,0,0.5);
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    
+}
+.subcontainer{
+    margin: auto;
+    width: 30%;
+    height: 40vh;
+    position: relative;
+    top: 25%;
+    box-shadow: -11px 6px 21px 5px #000000;
+    background :linear-gradient(135deg,rgba(255,255,255,0.1),rgba(255,255,255,0));
+    backdrop-filter: blur(10px);
+ -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    
+}
+.form input{
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+    margin-left: 109px;
+    margin-top: 80px;
+    margin-bottom: 50px;
+    font-size: 20px;
+    height: 40px;
+    width: 342px;
+    border: #FFFFFF 1px solid;
+    color: #FFFFFF;
+
+}
+.form ::placeholder{
+    color: #ffffff94;
+   padding-left: 10px;
+   font-size: 15px;
+}
+.form input:focus{
+    outline: none;
+}
+
+
+
+
+
+.title{
+    display: flex;
+    justify-content: center;
+    border-radius: 20px 20px 0px 0px;
+    color: #fff;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #FFFFFF;
+    background: #333333;
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #860a48 0px 0px 20px, #860a48 0px 0px 30px, #860a48 0px 0px 40px, #860a48 0px 0px 50px, #860a48 0px 0px 75px;
+
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 50px;
+  
+
+}
+.buttons button{
+    background-color: transparent;
+    border: none;
+    color: #1F0426;
+    background-color: #fff;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top:30px;
+    cursor: pointer;
+    height: 40px;
+    width: 365px;
+    border: #353131 2px solid;
+}
+.buttons button:hover{
+    background-color: #353131;
+    color: #fff;
+    transition: .5s;
+}

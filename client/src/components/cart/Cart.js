@@ -20,7 +20,6 @@ export default function Cart(){
       let aux= totalPrice
       if(user){
         if(boolean){
-          // SumToCart(product,user,)
           product.count += 1
           setTotalPrice(aux+=1)
         }else{
@@ -36,18 +35,17 @@ export default function Cart(){
     
     
     useEffect(function () {
-      setCurrentUser(JSON.parse(localStorage.getItem("currentUser")))
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"))
       if(currentUser){
+      setCurrentUser(currentUser)
       dispatch(getToCart(currentUser.userId))
       setCarrito(cart)
       console.log(cart)
       }else{
         setCarrito(JSON.parse(localStorage.getItem("carrito")))
       }
-      handlePrice()
-      // let id = currentUser.userId
-      // dispatch(getCartOfUser(id))    
-    },[currentUser])
+      handlePrice()  
+    },[])
 
     
     function handlePrice(){

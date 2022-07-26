@@ -56,12 +56,12 @@ export function addToCart(product,id){
 }
 
 
-export function getToCart(idUser){
+export function getToCart(){
     return async function(dispatch){
         let data = await axios.get(`https://green--shop.herokuapp.com/tadeo/users/585451b2-931b-400e-b986-72a7d2b9ce3d/cart`)
         return dispatch({
             type: CART_OF_USER,
-            payload: data
+            payload: data.data.products
         })
     }
 }

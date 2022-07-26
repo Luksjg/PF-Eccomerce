@@ -45,7 +45,7 @@ function rootReducer(state = InitialState, action) {
     case CART_OF_USER:
       return{
         ...state,
-        cart: action.payload
+        cart: action.payload,
       }
     case GET_ALL_PRODUCTS:
       return {
