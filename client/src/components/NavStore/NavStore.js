@@ -31,37 +31,22 @@ const NavStore = ({ setCurrentPage }) => {
     window.location.reload();
   }
   //estados locales
+  
   const [accessToken, setAccessToken] = useState("");
   const [currentUser, setCurrentUser] = useState("");
   //seteo de estados
+  
   useEffect(() => {
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     if (accessToken) {
       setAccessToken(accessToken);
     }
-  }, []);
-  useEffect(() => {
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     if (currentUser) {
       setCurrentUser(currentUser);
     }
   }, []);
 
-  const [accessToken, setAccessToken] = useState("");
-  const [currentUser, setCurrentUser] = useState("");
-  //seteo de estados
-  useEffect(() => {
-    const accessToken = JSON.parse(localStorage.getItem("accessToken"));
-    if (accessToken) {
-      setAccessToken(accessToken);
-    }
-  }, []);
-  useEffect(() => {
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    if (currentUser) {
-      setCurrentUser(currentUser);
-    }
-  }, []);
 
   return (
     <div>
