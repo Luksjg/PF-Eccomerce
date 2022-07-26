@@ -47,6 +47,22 @@ const NavStore = ({ setCurrentPage }) => {
     }
   }, []);
 
+  const [accessToken, setAccessToken] = useState("");
+  const [currentUser, setCurrentUser] = useState("");
+  //seteo de estados
+  useEffect(() => {
+    const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+    if (accessToken) {
+      setAccessToken(accessToken);
+    }
+  }, []);
+  useEffect(() => {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (currentUser) {
+      setCurrentUser(currentUser);
+    }
+  }, []);
+
   return (
     <div>
       <div className={S.navSup}>
@@ -68,10 +84,12 @@ const NavStore = ({ setCurrentPage }) => {
             </form>
           </div>
           <div className={S.botones}>
-            <Link to='/crearproducto'>
-              <label>Crear producto </label>
-            </Link>
-            <Link to='/'>
+            {currentUser && currentUser.isAdmin ? (
+              <Link to="/crearproducto">
+                <label>Crear producto </label>
+              </Link>
+            ) : null}
+            <Link to="/">
               <label>Home</label>
             </Link>
           </div>
