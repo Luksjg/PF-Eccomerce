@@ -32,7 +32,7 @@ export default function MapProducts({
       let a = [];
       let id = currentUser.userId
       a.push(product);
-      if(id)// dispatch(addToCart(a,id))
+      if(id)// dispatch(addToCart(aux,id))
       localStorage.setItem("carrito", JSON.stringify(a));
       alert("Producto agregado al carrito", product.name);
       // window.location.reload();
