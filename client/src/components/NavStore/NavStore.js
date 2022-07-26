@@ -68,22 +68,23 @@ const NavStore = ({ setCurrentPage }) => {
       <div className={S.navSup}>
         <div className={S.logos}>
           <Link to={"/"}>
-            <img src={logo} alt="logoSolo" />
+            <img src={logo} alt='logoSolo' />
           </Link>
           <div className={S.search}>
             <form onSubmit={(e) => handleClick(e)}>
               <input
-                type="text"
+                type='text'
                 value={name}
-                placeholder="Buscar productos..."
+                placeholder='Buscar productos...'
                 onChange={(e) => handleInputChange(e)}
               />
-              <button type="submit">
+              <button type='submit'>
                 <BsSearch />
               </button>
             </form>
           </div>
           <div className={S.botones}>
+
             {currentUser && currentUser.isAdmin ? (
               <Link to="/crearproducto">
                 <label>Crear producto </label>
@@ -95,7 +96,7 @@ const NavStore = ({ setCurrentPage }) => {
           </div>
         </div>
       </div>
-      <div className={S.container}>
+      {/*      <div className={S.container}>
         <div className={S.Selectores}>
           <div className={S.usuario}>
             {accessToken ? (
@@ -114,7 +115,7 @@ const NavStore = ({ setCurrentPage }) => {
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

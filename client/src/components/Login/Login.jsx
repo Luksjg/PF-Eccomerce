@@ -9,6 +9,9 @@ import {
   GoogleAuthProvider,
   GithubAuthProvider,
 } from "firebase/auth";
+import style from "./Login.module.css";
+import gith from "./gith.png";
+import google from "./google.png";
 
 function validate(email, password) {
   let objeto = {};
@@ -125,45 +128,62 @@ export default function Loguin() {
   };
 
   return (
-    <div className="contRegister">
-      <div className="flex">
-        <div className="contLogin">
-          <div className="contLogin-content">
-            <h3>Login</h3>
+    <div className={style.container}>
+      <div className={style.flex}>
+        <div className={style.subcontainer}>
+          <div className={style.form}>
+            <div className={style.title}>
+              <h3>Login</h3>
+            </div>
             <form onSubmit={handleSubmit}>
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                onChange={handleChangeEmail}
-                value={usuario.email}
-              />
-              {errors.email && <p className="error">{errors.email}</p>}
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                onChange={handleChangePassword}
-                value={usuario.password}
-              />
-              {errors.password && <p className="error">{errors.password}</p>}
-              <div>
-                <button onClick={handleClickGoogle}>Google</button>
+              <div className={style.inputs}>
+                <input
+                  type='email'
+                  name='email'
+                  placeholder='👤 Email'
+                  onChange={handleChangeEmail}
+                  value={usuario.email}
+                />
+                {errors.email && <p className='error'>{errors.email}</p>}
+                <input
+                  type='password'
+                  name='password'
+                  placeholder='🔒 Password'
+                  onChange={handleChangePassword}
+                  value={usuario.password}
+                />
+                {errors.password && <p className='error'>{errors.password}</p>}
               </div>
-              <div>
-                <button onClick={handleClickGithub}>Github</button>
+              <div className={style.bottonLogin}>
+                <button type='submit' onClick={handleSubmit}>
+                  Login
+                </button>
               </div>
-              <button type="submit" onClick={handleSubmit}>
-                Login
-              </button>
+              <div className={style.olvido}>
+                <Link to='/forgotPassword' className='a'>
+                  {" "}
+                  <h4>forget your password ?</h4>
+                </Link>
+              </div>
+
+              <div className={style.buttons}>
+                <div className={style.botonGoogle}>
+                  <button onClick={handleClickGoogle}>
+                    <img src={google} alt='google' />
+                  </button>
+                </div>
+                {/*    <div className={style.botonGithub}>
+                  <button onClick={handleClickGithub}>
+                    <img src={gith} alt='github' />
+                  </button>
+                </div> */}
+              </div>
             </form>
-            <Link to="/forgotPassword/" className="a">
-              {" "}
-              <h4>forget your password</h4>
-            </Link>
-            <Link to="/register" className="a">
-              <h4>Register</h4>
-            </Link>
+            <div className={style.registro}>
+              <Link to='/register' className='a'>
+                <h4>Register</h4>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -187,7 +187,7 @@ export default function CreateProduct() {
             </select>
           </div>
           <div className={styles.crear}>
-            <span type='submit'>Crear producto</span>
+            <button type='submit'>Crear producto</button>
           </div>
         </form>
       </div>

@@ -10,8 +10,7 @@ import foto from "../createProduct/agregarfoto.png";
 export default function ProductEdit() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const history = useHistory()
-
+  const history = useHistory();
 
   async function uploadImage(e) {
     const files = e.target.files;
@@ -49,7 +48,7 @@ export default function ProductEdit() {
 
   useEffect(() => {
     dispatch(getProduct(id));
-  }, [dispatch,id]);
+  }, [dispatch, id]);
 
   const product = useSelector((state) => state.product);
 
@@ -61,7 +60,7 @@ export default function ProductEdit() {
     stock: product.stock,
     description: product.description,
     outsanding: product.outsanding,
-    disabled: product.disabled
+    disabled: product.disabled,
   });
 
   return (
@@ -165,12 +164,7 @@ export default function ProductEdit() {
               max='10000'
             />
           </div>
-          <div>
-            <select value={input.disabled} onChange={e=>handleChange(e)} name="disabled">
-              <option>no</option>
-              <option>si</option>
-            </select>
-          </div>
+
           <div className={styles.destacar}>
             <p>¿Destacar producto?</p>
             <select
@@ -186,6 +180,17 @@ export default function ProductEdit() {
           <div className={styles.botones}>
             <div className={styles.crear}>
               <button type='submit'>Editar producto</button>
+            </div>
+            <div className={styles.desactivar}>
+              <select
+                value={input.disabled}
+                onChange={(e) => handleChange(e)}
+                name='disabled'
+              >
+                <option value='null'>Desactivar producto </option>
+                <option>no</option>
+                <option>si</option>
+              </select>
             </div>
             <div className={styles.cancelar}>
               <span>

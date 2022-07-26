@@ -1,0 +1,153 @@
+.container{
+    background-image: url("./login.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100vw;
+    padding: 0;
+    margin-top: -10px;
+}
+
+.flex{
+    background-color: rgba(0,0,0,0.5);
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    
+}
+
+.subcontainer{
+    margin: auto;
+    width: 30%;
+    height: 70vh;
+    position: relative;
+    top: 10%;
+    box-shadow: -11px 6px 21px 5px #000000;
+    background :linear-gradient(135deg,rgba(255,255,255,0.1),rgba(255,255,255,0));
+    backdrop-filter: blur(10px);
+ -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    border-radius: 20px 20px 0px 0px;
+    color: #fff;
+    font-size: 45px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #FFFFFF;
+    background: #333333;
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #860a48 0px 0px 20px, #860a48 0px 0px 30px, #860a48 0px 0px 40px, #860a48 0px 0px 50px, #860a48 0px 0px 75px;
+
+}
+.handleSubmit p {
+    position: absolute;
+}
+
+.form input{
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+
+    margin-left: 109px;
+    margin-top: 80px;
+    margin-bottom: 50px;
+    height: 40px;
+    width: 350px;
+    border: #FFFFFF 1px solid;
+    color: #FFFFFF;
+    padding-left: 10px;
+}
+.form ::placeholder{
+    color: #FFFFFF;
+   padding-left: 120px;
+   font-size: 15px;
+}
+
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 50px;
+  
+
+}
+
+.buttons button{
+    cursor: pointer;
+    overflow: hidden;
+    background-color: transparent;
+    box-sizing: border-box;
+    padding: 0;
+    border: none;
+    margin: 0;
+}
+
+
+
+
+
+.botonGoogle img{
+/*     border-radius: 30px 0px 0px 30px; */
+    background-color: #000000;
+    position: relative;
+    height: 55px;
+    width: 300px;
+}
+
+.bottonLogin{
+    text-align: center;
+}
+.bottonLogin button{
+    background-color: transparent;
+    border: none;
+    color: #1F0426;
+    background-color: #fff;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top:30px;
+    cursor: pointer;
+    height: 40px;
+    width: 365px;
+    border: #353131 2px solid;
+    /* margin-left: 6%; */
+
+}
+.bottonLogin button:hover{
+    background-color: #353131;
+    color: #fff;
+    transition: .6s;
+
+}
+.olvido{
+    margin-left: 325px;
+    margin-top: 20px;
+   
+}
+.olvido h4{
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+}
+.registro h4{
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 30px;
+}
+.form p{
+    color: #ff0000;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: -25px;
+    margin-left: 110px;
+    position: absolute;
+}

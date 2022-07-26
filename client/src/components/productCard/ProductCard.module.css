@@ -1,18 +1,25 @@
 .container{
     display: flex;
     flex-direction: column;
+/*     background-color: yellowgreen; */
+
+    height: 45vh;
 }
 .titulo{
-    align-items: center ;
     justify-content: center;
     display: flex;
     width: 25vh;
+   
 }
 
 .titulo h3{
     font-size: 1.2rem;
     margin-bottom: 10px;
     color: black ;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
 }
 .precio{
     align-items: center ;
@@ -24,6 +31,7 @@
     font-size: 1.5rem;
     margin-bottom: 10px;
     color: black ;
+    
 }
 .stock{
     align-items: center ;
