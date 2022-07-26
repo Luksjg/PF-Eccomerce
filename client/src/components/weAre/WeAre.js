@@ -1,13 +1,30 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import Footer from "../footer/Footer";
 import NavBar from "../navbar/NavBar";
 import style from "./WeAre.module.css";
-
+import NavBarClient from '../navbarClient/NavBarClient'
 import gc from "./hasbulla_gianCarlos.jpg";
 import lucas from "./hasbulla_lucas.jpg";
 import damian from "./hasbulla_damian.jpg";
 import tadeo from "./hasbulla_tadeo.jpg";
 export default function WeAre() {
+
+  const [accessToken, setAccessToken] = useState("");
+  const [currentUser, setCurrentUser] = useState("");
+  //seteo de estados
+  useEffect(() => {
+    const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+    if (accessToken) {
+      setAccessToken(accessToken);
+    }
+  }, []);
+  useEffect(() => {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (currentUser) {
+      setCurrentUser(currentUser);
+    }
+  }, []);
+
   return (
     <div>
       <div className={style.container}>
@@ -137,8 +154,9 @@ export default function WeAre() {
           </a>
         </div>
       </div>
-
-      <NavBar />
+      <div>
+        {currentUser && currentUser.isAdmin ? <NavBar /> : <NavBarClient />}
+      </div>
       <Footer />
     </div>
   );

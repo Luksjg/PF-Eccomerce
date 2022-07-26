@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { getReviews, postReview } from "../../actions";
 import style from "./Comments.module.css";
 
@@ -48,9 +48,23 @@ export default function Comments() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
+  
+  const [currentUser, setCurrentUser] = useState('');
+
+  useEffect(() => {
+    if (localStorage.getItem('currentUser')) {
+      setCurrentUser(JSON.parse(localStorage.getItem('currentUser')));
+      console.log(currentUser);
+    }
+  }
+  , [currentUser, setCurrentUser]);
+  
+
   return (
     <div className={style.cont}>
-      <div className={style.subcont}>
+      {
+        currentUser ? (
+          <div className={style.subcont}>
         <form onSubmit={(e) => handleSubmit(e)}>
           {/* <p>UserId POR AHORA</p>
                      No se como van a obtener el userId desde este componente, con auth0 se puede 
@@ -81,7 +95,15 @@ export default function Comments() {
             <button type='submit'>Comentar</button>
           </div>
         </form>
-      </div>
+      </div> ) : (
+
+          <div className={style.subcont}>
+            <h1>Deja una reseña</h1>
+            <p>Para poder dejar una reseña debes iniciar sesion</p>
+            <Link to='/login'>Iniciar sesion</Link>
+          </div>
+        )
+      }
       <div className={style.review}>
         <h2>Reseñas</h2>
         {reviews &&
@@ -89,6 +111,7 @@ export default function Comments() {
             <div key={i}>
               <label>{r.valoration + " ⭐"}</label>
               <p>{r.review}</p>
+
             </div>
           ))}
       </div>
