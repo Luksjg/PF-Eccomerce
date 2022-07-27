@@ -30,11 +30,11 @@ const NavStore = ({ setCurrentPage }) => {
     window.location.reload();
   }
   //estados locales
-  
+
   const [accessToken, setAccessToken] = useState("");
   const [currentUser, setCurrentUser] = useState("");
   //seteo de estados
-  
+
   useEffect(() => {
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -52,28 +52,28 @@ const NavStore = ({ setCurrentPage }) => {
       <div className={S.navSup}>
         <div className={S.logos}>
           <Link to={"/"}>
-            <img src={logo} alt='logoSolo' />
+            <img src={logo} alt="logoSolo" />
           </Link>
           <div className={S.search}>
             <form onSubmit={(e) => handleClick(e)}>
               <input
-                type='text'
+                type="text"
                 value={name}
-                placeholder='Buscar productos...'
+                placeholder="Buscar productos..."
                 onChange={(e) => handleInputChange(e)}
               />
-              <button type='submit'>
+              <button type="submit">
                 <BsSearch />
               </button>
             </form>
           </div>
           <div className={S.botones}>
-            {currentUser && currentUser.isAdmin ? (
-              <Link to='/crearproducto'>
+            {currentUser && currentUser.isAdmin == "si" ? (
+              <Link to="/crearproducto">
                 <label>Crear producto </label>
               </Link>
             ) : null}
-            <Link to='/'>
+            <Link to="/">
               <label>Home</label>
             </Link>
           </div>
