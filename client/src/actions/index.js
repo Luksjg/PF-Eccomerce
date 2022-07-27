@@ -17,6 +17,40 @@ export const GET_BY_NAME = "GET_BY_NAME"
 export const EDIT_PRODUCT = "EDIT_PRODUCT"
 export const RESET_PASSWORD = "RESET_PASSWORD"
 export const GET_USER = "GET_USER"
+export const GET_ORDERS = "GET_ORDERS"
+export const ORDER_BY_STATUS = "ORDER_BY_STATUS"
+export const ORDERS_BY_USER = "ORDERS_BY_USER"
+
+
+export const getOrders = () => {
+    return async (dispatch) => {
+        const res = await axios.get('https://green--shop.herokuapp.com/tadeo/order/admin/product')
+        dispatch({
+            type: GET_ORDERS,
+            payload: res.data
+        })
+    }
+}
+
+export const ordersByUser = (id) => {
+    return async (dispatch) => {
+        const res = await axios.get(`https://green--shop.herokuapp.com/tadeo/users/${id}/orders`)
+        dispatch({
+            type: ORDERS_BY_USER,
+            payload: res.data
+        })
+    }
+}
+
+export const orderByStatus = (order) => {
+    return async (dispatch) => {
+        const res = await axios.get(`https://green--shop.herokuapp.com/tadeo/users/ordersByQuery?order=${order}`)
+        dispatch({
+            type: ORDER_BY_STATUS,
+            payload: res.data
+        })
+    }
+}
 
 
 export const resetPassword = (id,token) => {

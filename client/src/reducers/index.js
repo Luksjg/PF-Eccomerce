@@ -14,6 +14,9 @@ import {
   GET_USERS,
   GET_USER,
   RESET_PASSWORD,
+  ORDER_BY_STATUS,
+  GET_ORDERS,
+  ORDERS_BY_USER,
 } from "../actions/index";
 
 const InitialState = {
@@ -26,6 +29,8 @@ const InitialState = {
   userInfo: [],
   reviews: [],
   subs: [],
+  orders: [],
+  orderStatus: "",
 };
 
 function orderP(a, b) {
@@ -132,6 +137,22 @@ function rootReducer(state = InitialState, action) {
                 ...state,
                 userInfo: action.payload
             }
+    case GET_ORDERS:
+      return {
+        ...state,
+        orders: action.payload,
+      };
+    case ORDER_BY_STATUS:
+      return {
+        ...state,
+        orders: action.payload,
+      }
+    case ORDERS_BY_USER:
+      console.log(action.payload)
+      return {
+        ...state,
+        orders: action.payload,
+      }
     default:
       return state;
   }
