@@ -15,19 +15,20 @@ export default function Home() {
   const [accessToken, setAccessToken] = useState("");
   const [currentUser, setCurrentUser] = useState("");
   //seteo de estados
+
   useEffect(() => {
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     if (accessToken) {
       setAccessToken(accessToken);
     }
   }, []);
+
   useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     if (currentUser) {
       setCurrentUser(currentUser);
     }
   }, []);
-  //console.log("user", currentUser);
 
   return (
     <div>
@@ -45,7 +46,11 @@ export default function Home() {
         <Subscribe />
       </div>
       <div>
-        {currentUser && currentUser.isAdmin ? <NavBar /> : <NavBarClient />}
+        {currentUser && currentUser.isAdmin === "si" ? (
+          <NavBar />
+        ) : (
+          <NavBarClient />
+        )}
       </div>
       <footer>
         <Footer />

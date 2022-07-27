@@ -14,7 +14,7 @@ export default function Paginated({
     pageNumbers.push(i);
   }
  */
-  let matematic = allProducts / 8;
+  // let matematic = allProducts / 8;
   //arreglar
 
   return (

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { getToCart, addToCart } from "../../actions";
 import Paginated from "../paginated/Paginated";
 import ProductCard from "./../productCard/ProductCard";
 import style from "./MapProducts.module.css";
@@ -15,14 +17,23 @@ export default function MapProducts({
   nextPage,
 }) {
   //estados locales
-  const [carrito, setCarrito] = useState([]);
+  const [carrito, setCarrito] = useState();
+  const dispatch = useDispatch();
+  const [currentUser, setCurrentUser] = useState("");
+  const [cart, setCart] = useSelector((state) => state.estadopepito);
 
   //seteo de estados
   useEffect(() => {
-    const carrito = JSON.parse(localStorage.getItem("carrito"));
-    setCarrito(carrito);
-    console.log(carrito);
-  }, []);
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (currentUser.userId) {
+      setCurrentUser(currentUser);
+      dispatch(getToCart());
+      setCarrito(cart);
+    } else {
+      setCarrito(JSON.parse(localStorage.getItem("carrito")));
+    }
+    console.log(cart);
+  }, [dispatch]);
 
   function handleProduct(product) {
     if (!localStorage.getItem("carrito")) {

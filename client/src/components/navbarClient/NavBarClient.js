@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import S from "./NavBarClient.module.css";
-import { BsSearch } from "react-icons/bs";
+
 
 export default function NavBar() {
   function logOut() {
