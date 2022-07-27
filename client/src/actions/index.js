@@ -20,7 +20,20 @@ export const GET_USER = "GET_USER"
 export const GET_ORDERS = "GET_ORDERS"
 export const ORDER_BY_STATUS = "ORDER_BY_STATUS"
 export const ORDERS_BY_USER = "ORDERS_BY_USER"
+export const EDIT_ORDER = "EDIT_ORDER"
 
+
+
+export function putOrder(id,payload){
+    console.log(payload)
+    return async function(dispatch){
+        let data = await axios.put(`https://green--shop.herokuapp.com/tadeo/orders/status/${id}`, payload );
+        return dispatch({
+            type: EDIT_ORDER,
+            payload: data.data
+        })
+    }
+}
 
 export const getOrders = () => {
     return async (dispatch) => {

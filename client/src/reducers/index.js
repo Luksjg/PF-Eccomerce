@@ -17,6 +17,7 @@ import {
   ORDER_BY_STATUS,
   GET_ORDERS,
   ORDERS_BY_USER,
+  EDIT_ORDER,
 } from "../actions/index";
 
 const InitialState = {
@@ -153,6 +154,11 @@ function rootReducer(state = InitialState, action) {
       }
     case ORDERS_BY_USER:
       console.log(action.payload)
+      return {
+        ...state,
+        orders: action.payload,
+      }
+    case EDIT_ORDER:
       return {
         ...state,
         orders: action.payload,

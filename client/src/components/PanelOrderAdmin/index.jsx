@@ -45,26 +45,33 @@ function PanelOrderAdmin() {
             allOrders.map((order,i) => (
               <div key={order.id}>
                 <div>
-                  <p>{order.user.email}</p>
-                  <p>{order.shipping}</p>
-                  <p>{order.paymentMethod}</p>
-                  <p>{order.status}</p>
+                  <p>Email:{order.user.email}</p>
+                  <p>Tipo de envio:{order.shipping}</p>
+                  <p>Metoto de Pago:{order.paymentMethod}</p>
+                  <p>Estado:{order.status}</p>
                   <p>{order.received}</p>
                   <p>{order.buyDate}</p>
                   <p>{order.paymentId}</p>
                   <p>{order.paymentStatus}</p>
                   <p>{order.paymentDetail}</p>
                   <div>{order.products.map((e) => {
-                    return <div key={e}>
+                    return <div key={e.id}>
                             <Link to={`/product/${e.id}`}>{e.name}</Link>
                             </div>
                   })}</div>
-                  <div>{order.products.map((e) => {
-                    return <div key={e}>
-                      <p>{e.price}</p>
-                      <p>{e.orderline.quantity}</p>
+                  <div>{order.products.map((el) => {
+                    return <div key={el.id}>
+                      <p>Precio:{el.price}</p>
+                      <p>Cantidad:{el.orderline.quantity}</p>
                     </div>
                   })}</div>
+                </div>
+                <div>
+                  <button>
+                    <Link to={`/orderEdit/status/${order.id}`}>
+                      <p>Editar</p>
+                    </Link>
+                  </button>
                 </div>
               </div>
           )

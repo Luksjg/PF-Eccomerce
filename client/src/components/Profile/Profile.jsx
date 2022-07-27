@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ordersByUser, getUser } from "../../actions/index";
-import {Link} from 'react-router-dom'
+
 
 function Profile() {
   const dispatch = useDispatch();
-
   const { id } = useParams();
+
 
   const user = useSelector((state) => state.user);
 
