@@ -96,7 +96,7 @@ export default function ProductDetail() {
                 <Link to={`/producto/${id}`}></Link>
               )}
               <div className={style.editar}>
-                {currentUser && currentUser.isAdmin ? (
+                {currentUser && currentUser.isAdmin == "si" ? (
                   <Link to={`/editar/${id}`}>Editar Producto</Link>
                 ) : null}
               </div>
@@ -107,7 +107,11 @@ export default function ProductDetail() {
           <Comments />
         </div>
         <div>
-          {currentUser && currentUser.isAdmin ? <NavBar /> : <NavBarClient />}
+          {currentUser && currentUser.isAdmin == "si" ? (
+            <NavBar />
+          ) : (
+            <NavBarClient />
+          )}
         </div>
         <Footer />
       </div>
