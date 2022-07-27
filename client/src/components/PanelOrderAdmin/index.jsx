@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'
-import {getOrders, orderByStatus} from '../../actions/index'
+import {getOrders, filterByStatus} from '../../actions/index'
 import {useSelector, useDispatch} from 'react-redux'
 import {Link} from 'react-router-dom'
 
@@ -9,7 +9,7 @@ function PanelOrderAdmin() {
 
 
 
-  const allOrders = useSelector(state => state.orders)
+  const allOrders = useSelector(state => state.ordersFilter)
   const [orders, setOrders] = useState([])
 
 
@@ -19,10 +19,9 @@ function PanelOrderAdmin() {
   }, [dispatch])
 
 
-  function handleChange(e) {
-    dispatch(orderByStatus(e.target.value))
-    console.log(e.target.value)
+  function handleFilterByStatus(e) {
     e.preventDefault()
+    dispatch(filterByStatus(e.target.value))
   }
 
 
@@ -30,13 +29,14 @@ function PanelOrderAdmin() {
     <div>
       <h2>Panel De Administrador</h2>
       <div>
-        <select onChange={(e) => handleChange(e.target.value)}>
-          <option value="">All</option>
+        <select onChange={handleFilterByStatus}>
+          <option value="All">All</option>
           <option value="On Cart">On Cart</option>
-          <option value="processing">Processing</option>
-          <option value="shipped">Shipped</option>
-          <option value="delivered">Delivered</option>
-          <option value="cancelled">Cancelled</option>
+          <option value="Creada">Creada</option>
+          <option value="Procesando">Procesando</option>
+          <option value="Enviada">Enviada</option>
+          <option value="Cancelada">Cancelada</option>
+          <option value="Completa">Completa</option>
         </select>
       </div>
       <div>

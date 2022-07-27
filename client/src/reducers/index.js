@@ -30,7 +30,7 @@ const InitialState = {
   reviews: [],
   subs: [],
   orders: [],
-  orderStatus: "",
+  ordersFilter: [],
 };
 
 function orderP(a, b) {
@@ -141,11 +141,15 @@ function rootReducer(state = InitialState, action) {
       return {
         ...state,
         orders: action.payload,
+        ordersFilter: action.payload,
       };
     case ORDER_BY_STATUS:
+      const orderStatus = action.payload === 'All'
+      ? state.orders
+      : state.orders.filter((c) => c.status === action.payload)
       return {
         ...state,
-        orders: action.payload,
+        ordersFilter: orderStatus,
       }
     case ORDERS_BY_USER:
       console.log(action.payload)

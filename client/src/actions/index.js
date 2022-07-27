@@ -32,25 +32,22 @@ export const getOrders = () => {
     }
 }
 
-export const ordersByUser = (id) => {
-    return async (dispatch) => {
-        const res = await axios.get(`https://green--shop.herokuapp.com/tadeo/users/${id}/orders`)
-        dispatch({
-            type: ORDERS_BY_USER,
-            payload: res.data
-        })
+export function filterByStatus(payload){
+    return{
+      type: ORDER_BY_STATUS,
+      payload
     }
 }
 
-export const orderByStatus = (order) => {
-    return async (dispatch) => {
-        const res = await axios.get(`https://green--shop.herokuapp.com/tadeo/users/ordersByQuery?order=${order}`)
-        dispatch({
-            type: ORDER_BY_STATUS,
-            payload: res.data
-        })
-    }
-}
+// export const orderByStatus = (order) => {
+//     return async (dispatch) => {
+//         const res = await axios.get(`https://green--shop.herokuapp.com/tadeo/users/ordersByQuery?order=${order}`)
+//         dispatch({
+//             type: ORDER_BY_STATUS,
+//             payload: res.data
+//         })
+//     }
+// }
 
 
 export const resetPassword = (id,token) => {
