@@ -16,6 +16,10 @@ import {
   RESET_PASSWORD,
   CART_OF_USER,
   GET_ALL_USERS,
+  ORDER_BY_STATUS,
+  GET_ORDERS,
+  ORDERS_BY_USER,
+  EDIT_ORDER,
 } from "../actions/index";
 
 const InitialState = {
@@ -31,6 +35,8 @@ const InitialState = {
   subs: [],
   allUsers: [],
   estadopepito: [],
+  orders: [],
+  ordersFilter: [],
 };
 
 function orderP(a, b) {
@@ -138,6 +144,7 @@ function rootReducer(state = InitialState, action) {
         ...state,
         userInfo: action.payload,
       };
+
     case RESET_PASSWORD:
       return {
         ...state,
@@ -148,6 +155,31 @@ function rootReducer(state = InitialState, action) {
         ...state,
         allUsers: action.payload,
       };
+    case GET_ORDERS:
+      return {
+        ...state,
+        orders: action.payload,
+        ordersFilter: action.payload,
+      };
+    case ORDER_BY_STATUS:
+      const orderStatus = action.payload === 'All'
+      ? state.orders
+      : state.orders.filter((c) => c.status === action.payload)
+      return {
+        ...state,
+        ordersFilter: orderStatus,
+      }
+    case ORDERS_BY_USER:
+      console.log(action.payload)
+      return {
+        ...state,
+        orders: action.payload,
+      }
+    case EDIT_ORDER:
+      return {
+        ...state,
+        orders: action.payload,
+      }
     default:
       return state;
   }
