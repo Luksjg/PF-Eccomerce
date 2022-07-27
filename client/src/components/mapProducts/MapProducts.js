@@ -19,48 +19,45 @@ export default function MapProducts({
   const [carrito,setCarrito] = useState()
   const dispatch = useDispatch()
   const [currentUser,setCurrentUser] = useState("")
-  const [cart,setCart] = useSelector(state=>state.cart)
+  const [cart,setCart] = useSelector(state=>state.estadopepito)
 
   //seteo de estados
   useEffect(() => {
     const currentUser = (JSON.parse(localStorage.getItem("currentUser")));
-    if (currentUser) {
+    if (currentUser.userId) {
       setCurrentUser(currentUser)
-      currentUser && dispatch(getToCart())
+      dispatch(getToCart())
       setCarrito(cart);
-      console.log(cart)
     }else{
       setCarrito(JSON.parse(localStorage.getItem("carrito")));
-      console.log(cart)
     }
-  }, [dispatch]);
+    console.log(cart)
+  },[dispatch]);
 
   function handleProduct(product){
-    let id = currentUser.userId
+    // let id = currentUser.userId
+    
+    // let aux={
+    //   productId : product.id,
+    //   amount : product.price,
+    //   quantity: 1
+    // }
 
-    let aux={
-      productId : product.id,
-      amount : product.price,
-      quantity: 1
-    }
-
-    let products = cart
-    console.log(products)
-
-    if(id){
-      if(!products){
-        products.push(aux)
-        dispatch(addToCart(id,products))
-        alert(`Producto agregado al carrito`)
-      }else{
-        let repetidoback = products.find(p=>aux.productId === p.id)    
-        if(!repetidoback){
-          dispatch(addToCart(id,products))
-        }else{
-          alert("El producto ya está en el carrito");
-        }
-      }
-    }else{
+    // if(id){
+    //   if(!carrito){
+    //     setCarrito(carrito)
+    //     dispatch(addToCart(id,carrito))
+    //     alert(`Producto agregado al carrito`)
+    //   }else{
+    //     let repetidoback = carrito.find(p=>aux.productId === p.id)    
+    //     if(!repetidoback){
+    //       setCarrito(carrito)
+    //       dispatch(addToCart(id,carrito))
+    //     }else{
+    //       alert("El producto ya está en el carrito");
+    //     }
+    //   }
+    // }else{
       if (!localStorage.getItem("carrito")) {
         let a = [];
         a.push(product);
@@ -78,7 +75,7 @@ export default function MapProducts({
           alert("El producto ya está en el carrito");
         }
       }
-    }
+    // }
   }
 
   return (

@@ -30,6 +30,7 @@ const InitialState = {
   reviews: [],
   subs: [],
   allUsers: [],
+  estadopepito: [],
 };
 
 function orderP(a, b) {
@@ -45,9 +46,10 @@ function orderP(a, b) {
 function rootReducer(state = InitialState, action) {
   switch (action.type) {
     case CART_OF_USER:
+      console.log(action.payload);
       return {
         ...state,
-        cart: action.payload,
+        estadopepito: action.payload,
       };
     case GET_ALL_PRODUCTS:
       return {

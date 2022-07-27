@@ -6,55 +6,79 @@ import { getToCart, SumToCart } from "../../actions"
 import Footer from "../footer/Footer"
 import NavStore from "../NavStore/NavStore"
 
+
 export default function Cart(){
 
-    // const dispatch = useDispatch()
+    const [auxState,setAuxState]= useState("")
     const [currentUser,setCurrentUser] = useState("")
     const [totalPrice,setTotalPrice] = useState(1)
     const [carrito,setCarrito] = useState("")
-    const [stateAux,setStateAux]= useState("")
     const [cart,setCart] = useSelector(state=>state.cart)
     const dispatch = useDispatch()
 
-    function changeAmount(product,user,boolean){
-      let aux= totalPrice
-      if(user){
+    function changeAmount(product,boolean){
+      let aux= product.count
+      // if(currentUser){
         if(boolean){
           product.count += 1
-          setTotalPrice(aux+=1)
+          setTotalPrice(aux)
         }else{
           product.count -= 1
-          setTotalPrice(aux-=1)
-        }
+          setTotalPrice(aux)
+        // }
       }
     }
 
     function removeProduct(product){
-      console.log("x")
+      if(currentUser){
+        //aca lo deberia quitar del back
+      }else{
+        //aca deberia quitarlo del localStore
+      }
     }
-    
-    
+
+    // let data123;
+    // function getToCart(){
+    //   return async function(){
+    //       let data = await axios.get(`https://green--shop.herokuapp.com/tadeo/users/585451b2-931b-400e-b986-72a7d2b9ce3d/cart`)
+    //       data123 = data.data.products
+    //   }
+    // }
+
     useEffect(function () {
       const currentUser = JSON.parse(localStorage.getItem("currentUser"))
-      if(currentUser){
-      setCurrentUser(currentUser)
-      dispatch(getToCart(currentUser.userId))
-      setCarrito(cart)
-      console.log(cart)
-      }else{
+      // if(currentUser){
+      // setCurrentUser(currentUser)
+      // dispatch(getToCart(currentUser.userId))
+      // setCarrito(cart)
+      // }else{
         setCarrito(JSON.parse(localStorage.getItem("carrito")))
-      }
+      // }
       handlePrice()  
-    },[])
+    },[dispatch])
 
     
     function handlePrice(){
         let aux = 0 
-        setStateAux(aux)
-        // carrito && carrito.map(p=>(aux = Number(aux) + (Number(p.price) * Number(p.count)) ))
+        setAuxState(aux)
+        carrito && carrito.map(p=>(aux += p.price * p.count ))
         setTotalPrice(aux)
-      }
+    }
 
+    // function handleCart(){
+    //   let compra = JSON.parse(localStorage.getItem("carrito"))
+    //   let auxiliar=[];
+    //   compra.forEach(c ){
+    //     auxiliar.push({
+    //         productId : c.id,
+    //         amount : c.price,
+    //         quantity: c.count
+    //       })
+    //   }
+    //   console.log(compra)
+    // }
+
+    
     return(
         <div>
             <NavStore/>       
@@ -63,24 +87,26 @@ export default function Cart(){
               <p>Bienvenido {currentUser.username}</p>
             </div>
             <div>
-            {/* {carrito && carrito.map((product,i)=>{
+            {carrito && carrito.map((product,i)=>{
               return(
                 <div key={i}>
                   <img src={product.image} alt="product imagen" width="150px" height="150px"/>
-                  {console.log(product)}
                   <label>{product.name}</label>
                   <label> ${product.price}</label>
-                  <button onClick={()=>changeAmount(product,currentUser,true)}>+</button>
+                  <button onClick={()=>changeAmount(product,true)} disabled={product.count === product.stock? true : false}>+</button>
                   <label>{product.count}</label>
-                  <button onClick={()=>changeAmount(product,currentUser,false)}>-</button>
+                  <button onClick={()=>changeAmount(product,false)} disabled={product.count === 1? true : false}>-</button>
                   <label>Remover</label>
                   <button onClick={()=>removeProduct()}>x</button>
                 </div>
               )
-            })} */}
+            })}
             </div>
             <div>
               total price: {totalPrice}
+            </div>
+            <div>
+              {/* <button onClick={()=>handleCart()}>COMPRAR</button> */}
             </div>
             <div>
               <Link to="/historial">Historial</Link>
