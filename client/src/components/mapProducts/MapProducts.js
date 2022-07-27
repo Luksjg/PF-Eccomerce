@@ -19,41 +19,39 @@ export default function MapProducts({
   const [carrito,setCarrito] = useState()
   const dispatch = useDispatch()
   const [currentUser,setCurrentUser] = useState("")
-  const [cart,setCart] = useSelector(state=>state.cart)
+  const [cart,setCart] = useSelector(state=>state.estadopepito)
 
   //seteo de estados
   useEffect(() => {
     const currentUser = (JSON.parse(localStorage.getItem("currentUser")));
-    // if (currentUser.userId) {
-    //   setCurrentUser(currentUser)
-    //   dispatch(getToCart())
-    //   setCarrito(cart);
-    // }else{
+    if (currentUser.userId) {
+      setCurrentUser(currentUser)
+      dispatch(getToCart())
+      setCarrito(cart);
+    }else{
       setCarrito(JSON.parse(localStorage.getItem("carrito")));
-    // }
+    }
     console.log(cart)
   },[dispatch]);
 
   function handleProduct(product){
-    let id = currentUser.userId
+    // let id = currentUser.userId
     
-    let aux={
-      productId : product.id,
-      amount : product.price,
-      quantity: 1
-    }
-
-
+    // let aux={
+    //   productId : product.id,
+    //   amount : product.price,
+    //   quantity: 1
+    // }
 
     // if(id){
-    //   if(!cart){
-    //     setCarrito([...cart,aux])
+    //   if(!carrito){
+    //     setCarrito(carrito)
     //     dispatch(addToCart(id,carrito))
     //     alert(`Producto agregado al carrito`)
     //   }else{
-    //     let repetidoback = cart.find(p=>aux.productId === p.id)    
+    //     let repetidoback = carrito.find(p=>aux.productId === p.id)    
     //     if(!repetidoback){
-    //       setCarrito([...cart,aux])
+    //       setCarrito(carrito)
     //       dispatch(addToCart(id,carrito))
     //     }else{
     //       alert("El producto ya está en el carrito");

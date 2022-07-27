@@ -6,6 +6,7 @@ import { getToCart, SumToCart } from "../../actions"
 import Footer from "../footer/Footer"
 import NavStore from "../NavStore/NavStore"
 
+
 export default function Cart(){
 
     const [auxState,setAuxState]= useState("")
@@ -35,20 +36,26 @@ export default function Cart(){
         //aca deberia quitarlo del localStore
       }
     }
-    
-    
+
+    // let data123;
+    // function getToCart(){
+    //   return async function(){
+    //       let data = await axios.get(`https://green--shop.herokuapp.com/tadeo/users/585451b2-931b-400e-b986-72a7d2b9ce3d/cart`)
+    //       data123 = data.data.products
+    //   }
+    // }
+
     useEffect(function () {
       const currentUser = JSON.parse(localStorage.getItem("currentUser"))
       // if(currentUser){
       // setCurrentUser(currentUser)
       // dispatch(getToCart(currentUser.userId))
       // setCarrito(cart)
-      // console.log(cart)
       // }else{
         setCarrito(JSON.parse(localStorage.getItem("carrito")))
       // }
       handlePrice()  
-    },[])
+    },[dispatch])
 
     
     function handlePrice(){
@@ -56,8 +63,22 @@ export default function Cart(){
         setAuxState(aux)
         carrito && carrito.map(p=>(aux += p.price * p.count ))
         setTotalPrice(aux)
-      }
+    }
 
+    // function handleCart(){
+    //   let compra = JSON.parse(localStorage.getItem("carrito"))
+    //   let auxiliar=[];
+    //   compra.forEach(c ){
+    //     auxiliar.push({
+    //         productId : c.id,
+    //         amount : c.price,
+    //         quantity: c.count
+    //       })
+    //   }
+    //   console.log(compra)
+    // }
+
+    
     return(
         <div>
             <NavStore/>       
@@ -83,6 +104,9 @@ export default function Cart(){
             </div>
             <div>
               total price: {totalPrice}
+            </div>
+            <div>
+              {/* <button onClick={()=>handleCart()}>COMPRAR</button> */}
             </div>
             <div>
               <Link to="/historial">Historial</Link>
