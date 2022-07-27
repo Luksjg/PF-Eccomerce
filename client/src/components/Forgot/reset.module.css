@@ -16,12 +16,13 @@
     padding: 0;
     
 }
+
 .subcontainer{
     margin: auto;
     width: 30%;
-    height: 40vh;
+    height: 50vh;
     position: relative;
-    top: 25%;
+    top: 20%;
     box-shadow: -11px 6px 21px 5px #000000;
     background :linear-gradient(135deg,rgba(255,255,255,0.1),rgba(255,255,255,0));
     backdrop-filter: blur(10px);
@@ -29,33 +30,6 @@
     border-radius: 20px;
     
 }
-.form input{
-    background-color: transparent;
-    display: flex;
-    flex-direction: column;
-    padding-left: 15px;
-    margin-left: 109px;
-    margin-top: 80px;
-    margin-bottom: 50px;
-    font-size: 20px;
-    height: 40px;
-    width: 342px;
-    border: #FFFFFF 1px solid;
-    color: #FFFFFF;
-
-}
-.form ::placeholder{
-    color: #ffffff94;
-   padding-left: 10px;
-   font-size: 15px;
-}
-.form input:focus{
-    outline: none;
-}
-
-
-
-
 
 .title{
     display: flex;
@@ -70,6 +44,26 @@
     text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #860a48 0px 0px 20px, #860a48 0px 0px 30px, #860a48 0px 0px 40px, #860a48 0px 0px 50px, #860a48 0px 0px 75px;
 
 }
+.form input{
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+
+    margin-left: 109px;
+    margin-top: 80px;
+    margin-bottom: 50px;
+    height: 40px;
+    width: 350px;
+    border: #FFFFFF 1px solid;
+    color: #FFFFFF;
+    padding-left: 10px;
+}
+.form ::placeholder{
+    color: #FFFFFF;
+  
+   font-size: 15px;
+}
+
 .buttons{
     display: flex;
     flex-direction: row;

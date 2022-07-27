@@ -31,11 +31,11 @@ const NavStore = ({ setCurrentPage }) => {
     window.location.reload();
   }
   //estados locales
-  
+
   const [accessToken, setAccessToken] = useState("");
   const [currentUser, setCurrentUser] = useState("");
   //seteo de estados
-  
+
   useEffect(() => {
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -47,7 +47,6 @@ const NavStore = ({ setCurrentPage }) => {
       setCurrentUser(currentUser);
     }
   }, []);
-
 
   return (
     <div>

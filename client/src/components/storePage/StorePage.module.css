@@ -57,7 +57,7 @@ background-color: #000000c5;
 }
 .Selectores{
  /*  background-color: #3f13a4; */
-
+ margin-left: 10vw;
   width: 50vw;
   height: 5vh;
   display: flex;
@@ -86,7 +86,31 @@ font-size: 1.1rem;
 
 
 }
+.usuario label:hover{
+  color:#9FC54C;
+}
 .carrito{
   margin-bottom:8px;
   font-size: 1.2rem;
+  cursor: pointer;
+  margin-top: -20px;
+}
+
+.refresh{
+  position: relative;
+  top: 94vh;
+  left: 10px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: .5s;
+  position: fixed;
+;
+
+}
+.refreshh{
+width: 40px;
+height: 40px;
 }

@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { newSub } from "../../actions";
 import style from "./Subscribe.module.css";
+import Swal from "sweetalert2";
+
 export default function Subscribe() {
   const dispatch = useDispatch();
 
@@ -42,14 +44,18 @@ export default function Subscribe() {
   async function handleSubmit(e) {
     if (!input.name || !input.mail || !input.message) {
       e.preventDefault();
-      return alert("Complete todos los campos para subscribirte");
+      return Swal.fire(
+        "Error",
+        "Complete todos los campos para subscribirte",
+        "error"
+      );
     } else if (errors.mail) {
       e.preventDefault();
       return alert("email invalido");
     } else {
       e.preventDefault();
       dispatch(newSub(input));
-      alert("subscripcion exitosa");
+      Swal.fire("Muchas gracias!", "Suscripcion exitosa", "success");
       console.log(errors);
       console.log(input);
       setInput({

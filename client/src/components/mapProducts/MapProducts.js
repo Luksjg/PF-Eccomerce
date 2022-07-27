@@ -4,6 +4,7 @@ import Paginated from "../paginated/Paginated";
 import ProductCard from "./../productCard/ProductCard";
 import style from "./MapProducts.module.css";
 //var carro = [];
+import Swal from "sweetalert2";
 
 export default function MapProducts({
   productsToShow,
@@ -28,7 +29,11 @@ export default function MapProducts({
       var a = [];
       a.push(product);
       localStorage.setItem("carrito", JSON.stringify(a));
-      alert("Producto agregado al carrito", product.name);
+      Swal.fire(
+        "Producto agregado al carrito!",
+        "Revisa tu carro de compras",
+        "success"
+      );
       /*   window.location.reload(); */
     } else {
       var a = [];
@@ -37,10 +42,14 @@ export default function MapProducts({
       if (!repetido) {
         a.push(product);
         localStorage.setItem("carrito", JSON.stringify(a));
-        alert("Producto agregado al carrito", product.name);
+        Swal.fire(
+          "Producto agregado al carrito!",
+          "Revisa tu carro de compras",
+          "success"
+        );
         /*       window.location.reload(); */
       } else {
-        alert("El producto ya está en el carrito");
+        Swal.fire("Este producto ya ha sido agregado", "", "error");
       }
     }
   }

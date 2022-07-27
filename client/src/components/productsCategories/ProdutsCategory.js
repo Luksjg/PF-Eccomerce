@@ -9,6 +9,9 @@ import style from "./ProdutsCategory.module.css";
 import NavStore from "./../NavStore/NavStore";
 import LoginBtn from "../navbar/loginBTN/LoginBtn";
 import { FiShoppingCart } from "react-icons/fi";
+import { getAllProducts } from "../../actions";
+import { FiRefreshCw } from "react-icons/fi";
+import refresh from "../storePage/refresh.png";
 
 export default function ProductsCategory() {
   const [order1, setOrder1] = useState("null");
@@ -33,6 +36,10 @@ export default function ProductsCategory() {
     setCurrentPage(1);
   }
 
+  function handleRefresh() {
+    dispatch(getAllProducts());
+    setCurrentPage(1);
+  }
   useEffect(() => {
     dispatch(getByCategory(category));
   }, [dispatch, category]);
@@ -77,7 +84,9 @@ export default function ProductsCategory() {
           <Categories />
         </div>
       </div>
-
+      <button onClick={handleRefresh} className={style.refresh}>
+        <img src={refresh} alt='refresh' className={style.refreshh} />
+      </button>
       <Footer />
     </div>
   );
