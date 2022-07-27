@@ -15,6 +15,7 @@ import {
   GET_USER,
   RESET_PASSWORD,
   CART_OF_USER,
+  GET_ALL_USERS,
 } from "../actions/index";
 
 const InitialState = {
@@ -25,9 +26,10 @@ const InitialState = {
   users: [],
   user: [],
   userInfo: [],
-  cart:[],
+  cart: [],
   reviews: [],
   subs: [],
+  allUsers: [],
 };
 
 function orderP(a, b) {
@@ -43,10 +45,10 @@ function orderP(a, b) {
 function rootReducer(state = InitialState, action) {
   switch (action.type) {
     case CART_OF_USER:
-      return{
+      return {
         ...state,
         cart: action.payload,
-      }
+      };
     case GET_ALL_PRODUCTS:
       return {
         ...state,
@@ -134,11 +136,16 @@ function rootReducer(state = InitialState, action) {
         ...state,
         userInfo: action.payload,
       };
-      case RESET_PASSWORD:
-            return{
-                ...state,
-                userInfo: action.payload
-            }
+    case RESET_PASSWORD:
+      return {
+        ...state,
+        userInfo: action.payload,
+      };
+    case GET_ALL_USERS:
+      return {
+        ...state,
+        allUsers: action.payload,
+      };
     default:
       return state;
   }
