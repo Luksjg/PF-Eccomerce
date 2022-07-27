@@ -47,7 +47,7 @@ function rootReducer(state = InitialState, action) {
       console.log(action.payload)
       return{
         ...state,
-        estadopepito: action.payload,
+        cart: action.payload,
       }
     case GET_ALL_PRODUCTS:
       return {
@@ -147,3 +147,4 @@ function rootReducer(state = InitialState, action) {
 }
 
 export default rootReducer;
+// } David estuvo aqui

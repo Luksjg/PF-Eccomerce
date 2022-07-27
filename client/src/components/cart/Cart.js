@@ -1,8 +1,8 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
-import { getToCart, SumToCart } from "../../actions"
+import { getToCart } from "../../actions"
 import Footer from "../footer/Footer"
 import NavStore from "../NavStore/NavStore"
 
@@ -12,8 +12,9 @@ export default function Cart(){
     const [auxState,setAuxState]= useState("")
     const [currentUser,setCurrentUser] = useState("")
     const [totalPrice,setTotalPrice] = useState(1)
-    const [carrito,setCarrito] = useState("")
-    const [cart,setCart] = useSelector(state=>state.cart)
+    const [carrito,setCarrito] = useState()
+    const [loading,setLoading] = useState(false) 
+    const cart  = useSelector(state=>state.cart)
     const dispatch = useDispatch()
 
     function changeAmount(product,boolean){
@@ -37,25 +38,25 @@ export default function Cart(){
       }
     }
 
-    // let data123;
-    // function getToCart(){
-    //   return async function(){
-    //       let data = await axios.get(`https://green--shop.herokuapp.com/tadeo/users/585451b2-931b-400e-b986-72a7d2b9ce3d/cart`)
-    //       data123 = data.data.products
-    //   }
-    // }
 
-    useEffect(function () {
+
+    useEffect(()=> {
       const currentUser = JSON.parse(localStorage.getItem("currentUser"))
-      // if(currentUser){
-      // setCurrentUser(currentUser)
-      // dispatch(getToCart(currentUser.userId))
-      // setCarrito(cart)
-      // }else{
-        setCarrito(JSON.parse(localStorage.getItem("carrito")))
-      // }
+      if(currentUser){
+      setCurrentUser(currentUser)
+      dispatch(getToCart(currentUser.userId))
+      setCarrito(cart)
+      console.log(cart)
+      setLoading(true)
+    }else{
+      setCarrito(JSON.parse(localStorage.getItem("carrito")))
+      console.log(carrito)
+      }
       handlePrice()  
-    },[dispatch])
+    },[dispatch,setLoading])
+
+    //te llega en el estado de redux tool??
+    //CREO QE LOS PUTOS ME TIRARON LA BASE DE DATOS
 
     
     function handlePrice(){
@@ -68,7 +69,7 @@ export default function Cart(){
     // function handleCart(){
     //   let compra = JSON.parse(localStorage.getItem("carrito"))
     //   let auxiliar=[];
-    //   compra.forEach(c ){
+      // compra.forEach(c){
     //     auxiliar.push({
     //         productId : c.id,
     //         amount : c.price,
@@ -76,7 +77,9 @@ export default function Cart(){
     //       })
     //   }
     //   console.log(compra)
-    // }
+    // Esta andando??????
+    // pusiste npm start
+    // } David estuvo aqui
 
     
     return(
@@ -86,21 +89,23 @@ export default function Cart(){
             <div>
               <p>Bienvenido {currentUser.username}</p>
             </div>
+
+            {console.log(carrito)}
             <div>
-            {carrito && carrito.map((product,i)=>{
-              return(
-                <div key={i}>
-                  <img src={product.image} alt="product imagen" width="150px" height="150px"/>
-                  <label>{product.name}</label>
-                  <label> ${product.price}</label>
-                  <button onClick={()=>changeAmount(product,true)} disabled={product.count === product.stock? true : false}>+</button>
-                  <label>{product.count}</label>
-                  <button onClick={()=>changeAmount(product,false)} disabled={product.count === 1? true : false}>-</button>
-                  <label>Remover</label>
-                  <button onClick={()=>removeProduct()}>x</button>
-                </div>
-              )
-            })}
+            {carrito?.length > 0 ? carrito?.map((product,i)=>{
+            return(
+              <div key={i}>
+              <img src={product.image} alt="product imagen" width="150px" height="150px"/>
+              <label>{product.name}</label>
+              <label> ${product.price}</label>
+              <button onClick={()=>changeAmount(product,true)} disabled={product.count === product.stock? true : false}>+</button>
+              <label>{product.count}</label>
+              <button onClick={()=>changeAmount(product,false)} disabled={product.count === 1? true : false}>-</button>
+              <label>Remover</label>
+              <button onClick={()=>removeProduct()}>x</button>
+            </div>
+            )
+            }):<div>Loadig</div>}
             </div>
             <div>
               total price: {totalPrice}
