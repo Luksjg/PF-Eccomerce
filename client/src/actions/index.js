@@ -92,7 +92,9 @@ export function getAllProducts() {
 }
 
 export function addToCart(product, id) {
+  console.log(product)
   return async function (dispatch) {
+    // console.log(product)
     let data = await axios.post(
       `https://green--shop.herokuapp.com/tadeo/add/585451b2-931b-400e-b986-72a7d2b9ce3d`,
       product
