@@ -1,0 +1,29 @@
+.containerproducts{
+    min-height: 80vh;
+    background-color: #EEEEEE;
+}
+.container{
+    background-color: #fff;
+
+    width: 60%;
+    margin-left: 20%;
+}
+.titulo{
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    background-color: #EEEEEE;
+}
+
+.container2{
+ /*    background-color: yellowgreen; */
+    border-bottom: #9d9696 1px solid ;
+    display: flex;
+    
+}
+.name{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+    position: relative;
+}

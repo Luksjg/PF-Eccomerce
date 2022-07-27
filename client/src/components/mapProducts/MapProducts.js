@@ -25,14 +25,14 @@ export default function MapProducts({
   //seteo de estados
   useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    if (currentUser.userId) {
+    /*  if (currentUser.userId) {
       setCurrentUser(currentUser);
       dispatch(getToCart());
       setCarrito(cart);
-    } else {
-      setCarrito(JSON.parse(localStorage.getItem("carrito")));
-    }
-    console.log(cart);
+    } else { */
+    setCarrito(JSON.parse(localStorage.getItem("carrito")));
+    /*    } */
+    /*     console.log(cart); */
   }, [dispatch]);
 
   function handleProduct(product) {
