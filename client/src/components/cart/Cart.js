@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
-import { getToCart } from "../../actions"
+// import { getToCart } from "../../actions"
 import Footer from "../footer/Footer"
 import NavStore from "../NavStore/NavStore"
 
@@ -13,9 +13,9 @@ export default function Cart(){
     const [currentUser,setCurrentUser] = useState("")
     const [totalPrice,setTotalPrice] = useState(1)
     const [carrito,setCarrito] = useState()
-    const [loading,setLoading] = useState(false) 
-    const cart  = useSelector(state=>state.cart)
-    const dispatch = useDispatch()
+    // const [loading,setLoading] = useState(false) 
+    // const cart  = useSelector(state=>state.cart)
+    // const dispatch = useDispatch()
 
     function changeAmount(product,boolean){
       let aux= product.count
@@ -42,18 +42,17 @@ export default function Cart(){
 
     useEffect(()=> {
       const currentUser = JSON.parse(localStorage.getItem("currentUser"))
-      if(currentUser){
-      setCurrentUser(currentUser)
-      dispatch(getToCart(currentUser.userId))
-      setCarrito(cart)
-      console.log(cart)
-      setLoading(true)
-    }else{
-      setCarrito(JSON.parse(localStorage.getItem("carrito")))
-      console.log(carrito)
-      }
+      // if(currentUser){
+      //   setCurrentUser(currentUser)
+      //   dispatch(getToCart(currentUser.userId))
+      //   setCarrito(cart)
+      // }else{
+        setCarrito(JSON.parse(localStorage.getItem("carrito")))
+      // }
+      // console.log(carrito)
+      // setLoading(true)
       handlePrice()  
-    },[dispatch,setLoading])
+    },[])
 
     //te llega en el estado de redux tool??
     //CREO QE LOS PUTOS ME TIRARON LA BASE DE DATOS
@@ -77,8 +76,6 @@ export default function Cart(){
     //       })
     //   }
     //   console.log(compra)
-    // Esta andando??????
-    // pusiste npm start
     // } David estuvo aqui
 
     
@@ -89,10 +86,9 @@ export default function Cart(){
             <div>
               <p>Bienvenido {currentUser.username}</p>
             </div>
-
-            {console.log(carrito)}
             <div>
-            {carrito?.length > 0 ? carrito?.map((product,i)=>{
+              {handlePrice}
+            {carrito?.length > 0 ? carrito.map((product,i)=>{
             return(
               <div key={i}>
               <img src={product.image} alt="product imagen" width="150px" height="150px"/>
