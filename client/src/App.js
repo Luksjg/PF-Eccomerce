@@ -17,12 +17,18 @@ import UserData from "./components/userData/UserData";
 import forgot from "./components/Forgot/forgotPassword.jsx"
 import resetPassword from "./components/Forgot/resetPassword"
 import Cart from "./components/cart/Cart"
+import PanelOrderAdmin from "./components/PanelOrderAdmin";
+import Profile from "./components/Profile/Profile";
+import OrderEdit from './components/PanelOrderAdmin/editarOrden'
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Switch> 
+          <Route exact path="/orderEdit/status/:id" component={OrderEdit} />
+          <Route exact path="/Profile/:id" component={Profile} />
+          <Route exact path="/PanelAdminOrd" component={PanelOrderAdmin} />
           <Route path='/resetPassword' component={resetPassword} />
           <Route path='/forgotPassword' component={forgot} />
           <Route exact path="/" component={Home} />
