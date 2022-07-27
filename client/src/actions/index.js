@@ -42,13 +42,10 @@ export const ordersByUser = (id) => {
     }
 }
 
-export const orderByStatus = (order) => {
-    return async (dispatch) => {
-        const res = await axios.get(`https://green--shop.herokuapp.com/tadeo/users/ordersByQuery?order=${order}`)
-        dispatch({
-            type: ORDER_BY_STATUS,
-            payload: res.data
-        })
+export function filterByStatus(payload){
+    return{
+      type: ORDER_BY_STATUS,
+      payload
     }
 }
 
