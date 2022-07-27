@@ -107,7 +107,7 @@ export default function Cart(){
             <div>
             <div>
             <button onClick={()=> cartSubmit()} disabled={!currentUser.userId ? true: false}>
-                Comprar
+                Siguiente
               </button>
             </div>
             </div>
