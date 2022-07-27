@@ -46,7 +46,11 @@ export default function Home() {
         <Subscribe />
       </div>
       <div>
-        {currentUser && currentUser.isAdmis === "si" ? <NavBar /> : <NavBarClient />}
+        {currentUser && currentUser.isAdmin === "si" ? (
+          <NavBar />
+        ) : (
+          <NavBarClient />
+        )}
       </div>
       <footer>
         <Footer />
