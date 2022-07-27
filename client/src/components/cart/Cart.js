@@ -22,40 +22,47 @@ export default function Cart(){
       // if(currentUser){
         if(boolean){
           product.count += 1
-          setTotalPrice(aux)
+          handlePrice()
         }else{
           product.count -= 1
-          setTotalPrice(aux)
+          handlePrice()
         // }
       }
     }
 
     function removeProduct(product){
-      if(currentUser){
-        //aca lo deberia quitar del back
-      }else{
-        //aca deberia quitarlo del localStore
-      }
+      // console.log(product)
+        let array = carrito.filter(p=>p.id !== product.id)
+        localStorage.setItem("carrito", JSON.stringify(array))
+        setCarrito(array)
     }
 
+    function cartSubmit(){
+      console.log(carrito)
+      let array = carrito.map(p=>{
+        return {
+          productId : p.id,
+          amount : p.price * p.count,
+          quantity: p.count
+      }
+    })
+    console.log(array)
+    }
 
 
     useEffect(()=> {
       const currentUser = JSON.parse(localStorage.getItem("currentUser"))
-      // if(currentUser){
-      //   setCurrentUser(currentUser)
+      if(currentUser){
+        setCurrentUser(currentUser)
       //   dispatch(getToCart(currentUser.userId))
       //   setCarrito(cart)
-      // }else{
+      }
         setCarrito(JSON.parse(localStorage.getItem("carrito")))
       // }
       // console.log(carrito)
       // setLoading(true)
       handlePrice()  
-    },[])
-
-    //te llega en el estado de redux tool??
-    //CREO QE LOS PUTOS ME TIRARON LA BASE DE DATOS
+    },[auxState])
 
     
     function handlePrice(){
@@ -65,26 +72,17 @@ export default function Cart(){
         setTotalPrice(aux)
     }
 
-    // function handleCart(){
-    //   let compra = JSON.parse(localStorage.getItem("carrito"))
-    //   let auxiliar=[];
-      // compra.forEach(c){
-    //     auxiliar.push({
-    //         productId : c.id,
-    //         amount : c.price,
-    //         quantity: c.count
-    //       })
-    //   }
-    //   console.log(compra)
-    // } David estuvo aqui
-
     
     return(
         <div>
             <NavStore/>       
             <div>---------------------------------------------------</div>
             <div>
+              {currentUser.userId ?
               <p>Bienvenido {currentUser.username}</p>
+              :
+              <p>Por favor ingrese a su cuenta para realizar la compra</p>
+              }
             </div>
             <div>
               {handlePrice}
@@ -98,7 +96,7 @@ export default function Cart(){
               <label>{product.count}</label>
               <button onClick={()=>changeAmount(product,false)} disabled={product.count === 1? true : false}>-</button>
               <label>Remover</label>
-              <button onClick={()=>removeProduct()}>x</button>
+              <button onClick={()=>removeProduct(product)}>x</button>
             </div>
             )
             }):<div>Loadig</div>}
@@ -107,7 +105,11 @@ export default function Cart(){
               total price: {totalPrice}
             </div>
             <div>
-              {/* <button onClick={()=>handleCart()}>COMPRAR</button> */}
+            <div>
+            <button onClick={()=> cartSubmit()} disabled={!currentUser.userId ? true: false}>
+                Comprar
+              </button>
+            </div>
             </div>
             <div>
               <Link to="/historial">Historial</Link>
