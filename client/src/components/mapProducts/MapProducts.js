@@ -35,39 +35,7 @@ export default function MapProducts({
   }, []);
 
   function handleProduct(product) {
-    let id = currentUser.userId;
-    // let aux = {
-    //   id: product.id,
-    //   name: product.name,
-    //   stock: product.stock,
-    //   image: product.image,
-    //   price: product.price,
-    //   category: product.category,
-    //   orderline: {
-    //     amount: product.price,
-    //     quantity: 1
-    //   }
-    // }
-
-    // if(id){
-    //   if(carrito?.length === 0){
-    //     setCarrito([...carrito,aux])
-    //     console.log("el carrito esta vacio", carrito)
-    //     dispatch(addToCart(carrito,id))
-    //     alert(`Producto agregado al carrito`)
-    //   }else{
-    //     let repetidoback = carrito.find(p=>aux === p)
-    //     console.log(repetidoback, "este producto esta repetido")
-    //     if(!repetidoback){
-    //       console.log("agregado al carrito", carrito)
-    //       setCarrito([...carrito,aux])
-    //       // console.log(carrito)
-    //       dispatch(addToCart(carrito,id))
-    //     }else{
-    //       alert("El producto ya está en el carrito");
-    //     }
-    //   }
-    // }else{
+    //let id = currentUser.userId;
     if (!localStorage.getItem("carrito")) {
       let a = [];
       a.push(product);
@@ -79,9 +47,21 @@ export default function MapProducts({
       );
       /*       window.location.reload(); */
     } else {
-      Swal.fire("Este producto ya ha sido agregado", "", "error");
+      let a = [];
+      a = JSON.parse(localStorage.getItem("carrito") || []);
+      let repetido = a.find((e) => product.id == e.id);
+      if (!repetido) {
+        a.push(product);
+        localStorage.setItem("carrito", JSON.stringify(a));
+        Swal.fire(
+          "Producto agregado al carrito!",
+          "Revisa tu carro de compras",
+          "success"
+        );
+      } else {
+        Swal.fire("Este producto ya ha sido agregado", "", "error");
+      }
     }
-    // }
   }
 
   return (
