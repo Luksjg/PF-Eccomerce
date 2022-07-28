@@ -90,7 +90,7 @@ export default function ProductDetail() {
               )}
               <div className={style.editar}>
                 {currentUser && currentUser.isAdmin === "si" ? (
-                  <Link to={`/editar/${id}`}>Editar Producto</Link>
+                  <Link to={`/editar_producto/${id}`}>Editar Producto</Link>
                 ) : null}
               </div>
             </div>
