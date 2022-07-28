@@ -86,11 +86,11 @@ export default function ProductDetail() {
               {product.stock > 0 ? (
                 <span>Añadir al carrito</span>
               ) : (
-                <Link to={`/editar_producto/${id}`}></Link>
+                <Link to={`/producto/${id}`}></Link>
               )}
               <div className={style.editar}>
                 {currentUser && currentUser.isAdmin === "si" ? (
-                  <Link to={`/editar/${id}`}>Editar Producto</Link>
+                  <Link to={`/editar_producto/${id}`}>Editar Producto</Link>
                 ) : null}
               </div>
             </div>
