@@ -7,6 +7,7 @@ export default function NavBar() {
   function logOut() {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("currentUser");
+    console.log(localStorage.getItem("accessToken"));
     Swal.fire("See ya king!");
     window.location.reload();
   }
@@ -18,12 +19,14 @@ export default function NavBar() {
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     if (accessToken) {
       setAccessToken(accessToken);
+      console.log(accessToken);
     }
   }, []);
   useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     if (currentUser) {
       setCurrentUser(currentUser);
+      console.log(currentUser,'soy el current');
     }
   }, []);
 
@@ -45,7 +48,7 @@ export default function NavBar() {
           </label> */}
         </Link>
         {currentUser ? (
-          <Link to={`/profile/${currentUser.id}`}>
+          <Link to={`/profile/${currentUser.userId}`}>
             <label>Perfil</label>
           </Link>
         ) : (
