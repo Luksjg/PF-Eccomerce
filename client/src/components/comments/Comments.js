@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory, useParams } from "react-router-dom";
@@ -43,19 +44,14 @@ export default function Comments() {
     }
   }
 
-  useEffect(() => {
-    dispatch(getReviews(idProduct.id));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
-
   const [currentUser, setCurrentUser] = useState("");
 
   useEffect(() => {
-    if (localStorage.getItem("currentUser")) {
-      setCurrentUser(JSON.parse(localStorage.getItem("currentUser")));
-      console.log(currentUser);
-    }
-  }, [currentUser, setCurrentUser]);
+    dispatch(getReviews(idProduct.id));
+
+    setCurrentUser(JSON.parse(localStorage.getItem("currentUser")));
+    console.log(currentUser);
+  }, [dispatch]);
 
   return (
     <div className={style.cont}>

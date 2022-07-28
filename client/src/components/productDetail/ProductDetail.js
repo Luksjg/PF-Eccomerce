@@ -23,16 +23,9 @@ export default function ProductDetail() {
   const [currentUser, setCurrentUser] = useState("");
   //seteo de estados
   useEffect(() => {
-    const accessToken = JSON.parse(localStorage.getItem("accessToken"));
-    if (accessToken) {
-      setAccessToken(accessToken);
-    }
-  }, []);
-  useEffect(() => {
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    if (currentUser) {
-      setCurrentUser(currentUser);
-    }
+    setAccessToken(JSON.parse(localStorage.getItem("accessToken")));
+    setCurrentUser(JSON.parse(localStorage.getItem("currentUser")));
+
   }, []);
 
   return (
@@ -96,7 +89,7 @@ export default function ProductDetail() {
                 <Link to={`/producto/${id}`}></Link>
               )}
               <div className={style.editar}>
-                {currentUser && currentUser.isAdmin == "si" ? (
+                {currentUser && currentUser.isAdmin === "si" ? (
                   <Link to={`/editar/${id}`}>Editar Producto</Link>
                 ) : null}
               </div>
@@ -107,7 +100,7 @@ export default function ProductDetail() {
           <Comments />
         </div>
         <div>
-          {currentUser && currentUser.isAdmin == "si" ? (
+          {currentUser && currentUser.isAdmin === "si" ? (
             <NavBar />
           ) : (
             <NavBarClient />

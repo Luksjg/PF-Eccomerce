@@ -1,56 +1,64 @@
+import { getToCart } from "../../actions";
+
+import style from "./Cart.module.css";
+
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getToCart } from "../../actions";
+// import { getToCart } from "../../actions"
 import Footer from "../footer/Footer";
 import NavStore from "../NavStore/NavStore";
-import style from "./Cart.module.css";
 
 export default function Cart() {
   const [auxState, setAuxState] = useState("");
   const [currentUser, setCurrentUser] = useState("");
   const [totalPrice, setTotalPrice] = useState(1);
   const [carrito, setCarrito] = useState();
-  const [loading, setLoading] = useState(false);
-  const cart = useSelector((state) => state.cart);
-  const dispatch = useDispatch();
+  // const [loading,setLoading] = useState(false)
+  // const cart  = useSelector(state=>state.cart)
+  // const dispatch = useDispatch()
 
   function changeAmount(product, boolean) {
     let aux = product.count;
+    // if(currentUser){
     if (boolean) {
       product.count += 1;
       handlePrice();
     } else {
       product.count -= 1;
       handlePrice();
+      // }
     }
   }
 
   function removeProduct(product) {
-    if (currentUser) {
-      //aca lo deberia quitar del back
-    } else {
-      //aca deberia quitarlo del localStore
-    }
+    // console.log(product)
+    let array = carrito.filter((p) => p.id !== product.id);
+    localStorage.setItem("carrito", JSON.stringify(array));
+    setCarrito(array);
+  }
+
+  function cartSubmit() {
+    console.log(carrito);
+    let array = carrito.map((p) => {
+      return {
+        productId: p.id,
+        amount: p.price * p.count,
+        quantity: p.count,
+      };
+    });
+    console.log(array);
   }
 
   useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    /*   if(currentUser){
-      setCurrentUser(currentUser)
-      dispatch(getToCart(currentUser.userId))
-      setCarrito(cart)
-      console.log(cart)
-      setLoading(true)
-    }else{ */
+    if (currentUser) {
+      setCurrentUser(currentUser);
+    }
     setCarrito(JSON.parse(localStorage.getItem("carrito")));
-    /*   console.log(carrito)
-      }
-      handlePrice()   */
-  }, [dispatch, setLoading]);
 
-  //te llega en el estado de redux tool??
-  //CREO QE LOS PUTOS ME TIRARON LA BASE DE DATOS
+    handlePrice();
+  }, [auxState]);
 
   function handlePrice() {
     let aux = 0;
@@ -59,19 +67,6 @@ export default function Cart() {
     setTotalPrice(aux);
   }
 
-  // function handleCart(){
-  //   let compra = JSON.parse(localStorage.getItem("carrito"))
-  //   let auxiliar=[];
-  // compra.forEach(c){
-  //     auxiliar.push({
-  //         productId : c.id,
-  //         amount : c.price,
-  //         quantity: c.count
-  //       })
-  //   }
-  //   console.log(compra)
-  // Esta andando??????
-  // pusiste npm start
   // } David estuvo aqui
 
   return (

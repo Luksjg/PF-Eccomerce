@@ -17,27 +17,59 @@ export default function MapProducts({
   nextPage,
 }) {
   //estados locales
-  const [carrito, setCarrito] = useState();
+  const [carrito, setCarrito] = useState([]);
   const dispatch = useDispatch();
   const [currentUser, setCurrentUser] = useState("");
-  const [cart, setCart] = useSelector((state) => state.estadopepito);
+  const cart = useSelector((state) => state.cart);
 
   //seteo de estados
   useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    /*  if (currentUser.userId) {
-      setCurrentUser(currentUser);
-      dispatch(getToCart());
-      setCarrito(cart);
-    } else { */
+    // if (currentUser.userId) {
+    //   setCurrentUser(currentUser)
+    //   dispatch(getToCart())
+    //   setCarrito(cart);
+    // }else{
     setCarrito(JSON.parse(localStorage.getItem("carrito")));
-    /*    } */
-    /*     console.log(cart); */
-  }, [dispatch]);
+    // }
+  }, []);
 
   function handleProduct(product) {
+    let id = currentUser.userId;
+    // let aux = {
+    //   id: product.id,
+    //   name: product.name,
+    //   stock: product.stock,
+    //   image: product.image,
+    //   price: product.price,
+    //   category: product.category,
+    //   orderline: {
+    //     amount: product.price,
+    //     quantity: 1
+    //   }
+    // }
+
+    // if(id){
+    //   if(carrito?.length === 0){
+    //     setCarrito([...carrito,aux])
+    //     console.log("el carrito esta vacio", carrito)
+    //     dispatch(addToCart(carrito,id))
+    //     alert(`Producto agregado al carrito`)
+    //   }else{
+    //     let repetidoback = carrito.find(p=>aux === p)
+    //     console.log(repetidoback, "este producto esta repetido")
+    //     if(!repetidoback){
+    //       console.log("agregado al carrito", carrito)
+    //       setCarrito([...carrito,aux])
+    //       // console.log(carrito)
+    //       dispatch(addToCart(carrito,id))
+    //     }else{
+    //       alert("El producto ya está en el carrito");
+    //     }
+    //   }
+    // }else{
     if (!localStorage.getItem("carrito")) {
-      var a = [];
+      let a = [];
       a.push(product);
       localStorage.setItem("carrito", JSON.stringify(a));
       Swal.fire(
@@ -45,24 +77,11 @@ export default function MapProducts({
         "Revisa tu carro de compras",
         "success"
       );
-      /*   window.location.reload(); */
+      /*       window.location.reload(); */
     } else {
-      var a = [];
-      a = JSON.parse(localStorage.getItem("carrito") || []);
-      let repetido = a.find((e) => product.id == e.id);
-      if (!repetido) {
-        a.push(product);
-        localStorage.setItem("carrito", JSON.stringify(a));
-        Swal.fire(
-          "Producto agregado al carrito!",
-          "Revisa tu carro de compras",
-          "success"
-        );
-        /*       window.location.reload(); */
-      } else {
-        Swal.fire("Este producto ya ha sido agregado", "", "error");
-      }
+      Swal.fire("Este producto ya ha sido agregado", "", "error");
     }
+    // }
   }
 
   return (

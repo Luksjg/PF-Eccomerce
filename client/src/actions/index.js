@@ -18,6 +18,50 @@ export const EDIT_PRODUCT = "EDIT_PRODUCT";
 export const RESET_PASSWORD = "RESET_PASSWORD";
 export const GET_USER = "GET_USER";
 export const CART_OF_USER = "CART_OF_USER";
+export const GET_ORDERS = "GET_ORDERS"
+export const ORDER_BY_STATUS = "ORDER_BY_STATUS"
+export const ORDERS_BY_USER = "ORDERS_BY_USER"
+export const EDIT_ORDER = "EDIT_ORDER"
+
+
+
+export function putOrder(id,payload){
+    console.log(payload)
+    return async function(dispatch){
+        let data = await axios.put(`https://green--shop.herokuapp.com/tadeo/orders/status/${id}`, payload );
+        return dispatch({
+            type: EDIT_ORDER,
+            payload: data.data
+        })
+    }
+}
+
+export const getOrders = () => {
+    return async (dispatch) => {
+        const res = await axios.get('https://green--shop.herokuapp.com/tadeo/order/admin/product')
+        dispatch({
+            type: GET_ORDERS,
+            payload: res.data
+        })
+    }
+}
+
+export const ordersByUser = (id) => {
+    return async (dispatch) => {
+        const res = await axios.get(`https://green--shop.herokuapp.com/tadeo/users/${id}/orders`)
+        dispatch({
+            type: ORDERS_BY_USER,
+            payload: res.data
+        })
+    }
+}
+
+export function filterByStatus(payload){
+    return{
+      type: ORDER_BY_STATUS,
+      payload
+    }
+}
 
 export const resetPassword = (id, token) => {
   return (dispatch) => {
@@ -48,7 +92,9 @@ export function getAllProducts() {
 }
 
 export function addToCart(product, id) {
+  console.log(product)
   return async function (dispatch) {
+    // console.log(product)
     let data = await axios.post(
       `https://green--shop.herokuapp.com/tadeo/add/585451b2-931b-400e-b986-72a7d2b9ce3d`,
       product
