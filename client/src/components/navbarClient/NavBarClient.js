@@ -57,7 +57,6 @@ export default function NavBar() {
         </div>
       </div>
       {/* Only visible in admin user */}
-      //holi
     </div>
   );
 }

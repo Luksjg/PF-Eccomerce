@@ -129,11 +129,11 @@ export default function Cart() {
           )}
         </div>
       </div>
-      <div>total price: {totalPrice}</div>
+      <div className={style.priceTotal}>total price: {totalPrice}</div>
       <div>{/* <button onClick={()=>handleCart()}>COMPRAR</button> */}</div>
-      <div>
+      {/*      <div>
         <Link to='/profile'>Historial</Link>
-      </div>
+      </div> */}
 
       <Footer />
     </div>
