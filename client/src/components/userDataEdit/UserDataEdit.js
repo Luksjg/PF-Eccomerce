@@ -4,13 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUser, putUser } from "../../actions";
 import Footer from "../footer/Footer";
 import NavBar from "../navbar/NavBar";
-import styles from "./UserDataEdit.module.css"
+import styles from "./UserDataEdit.module.css";
 
 export default function UserDataEdit() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
-
 
   useEffect(() => {
     dispatch(getUser(id));
@@ -66,52 +65,62 @@ export default function UserDataEdit() {
       <br />
       <br />
       <div className={styles.container}>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <img src={input.profile_img} alt="not" width="250" height="250" />
-        <br />
-        <label>Cambiar imagen </label>
-        <input type="file" name="profile_img" onChange={uploadImage} />
-        <br />
-        <p>Username </p>
-        <input
-          type="text"
-          value={input.username}
-          name="username"
-          onChange={(e) => handleChange(e)}
-        />
-        <br />
-        <p>Email </p>
-        <input
-          type="text"
-          value={input.email}
-          name="email"
-          onChange={(e) => handleChange(e)}
-        />
-        <br />
-        <p>¿Es administrador? </p>
-        <input
-          type="text"
-          value={input.is_admin}
-          name="is_admin"
-          onChange={(e) => handleChange(e)}
-        />
-        <br />
-        <label>¿Usuario baneado? </label>
-        <select
-          value={input.disabled}
-          name="disabled"
-          onChange={(e) => handleChange(e)}
-        >
-          <option>no</option>
-          <option>si</option>
-        </select>
-        <div>
-          <button type="submit">Modificar</button>
-          <button>
-            <Link to={`/usuario/${id}`}>Cancelar</Link>
-          </button>
-        </div>
-      </form>
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <div className={styles.imagen}>
+            <img src={input.profile_img} alt='not' width='250' height='250' />
+            <br />
+          </div>
+          <br />
+          <div className={styles.user}>
+            <p>Username </p>
+            <input
+              type='text'
+              value={input.username}
+              name='username'
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+          <br />
+          <div className={styles.email}>
+            <p>Email </p>
+            <input
+              type='text'
+              value={input.email}
+              name='email'
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+          <br />
+          <div className={styles.admin}>
+            <p>¿Es administrador? </p>
+            <select
+              value={input.is_admin}
+              name='is_admin'
+              onChange={(e) => handleChange(e)}
+            >
+              <option>no</option>
+              <option>si</option>
+            </select>
+          </div>
+          <br />
+          <div className={styles.baneado}>
+            <label>¿Usuario baneado? </label>
+            <select
+              value={input.disabled}
+              name='disabled'
+              onChange={(e) => handleChange(e)}
+            >
+              <option>no</option>
+              <option>si</option>
+            </select>
+          </div>
+          <div className={styles.botones}>
+            <button type='submit'>Modificar</button>
+            <button>
+              <Link to={`/usuario/${id}`}>Cancelar</Link>
+            </button>
+          </div>
+        </form>
       </div>
       <Footer />
     </div>
