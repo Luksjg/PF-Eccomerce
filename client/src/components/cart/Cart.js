@@ -135,7 +135,17 @@ export default function Cart() {
           )}
         </div>
         <div>
-          <button onClick={()=>cartSubmit()}><Link to="/formulario">SIGUIENTE</Link></button>
+          <button onClick={()=>cartSubmit()} disabled={currentUser.userId ? false:true}>
+            {currentUser.userId?
+            <Link to="/formulario">SIGUIENTE</Link>
+            :
+            <div>
+              No disponible
+
+            </div>
+
+            }
+            </button>
         </div>
         <div className={style.priceTotal}>total price: {totalPrice}</div>
 
