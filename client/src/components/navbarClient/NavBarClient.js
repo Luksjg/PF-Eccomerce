@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import S from "./NavBarClient.module.css";
 
-
 export default function NavBar() {
   function logOut() {
     localStorage.removeItem("accessToken");
@@ -43,6 +42,9 @@ export default function NavBar() {
           {/* <label>
             <BsSearch />
           </label> */}
+        </Link>
+        <Link to={`/profile/${currentUser.id}`}>
+          <label>Perfil</label>
         </Link>
         <div>
           {accessToken ? (

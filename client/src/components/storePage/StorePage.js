@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Categories from "../categories/Categories";
 import Footer from "../footer/Footer";
 import MapProducts from "../mapProducts/MapProducts";
-
+import refresh from "../storePage/refresh.png";
 import { FiShoppingCart } from "react-icons/fi";
 import { getAllProducts, order } from "../../actions";
 import { Link } from "react-router-dom";
@@ -40,6 +40,11 @@ export default function StorePage() {
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
+
+  function handleRefresh() {
+    dispatch(getAllProducts());
+    setCurrentPage(1);
+  }
 
   function logOut() {
     localStorage.removeItem("accessToken");
@@ -94,10 +99,10 @@ export default function StorePage() {
             </div>
           </div>
           <div className={style.carrito}>
-            <Link to="/carrito">
-            <h3>
-              <FiShoppingCart />
-            </h3>
+            <Link to='/carrito'>
+              <h3>
+                <FiShoppingCart />
+              </h3>
             </Link>
           </div>
         </div>
@@ -117,6 +122,10 @@ export default function StorePage() {
           <Categories />
         </div>
       </div>
+
+      <button onClick={handleRefresh} className={style.refresh}>
+        <img src={refresh} alt='refresh' className={style.refreshh} />
+      </button>
 
       <Footer />
     </div>

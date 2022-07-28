@@ -1,4 +1,3 @@
-
 import "./App.module.css";
 import Home from "./components/home/Home.jsx";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -14,22 +13,35 @@ import ProductEdit from "./components/productEdit/ProductEdit";
 import Users from "./components/users/Users";
 import UserDataEdit from "./components/userDataEdit/UserDataEdit";
 import UserData from "./components/userData/UserData";
-import forgot from "./components/Forgot/forgotPassword.jsx"
-import resetPassword from "./components/Forgot/resetPassword"
-import Cart from "./components/cart/Cart"
+import FormMP from "./components/formMP/FormMP"
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import forgot from "./components/Forgot/forgotPassword.jsx";
+import resetPassword from "./components/Forgot/resetPassword";
+import Cart from "./components/cart/Cart";
 import PanelOrderAdmin from "./components/PanelOrderAdmin";
 import Profile from "./components/Profile/Profile";
-import OrderEdit from './components/PanelOrderAdmin/editarOrden'
-import FormMP from "./components/formMP/FormMP"
+import OrderEdit from "./components/PanelOrderAdmin/editarOrden";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <BrowserRouter>
-        <Switch> 
-          <Route exact path="/orderEdit/status/:id" component={OrderEdit} />
-          <Route exact path="/Profile/:id" component={Profile} />
-          <Route exact path="/PanelAdminOrd" component={PanelOrderAdmin} />
+        <ScrollToTop />
+
+        <Switch>
+          <Route exact path='/orderEdit/status/:id' component={OrderEdit} />
+          <Route exact path='/Profile/:id' component={Profile} />
+          <Route exact path='/PanelAdminOrd' component={PanelOrderAdmin} />
+
           <Route path='/resetPassword' component={resetPassword} />
           <Route path='/forgotPassword' component={forgot} />
           <Route exact path="/" component={Home} />

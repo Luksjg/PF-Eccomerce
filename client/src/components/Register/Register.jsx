@@ -67,7 +67,7 @@ function Register() {
                       required: true,
                       maxLength: 10,
                     })}
-                    placeholder='username'
+                    placeholder='Usuario'
                   />
                   <p>{errors.username?.message}</p>
 
@@ -82,7 +82,7 @@ function Register() {
                   <p>{errors.email?.message}</p>
 
                   <input
-                    placeholder='password'
+                    placeholder='Contraseña'
                     name='password'
                     type='password'
                     {...register("password")}
@@ -95,7 +95,7 @@ function Register() {
                   </div>
 
                   <input
-                    placeholder='confirm password'
+                    placeholder='Confirmar Contraseña'
                     name='confirmPassword'
                     type='password'
                     {...register("confirmPassword")}
