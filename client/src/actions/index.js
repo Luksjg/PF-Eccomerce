@@ -22,8 +22,35 @@ export const GET_ORDERS = "GET_ORDERS"
 export const ORDER_BY_STATUS = "ORDER_BY_STATUS"
 export const ORDERS_BY_USER = "ORDERS_BY_USER"
 export const EDIT_ORDER = "EDIT_ORDER"
+export const ORDER_TO_MP = "ORDER_TO_MP"
+export const GUARDAR = "GUARDAR"
+export const GUARDARMP = "GUARDARMP"
 
+export function guardar(payload){
+  return{
+    type:GUARDAR,
+    payload:payload
+  }
+}
 
+export function guardarMP(payload){
+  return{
+    type:GUARDARMP,
+    payload:payload
+  }
+}
+export function orderToMP(payload){
+  // console.log(payload)
+  return async function(dispatch){
+    let data = await axios.post(`https://green--shop.herokuapp.com/mp/5`,payload)
+    console.log(data)
+    // return data
+    return dispatch({
+      type: ORDER_TO_MP,
+      payload: data.data
+    })
+  }
+}
 
 export function putOrder(id,payload){
     console.log(payload)

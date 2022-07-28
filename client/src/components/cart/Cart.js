@@ -1,8 +1,8 @@
 
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Link } from "react-router-dom"
-// import { getToCart } from "../../actions"
+import { Link, useHistory } from "react-router-dom"
+import { orderToMP, guardar, guardarMP } from "../../actions"
 import Footer from "../footer/Footer"
 import NavStore from "../NavStore/NavStore"
 
@@ -13,40 +13,50 @@ export default function Cart(){
     const [currentUser,setCurrentUser] = useState("")
     const [totalPrice,setTotalPrice] = useState(1)
     const [carrito,setCarrito] = useState()
-    // const [loading,setLoading] = useState(false) 
-    // const cart  = useSelector(state=>state.cart)
-    // const dispatch = useDispatch()
+    const history = useHistory()
+    const dispatch = useDispatch()
 
     function changeAmount(product,boolean){
       let aux= product.count
-      // if(currentUser){
         if(boolean){
           product.count += 1
           handlePrice()
         }else{
           product.count -= 1
           handlePrice()
-        // }
       }
     }
 
+    
     function removeProduct(product){
-      // console.log(product)
+
         let array = carrito.filter(p=>p.id !== product.id)
         localStorage.setItem("carrito", JSON.stringify(array))
         setCarrito(array)
+
     }
 
     function cartSubmit(){
-      console.log(carrito)
       let array = carrito.map(p=>{
         return {
           productId : p.id,
           amount : p.price * p.count,
           quantity: p.count
       }
-    })
-    console.log(array)
+      })
+
+      let arraymp = carrito.map(p=>{
+        return{
+          title: p.name,
+          quantity: p.count,
+          price: p.price,
+        }
+      })
+    
+      dispatch(guardar(array))
+      dispatch(guardarMP(arraymp))
+      
+  
     }
 
 
@@ -54,13 +64,8 @@ export default function Cart(){
       const currentUser = JSON.parse(localStorage.getItem("currentUser"))
       if(currentUser){
         setCurrentUser(currentUser)
-      //   dispatch(getToCart(currentUser.userId))
-      //   setCarrito(cart)
       }
-        setCarrito(JSON.parse(localStorage.getItem("carrito")))
-      // }
-      // console.log(carrito)
-      // setLoading(true)
+      setCarrito(JSON.parse(localStorage.getItem("carrito")))
       handlePrice()  
     },[auxState])
 
@@ -107,7 +112,15 @@ export default function Cart(){
             <div>
             <div>
             <button onClick={()=> cartSubmit()} disabled={!currentUser.userId ? true: false}>
+              {currentUser.userId ?
+              <Link to={"/formulario"}>
                 Siguiente
+              </Link>
+              :
+              <div>
+                Siguiente
+              </div> 
+              } 
               </button>
             </div>
             </div>

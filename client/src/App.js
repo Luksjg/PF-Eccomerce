@@ -20,6 +20,7 @@ import Cart from "./components/cart/Cart"
 import PanelOrderAdmin from "./components/PanelOrderAdmin";
 import Profile from "./components/Profile/Profile";
 import OrderEdit from './components/PanelOrderAdmin/editarOrden'
+import FormMP from "./components/formMP/FormMP"
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route path="/editar_producto/:id" component={ProductEdit} />
           <Route path="/crearproducto" component={CreateProduct} />
           <Route path="/nosotros" component={WeAre} />
+          <Route path="/formulario" component={FormMP} />
           <Route path="*" component={Page404} />
         </Switch>
       </BrowserRouter>
