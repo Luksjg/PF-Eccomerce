@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "./index.module.css";
 import Page404 from "../page404/Page404";
-
+import Navbar from "../navbar/NavBar.js";
 function PanelOrderAdmin() {
   const dispatch = useDispatch();
   const [currentUser, setCurrentUser] = useState("");
@@ -31,6 +31,7 @@ function PanelOrderAdmin() {
         <Page404></Page404>
       ) : (
         <div>
+          <Navbar />
           <div className={styles.titulo}>
             <h1>Panel De Administrador</h1>
           </div>
