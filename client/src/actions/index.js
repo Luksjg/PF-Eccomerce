@@ -1,5 +1,6 @@
 import { async } from "@firebase/util";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
 export const GET_BY_CATEGORY = "GET_BY_CATEGORY";
@@ -19,13 +20,13 @@ export const EDIT_PRODUCT = "EDIT_PRODUCT";
 export const RESET_PASSWORD = "RESET_PASSWORD";
 export const GET_USER = "GET_USER";
 export const CART_OF_USER = "CART_OF_USER";
-export const GET_ORDERS = "GET_ORDERS"
-export const ORDER_BY_STATUS = "ORDER_BY_STATUS"
-export const ORDERS_BY_USER = "ORDERS_BY_USER"
-export const EDIT_ORDER = "EDIT_ORDER"
-export const ORDER_TO_MP = "ORDER_TO_MP"
-export const GUARDAR = "GUARDAR"
-export const GUARDARMP = "GUARDARMP"
+export const GET_ORDERS = "GET_ORDERS";
+export const ORDER_BY_STATUS = "ORDER_BY_STATUS";
+export const ORDERS_BY_USER = "ORDERS_BY_USER";
+export const EDIT_ORDER = "EDIT_ORDER";
+export const ORDER_TO_MP = "ORDER_TO_MP";
+export const GUARDAR = "GUARDAR";
+export const GUARDARMP = "GUARDARMP";
 
 
 
@@ -51,9 +52,12 @@ export function guardar(payload){
 // }
 export function orderToMP(payload){
   // console.log(payload)
-  return async function(dispatch){
-    let data = await axios.post(`https://green--shop.herokuapp.com/mp/5`,payload)
-    console.log(data)
+  return async function (dispatch) {
+    let data = await axios.post(
+      `https://green--shop.herokuapp.com/mp/5`,
+      payload
+    );
+    console.log(data);
     // return data
     return dispatch({
       type: ORDER_TO_MP,
@@ -62,42 +66,49 @@ export function orderToMP(payload){
   }
 }
 
-export function putOrder(id,payload){
-    console.log(payload)
-    return async function(dispatch){
-        let data = await axios.put(`https://green--shop.herokuapp.com/tadeo/orders/status/${id}`, payload );
-        return dispatch({
-            type: EDIT_ORDER,
-            payload: data.data
-        })
-    }
+export function putOrder(id, payload) {
+  console.log(payload);
+  return async function (dispatch) {
+    let data = await axios.put(
+      `https://green--shop.herokuapp.com/tadeo/orders/status/${id}`,
+      payload
+    );
+    return dispatch({
+      type: EDIT_ORDER,
+      payload: data.data,
+    });
+  };
 }
 
 export const getOrders = () => {
-    return async (dispatch) => {
-        const res = await axios.get('https://green--shop.herokuapp.com/tadeo/order/admin/product')
-        dispatch({
-            type: GET_ORDERS,
-            payload: res.data
-        })
-    }
-}
+  return async (dispatch) => {
+    const res = await axios.get(
+      "https://green--shop.herokuapp.com/tadeo/order/admin/product"
+    );
+    dispatch({
+      type: GET_ORDERS,
+      payload: res.data,
+    });
+  };
+};
 
 export const ordersByUser = (id) => {
-    return async (dispatch) => {
-        const res = await axios.get(`https://green--shop.herokuapp.com/tadeo/users/${id}/orders`)
-        dispatch({
-            type: ORDERS_BY_USER,
-            payload: res.data
-        })
-    }
-}
+  return async (dispatch) => {
+    const res = await axios.get(
+      `https://green--shop.herokuapp.com/tadeo/users/${id}/orders`
+    );
+    dispatch({
+      type: ORDERS_BY_USER,
+      payload: res.data,
+    });
+  };
+};
 
-export function filterByStatus(payload){
-    return{
-      type: ORDER_BY_STATUS,
-      payload
-    }
+export function filterByStatus(payload) {
+  return {
+    type: ORDER_BY_STATUS,
+    payload,
+  };
 }
 
 export const resetPassword = (id, token) => {
@@ -146,8 +157,6 @@ export function addToCart(product, id) {
 
 export function cofirmarCompra(product, id) {
   return async function (dispatch) {
-    console.log(product)
-    console.log("puta", id)
     let data = await axios.post(
       `https://green--shop.herokuapp.com/tadeo/users/${id}`, product
     );
@@ -210,7 +219,11 @@ export function getByName(name) {
       );
       console.log(json);
       if (json.data.length < 1) {
-        return alert("No pa ese no lo tenemo");
+        Swal.fire(
+          "Producto no encontrado",
+          "Por favor intente con otro nombre",
+          "error"
+        );
       } else {
         return dispatch({
           type: GET_BY_NAME,

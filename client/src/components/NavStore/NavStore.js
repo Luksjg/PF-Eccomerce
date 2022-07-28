@@ -5,6 +5,7 @@ import { BsSearch } from "react-icons/bs";
 import logo from "./logoShop.png";
 import { useDispatch } from "react-redux";
 import { getByName } from "../../actions";
+import Swal from "sweetalert2";
 // import LoginBtn from "../navbar/loginBTN/LoginBtn";
 
 const NavStore = ({ setCurrentPage }) => {
@@ -26,7 +27,7 @@ const NavStore = ({ setCurrentPage }) => {
   function logOut() {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("currentUser");
-    alert("Bye bye boss!");
+    Swal.fire("Bye bye boss!");
     window.location.reload();
   }
   //estados locales
@@ -52,29 +53,32 @@ const NavStore = ({ setCurrentPage }) => {
       <div className={S.navSup}>
         <div className={S.logos}>
           <Link to={"/"}>
-            <img src={logo} alt="logoSolo" />
+            <img src={logo} alt='logoSolo' />
           </Link>
           <div className={S.search}>
             <form onSubmit={(e) => handleClick(e)}>
               <input
-                type="text"
+                type='text'
                 value={name}
-                placeholder="Buscar productos..."
+                placeholder='Buscar productos...'
                 onChange={(e) => handleInputChange(e)}
               />
-              <button type="submit">
+              <button type='submit'>
                 <BsSearch />
               </button>
             </form>
           </div>
           <div className={S.botones}>
             {currentUser && currentUser.isAdmin == "si" ? (
-              <Link to="/crearproducto">
+              <Link to='/crearproducto'>
                 <label>Crear producto </label>
               </Link>
             ) : null}
-            <Link to="/">
+            <Link to='/'>
               <label>Home</label>
+            </Link>
+            <Link to='/tienda'>
+              <label>Tienda</label>
             </Link>
           </div>
         </div>

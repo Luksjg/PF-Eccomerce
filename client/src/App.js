@@ -41,7 +41,6 @@ function App() {
           <Route exact path='/orderEdit/status/:id' component={OrderEdit} />
           <Route exact path='/Profile/:id' component={Profile} />
           <Route exact path='/PanelAdminOrd' component={PanelOrderAdmin} />
-
           <Route path='/resetPassword' component={resetPassword} />
           <Route path='/forgotPassword' component={forgot} />
           <Route exact path="/" component={Home} />

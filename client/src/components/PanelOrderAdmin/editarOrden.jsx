@@ -4,11 +4,13 @@ import Footer from '../footer/Footer'
 import {Link,useParams,useHistory} from 'react-router-dom'
 import {useDispatch , useSelector} from 'react-redux'
 import {getOrders, putOrder} from '../../actions/index'
+import Page404 from '../page404/Page404'
 
 function EditarOrden() {
     const {id} = useParams()
     const dispatch = useDispatch()
     const history = useHistory()
+    const [currentUser,setCurrentUser] = useState("")
 
     useEffect(() => {
         dispatch(getOrders(id))
@@ -38,10 +40,20 @@ function EditarOrden() {
         })
     }
 
+    useEffect(()=>{
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        if (currentUser) {
+          setCurrentUser(currentUser);
+        }
+    },[])
+
 
   return (
     <div>
-        <div>
+        {currentUser && currentUser.isAdmin === "no" ?
+        <Page404></Page404>
+            :
+            <div>
             <NavBar/>
             <br/><br/>
             <div>---------------------------------------</div>
@@ -83,6 +95,7 @@ function EditarOrden() {
             <div>---------------------------------------</div>
             <Footer/>
         </div>
+        }
     </div>
   )
 }

@@ -1,0 +1,31 @@
+.container{
+    border: solid black 1px;
+    background-color: gray;
+    margin: 5px;
+    padding: 15px;
+    border-radius: 5px;
+
+}
+
+.container:hover{
+    opacity: 0.9;
+}
+
+
+.buscadorC input{
+    width: 250px;
+    height: 25px;
+    margin-left: 40vw;
+    margin-right: 10px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.buscadorC button{
+    width: 50px;
+    height: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+

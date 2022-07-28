@@ -111,7 +111,11 @@ export default function Loguin() {
     signInWithPopup(authentication, provider)
       .then((result) => {
         console.log(result);
-        localStorage.setItem("token", result.user.uid);
+        localStorage.setItem(
+          "accessToken",
+          JSON.stringify(result.user.accessToken)
+        );
+        localStorage.setItem("currentUser", JSON.stringify(result.user));
         history.push("/");
       })
       .catch((error) => {
@@ -143,49 +147,48 @@ export default function Loguin() {
             <form onSubmit={handleSubmit}>
               <div className={style.inputs}>
                 <input
-                  type='email'
-                  name='email'
-                  placeholder='👤 Email'
+                  type="email"
+                  name="email"
+                  placeholder="👤 Email"
                   onChange={handleChangeEmail}
                   value={usuario.email}
                 />
-                {errors.email && <p className='error'>{errors.email}</p>}
+                {errors.email && <p className="error">{errors.email}</p>}
                 <input
-                  type='password'
-                  name='password'
-                  placeholder='🔒 Password'
+                  type="password"
+                  name="password"
+                  placeholder="🔒 Password"
                   onChange={handleChangePassword}
                   value={usuario.password}
                 />
-                {errors.password && <p className='error'>{errors.password}</p>}
+                {errors.password && <p className="error">{errors.password}</p>}
               </div>
               <div className={style.bottonLogin}>
-                <button type='submit' onClick={handleSubmit}>
+                <button type="submit" onClick={handleSubmit}>
                   Login
                 </button>
               </div>
               <div className={style.olvido}>
-                <Link to='/forgotPassword' className='a'>
+                <Link to="/forgotPassword" className="a">
                   {" "}
                   <h4>forget your password ?</h4>
                 </Link>
               </div>
-
-              <div className={style.buttons}>
-                <div className={style.botonGoogle}>
-                  <button onClick={handleClickGoogle}>
-                    <img src={google} alt='google' />
-                  </button>
-                </div>
-                {/*    <div className={style.botonGithub}>
+            </form>
+            <div className={style.buttons}>
+              <div className={style.botonGoogle}>
+                <button onClick={handleClickGoogle}>
+                  <img src={google} alt="google" />
+                </button>
+              </div>
+              {/*    <div className={style.botonGithub}>
                   <button onClick={handleClickGithub}>
                     <img src={gith} alt='github' />
                   </button>
                 </div> */}
-              </div>
-            </form>
+            </div>
             <div className={style.registro}>
-              <Link to='/register' className='a'>
+              <Link to="/register" className="a">
                 <h4>Register</h4>
               </Link>
             </div>

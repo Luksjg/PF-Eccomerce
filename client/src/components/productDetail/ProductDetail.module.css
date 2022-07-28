@@ -8,6 +8,33 @@
     display: flex;
 }
 
+
+
+
+.agregar{
+    
+    margin-top: 20px;
+  
+    width: 8vw;
+    height: 5vh;
+    background-color: #3bceac;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.2rem;
+    font-family: Rubik, sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+   
+}
+.agregar:hover{
+    background-color: #0ead69;
+    color: white;
+    transition: .6s;
+}
+
+
 .name h3{
     font-size : 25px; 
     margin : 0px 0px 24px; 
@@ -75,24 +102,8 @@
     margin-left: 140px;
     text-transform : uppercase; 
 }
-.stock span{
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    width: 15vh;
-    height: 5vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black ;
-    background-color: #E3EDFB;
-    cursor: pointer;
-}
-.stock span:hover{
-    background-color: #66688D;
-    transition: .5s;
-    color: white;
- 
-}
+
+
 .price h3{
     margin-top: 30px;
     box-sizing : border-box; 
@@ -118,21 +129,4 @@
     margin-bottom: 35px;
     width: 15vh;
 
-}
-.editar:hover{
-    background-color: #66688D;
-    transition: .5s;
-    color: white;
-}
-.editar span{
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    width: 15vh;
-    height: 5vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black ;
-    background-color: #E3EDFB;
-    cursor: pointer;
 }

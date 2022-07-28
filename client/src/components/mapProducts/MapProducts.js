@@ -5,7 +5,6 @@ import { getToCart, addToCart } from "../../actions";
 import Paginated from "../paginated/Paginated";
 import ProductCard from "./../productCard/ProductCard";
 import style from "./MapProducts.module.css";
-//var carro = [];
 import Swal from "sweetalert2";
 
 export default function MapProducts({
@@ -25,17 +24,10 @@ export default function MapProducts({
   //seteo de estados
   useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    // if (currentUser.userId) {
-    //   setCurrentUser(currentUser)
-    //   dispatch(getToCart())
-    //   setCarrito(cart);
-    // }else{
     setCarrito(JSON.parse(localStorage.getItem("carrito")));
-    // }
   }, []);
 
   function handleProduct(product) {
-    //let id = currentUser.userId;
     if (!localStorage.getItem("carrito")) {
       let a = [];
       a.push(product);
@@ -45,7 +37,6 @@ export default function MapProducts({
         "Revisa tu carro de compras",
         "success"
       );
-      /*       window.location.reload(); */
     } else {
       let a = [];
       a = JSON.parse(localStorage.getItem("carrito") || []);
