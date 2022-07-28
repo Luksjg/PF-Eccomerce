@@ -17,14 +17,12 @@ export default function Cart() {
 
   function changeAmount(product, boolean) {
     let aux = product.count;
-    // if(currentUser){
     if (boolean) {
       product.count += 1;
-      setTotalPrice(aux);
+      handlePrice();
     } else {
       product.count -= 1;
-      setTotalPrice(aux);
-      // }
+      handlePrice();
     }
   }
 
@@ -139,7 +137,7 @@ export default function Cart() {
       <div>total price: {totalPrice}</div>
       <div>{/* <button onClick={()=>handleCart()}>COMPRAR</button> */}</div>
       <div>
-        <Link to='/historial'>Historial</Link>
+        <Link to='/profile'>Historial</Link>
       </div>
 
       <Footer />
