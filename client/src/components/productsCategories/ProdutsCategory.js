@@ -7,11 +7,10 @@ import Categories from "../categories/Categories";
 import Footer from "../footer/Footer";
 import style from "./ProdutsCategory.module.css";
 import NavStore from "./../NavStore/NavStore";
-import LoginBtn from "../navbar/loginBTN/LoginBtn";
 import { FiShoppingCart } from "react-icons/fi";
 import { getAllProducts } from "../../actions";
-import { FiRefreshCw } from "react-icons/fi";
 import refresh from "../storePage/refresh.png";
+import { Link } from "react-router-dom";
 
 export default function ProductsCategory() {
   const [order1, setOrder1] = useState("null");
@@ -44,6 +43,30 @@ export default function ProductsCategory() {
     dispatch(getByCategory(category));
   }, [dispatch, category]);
 
+  function logOut() {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("currentUser");
+    alert("Bye bye boss!");
+    window.location.reload();
+  }
+
+
+  const [accessToken, setAccessToken] = useState("");
+  const [currentUser, setCurrentUser] = useState("");
+  //seteo de estados
+  useEffect(() => {
+    const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+    if (accessToken) {
+      setAccessToken(accessToken);
+    }
+  }, []);
+  useEffect(() => {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (currentUser) {
+      setCurrentUser(currentUser);
+    }
+  }, []);
+
   return (
     <div className={style.container}>
       <NavStore setCurrentPage={setCurrentPage} />
@@ -59,12 +82,15 @@ export default function ProductsCategory() {
             <option value='maxPrice'>Menor precio</option>
             <option value='minPrice'>Mayor precio</option>
           </select>
-          <div className={style.usuario}>
-            {/*   <Link to='/loginjwt'>
+          <div>
+              {accessToken ? (
+                <label onClick={logOut}>Logout</label>
+              ) : (
+                <Link to='/login'>
                   <label>Login</label>
-                </Link> */}
-            <LoginBtn />
-          </div>
+                </Link>
+              )}
+            </div>
           <div className={style.carrito}>
             <h3>
               <FiShoppingCart />

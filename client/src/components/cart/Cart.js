@@ -89,9 +89,9 @@ export default function Cart() {
                   <div key={i} className={style.container2}>
                     <img
                       src={product.image}
-                      alt="product imagen"
-                      width="150px"
-                      height="150px"
+                      alt='product imagen'
+                      width='150px'
+                      height='150px'
                     />
                     <div className={style.name}>
                       <label>{product.name}</label>
@@ -127,11 +127,11 @@ export default function Cart() {
               );
             })
           ) : (
-            <div>No tiene productos en el carrito</div>
+            <div> Aun no hay nada en tu carrito!</div>
           )}
         </div>
       </div>
-      <div className={style.priceTotal}>total price: {totalPrice}</div>
+      <div className={style.priceTotal}>precio total: ${totalPrice}</div>
       <div>{/* <button onClick={()=>handleCart()}>COMPRAR</button> */}</div>
       {/*      <div>
           <Link to='/profile'>Historial</Link>

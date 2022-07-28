@@ -12,8 +12,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0px;
+    margin: 18px;
     padding: 3%;
+    border-color: solid black;
+    border-color: solid black;
+    border-color: solid black 1px;
+    border-top-color: grey;
+    border-right-color: grey;
+    border-bottom-color: grey;
+    border-left-color: grey;
+    border: solid grey 1px;
+    border-radius: 43px;
+    box-shadow: 1px black;
+    box-shadow: 14px -6px 21px 10px rgb(0 0 0 / 45%);
 
 }
 
@@ -41,7 +52,7 @@
     justify-content: center;
     align-items: flex-start;
     width: 27%;
-    margin-top: -8.5%;
+    margin-top: -2.5%;
     margin-left: -25%;
 }
 
@@ -51,7 +62,7 @@
     justify-content: center;
     align-items: flex-start;
     width: 27%;
-    margin-top: -8.5%;
+    margin-top: -3.5%;
     margin-left: 29%;
 }
 
@@ -61,9 +72,7 @@
     /* justify-content: center; */
     /* align-items: flex-start; */
     width: 13%;
-    margin-top: 2.5%;
-    /* margin-left: -33%;
-    margin-right: -10%; */
+    margin-top: -1.5%;
 }
 
 .linkS{
@@ -75,3 +84,35 @@
     margin-top: 2.5%;
     margin-left: -33%;
 }
+
+
+/* ============================================================ */
+
+
+/* From uiverse.io */
+.linkS button{
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .linkS button:hover {
+    background-color: #9FC54C;
+    box-shadow: 0px 15px 20px #9FC54C;
+    color: #fff;
+    transform: translateY(-7px);
+  }
+  
+  .linkS button:active {
+    transform: translateY(-1px);
+  }
