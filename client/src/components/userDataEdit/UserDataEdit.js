@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUser, putUser } from "../../actions";
 import Footer from "../footer/Footer";
 import NavBar from "../navbar/NavBar";
+import styles from "./UserDataEdit.module.css"
 
 export default function UserDataEdit() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
+
 
   useEffect(() => {
     dispatch(getUser(id));
@@ -63,14 +65,14 @@ export default function UserDataEdit() {
       <NavBar />
       <br />
       <br />
-      <div>---------------------------------------</div>
+      <div className={styles.container}>
       <form onSubmit={(e) => handleSubmit(e)}>
         <img src={input.profile_img} alt="not" width="250" height="250" />
         <br />
         <label>Cambiar imagen </label>
         <input type="file" name="profile_img" onChange={uploadImage} />
         <br />
-        <label>Username </label>
+        <p>Username </p>
         <input
           type="text"
           value={input.username}
@@ -78,7 +80,7 @@ export default function UserDataEdit() {
           onChange={(e) => handleChange(e)}
         />
         <br />
-        <label>Email </label>
+        <p>Email </p>
         <input
           type="text"
           value={input.email}
@@ -86,7 +88,7 @@ export default function UserDataEdit() {
           onChange={(e) => handleChange(e)}
         />
         <br />
-        <label>¿Es administrador? </label>
+        <p>¿Es administrador? </p>
         <input
           type="text"
           value={input.is_admin}
@@ -110,7 +112,7 @@ export default function UserDataEdit() {
           </button>
         </div>
       </form>
-      <div>---------------------------------------</div>
+      </div>
       <Footer />
     </div>
   );
