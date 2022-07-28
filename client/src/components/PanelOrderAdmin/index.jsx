@@ -74,7 +74,7 @@ function PanelOrderAdmin() {
                 </div>
               </div>
               <div className={styles.linkS}>
-                <button>
+                <button class="learn-more">
                   <Link to={`/orderEdit/status/${order.id}`}>
                     <p>Editar</p>
                   </Link>
