@@ -8,6 +8,7 @@ import NavBar from "../navbar/NavBar";
 import style from "./ProductDetail.module.css";
 import prueba from "./img.jpg";
 import NavBarClient from "../navbarClient/NavBarClient";
+import Swal from "sweetalert2";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -27,6 +28,34 @@ export default function ProductDetail() {
     setCurrentUser(JSON.parse(localStorage.getItem("currentUser")));
 
   }, []);
+
+  function handleProduct(product) {
+    if (!localStorage.getItem("carrito")) {
+      let a = [];
+      a.push(product);
+      localStorage.setItem("carrito", JSON.stringify(a));
+      Swal.fire(
+        "Producto agregado al carrito!",
+        "Revisa tu carro de compras",
+        "success"
+      );
+    } else {
+      let a = [];
+      a = JSON.parse(localStorage.getItem("carrito") || []);
+      let repetido = a.find((e) => product.id === e.id);
+      if (!repetido) {
+        a.push(product);
+        localStorage.setItem("carrito", JSON.stringify(a));
+        Swal.fire(
+          "Producto agregado al carrito!",
+          "Revisa tu carro de compras",
+          "success"
+        );
+      } else {
+        Swal.fire("Este producto ya ha sido agregado", "", "error");
+      }
+    }
+  }
 
   return (
     <div className={style.grandContainer}>
@@ -84,7 +113,7 @@ export default function ProductDetail() {
             </div>
             <div className={style.stock}>
               {product.stock > 0 ? (
-                <span>Añadir al carrito</span>
+                <button onClick={() => handleProduct(product)} className={style.agregar}>Añadir al carrito</button>
               ) : (
                 <Link to={`/producto/${id}`}></Link>
               )}
