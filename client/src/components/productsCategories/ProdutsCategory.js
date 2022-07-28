@@ -11,6 +11,7 @@ import LoginBtn from "../navbar/loginBTN/LoginBtn";
 import { FiShoppingCart } from "react-icons/fi";
 import { getAllProducts } from "../../actions";
 import { FiRefreshCw } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import refresh from "../storePage/refresh.png";
 
 export default function ProductsCategory() {
@@ -66,9 +67,11 @@ export default function ProductsCategory() {
             <LoginBtn />
           </div>
           <div className={style.carrito}>
-            <h3>
-              <FiShoppingCart />
-            </h3>
+          <Link to='/carrito'>
+              <h3>
+                <FiShoppingCart />
+              </h3>
+            </Link> 
           </div>
         </div>
       </div>

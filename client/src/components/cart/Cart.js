@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
-import {  guardar, guardarMP } from "../../actions"
+import {  guardar, orderToMP, addToCart } from "../../actions"
 import Footer from "../footer/Footer"
 import NavStore from "../NavStore/NavStore"
 import style from "./Cart.module.css"
@@ -52,8 +52,8 @@ export default function Cart(){
       })
     
       dispatch(guardar(array))
-      dispatch(guardarMP(arraymp))
-      // dispatch(orderToMP(arraymp))
+      dispatch(addToCart(array, currentUser.userId))
+      dispatch(orderToMP(arraymp))
     }
 
 
@@ -134,8 +134,12 @@ export default function Cart(){
             )}
           </div>
         </div>
+        <div>
+          <button onClick={()=>cartSubmit()}><Link to="/formulario">SIGUIENTE</Link></button>
+        </div>
         <div className={style.priceTotal}>total price: {totalPrice}</div>
-        <div>{/* <button onClick={()=>handleCart()}>COMPRAR</button> */}</div>
+
+
         {/*      <div>
           <Link to='/profile'>Historial</Link>
         </div> */}

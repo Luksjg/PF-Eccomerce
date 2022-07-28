@@ -1,3 +1,4 @@
+import { async } from "@firebase/util";
 import axios from "axios";
 
 export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
@@ -26,6 +27,15 @@ export const ORDER_TO_MP = "ORDER_TO_MP"
 export const GUARDAR = "GUARDAR"
 export const GUARDARMP = "GUARDARMP"
 
+
+
+export function postShipping(payload) {
+  return async function(dispatch) {
+    let data = await axios.post(`https://green--shop.herokuapp.com/envio`, payload);
+    return data
+  }
+}
+
 export function guardar(payload){
   return{
     type:GUARDAR,
@@ -33,12 +43,12 @@ export function guardar(payload){
   }
 }
 
-export function guardarMP(payload){
-  return{
-    type:GUARDARMP,
-    payload:payload
-  }
-}
+// export function guardarMP(payload){
+//   return{
+//     type:GUARDARMP,
+//     payload:payload
+//   }
+// }
 export function orderToMP(payload){
   // console.log(payload)
   return async function(dispatch){
@@ -47,7 +57,7 @@ export function orderToMP(payload){
     // return data
     return dispatch({
       type: ORDER_TO_MP,
-      payload: data.data
+      payload: data.data.init_point
     })
   }
 }
@@ -120,10 +130,11 @@ export function getAllProducts() {
 
 export function addToCart(product, id) {
   console.log(product)
+  console.log("puto", id)
   return async function (dispatch) {
     // console.log(product)
     let data = await axios.post(
-      `https://green--shop.herokuapp.com/tadeo/add/585451b2-931b-400e-b986-72a7d2b9ce3d`,
+      `https://green--shop.herokuapp.com/tadeo/add/${id}`,
       product
     );
     return dispatch({
@@ -133,10 +144,12 @@ export function addToCart(product, id) {
   };
 }
 
-export function getToCart() {
+export function cofirmarCompra(product, id) {
   return async function (dispatch) {
-    let data = await axios.get(
-      `https://green--shop.herokuapp.com/tadeo/users/585451b2-931b-400e-b986-72a7d2b9ce3d/cart`
+    console.log(product)
+    console.log("puta", id)
+    let data = await axios.post(
+      `https://green--shop.herokuapp.com/tadeo/users/${id}`, product
     );
     return dispatch({
       type: CART_OF_USER,
