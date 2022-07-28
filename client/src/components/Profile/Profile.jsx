@@ -28,10 +28,6 @@ function Profile() {
 
   return (
     <div>
-      {currentUser && currentUser.isAdmin === "no" ?
-      <Page404></Page404>
-        :
-        <div>
         <div>
           <h2>Profile</h2>
         </div>
@@ -65,8 +61,7 @@ function Profile() {
           )
           }
         </div>
-        </div>
-      }
+
     </div>
   );
 }
