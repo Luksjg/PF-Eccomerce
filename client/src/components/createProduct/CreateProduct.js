@@ -6,7 +6,7 @@ import Footer from "../footer/Footer";
 import NavBar from "../navbar/NavBar";
 import styles from "./CreateProduct.module.css";
 import foto from "./agregarfoto.png";
-
+import Swal from "sweetalert2";
 export default function CreateProduct() {
   // const [imagen,setimagen]=useState("")
 
@@ -59,7 +59,11 @@ export default function CreateProduct() {
       e.preventDefault();
       dispatch(postProduct(input));
       console.log(input);
-      alert("Producto creado exitosamente");
+      Swal.fire(
+        "Producto creado!",
+        "Los clientes ya pueden disfrutar del producto",
+        "success"
+      );
       console.log(input);
       history.push("/tienda");
       setInput({

@@ -6,7 +6,7 @@ import Footer from "../footer/Footer";
 import NavBar from "../navbar/NavBar";
 import styles from "./ProductEdit.module.css";
 import foto from "../createProduct/agregarfoto.png";
-
+import Swal from "sweetalert2";
 export default function ProductEdit() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -35,7 +35,11 @@ export default function ProductEdit() {
   async function handleSubmit(e) {
     e.preventDefault();
     dispatch(editProduct(input, id));
-    alert("Producto editado exitosamente");
+    Swal.fire(
+      "Producto editado!",
+      "Los clientes ya pueden disfrutar del producto",
+      "success"
+    );
     history.push(`/producto/${id}`);
   }
 
@@ -187,7 +191,7 @@ export default function ProductEdit() {
                 onChange={(e) => handleChange(e)}
                 name='disabled'
               >
-                <option value='null'>Desactivar producto </option>
+                <option>Desactivar producto </option>
                 <option>no</option>
                 <option>si</option>
               </select>

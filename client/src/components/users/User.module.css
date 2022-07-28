@@ -4,23 +4,28 @@
     margin: 5px;
     padding: 15px;
     border-radius: 5px;
+
 }
 
 .container:hover{
     opacity: 0.9;
 }
 
-.buscadorC{
-    margin-top: 15px;
-    margin-bottom: 15px;
-    margin-left: 50%;
+
+.buscadorC input{
+    width: 250px;
+    height: 25px;
+    margin-left: 40vw;
+    margin-right: 10px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.buscadorC button{
+    width: 50px;
+    height: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.buscador{
-    display: inline-block;
-}
-
-.input{
-
-    display: inline-block;
-}

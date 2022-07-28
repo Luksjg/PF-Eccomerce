@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { getUser } from "../../actions";
 import Footer from "../footer/Footer";
 import NavBar from "../navbar/NavBar";
-import styles from "./UserData.module.css"
+import styles from "./UserData.module.css";
 
 export default function UserData() {
   const { id } = useParams();
@@ -17,31 +17,37 @@ export default function UserData() {
   const user = useSelector((state) => state.user);
   //console.log("user", user);
   return (
-    <div>
+    <div className={styles.containerglobal}>
       <NavBar />
       <br />
       <br />
       <div className={styles.container}>
-      <img src={user.profile_img} alt="img" width="250" height="250"></img>
-      <p>{user.username}</p>
-      <p>{user.email}</p>
-      {user.is_admin === "si" ? (
-        <p>Es administrador</p>
-        ) : (
-          <p>No es administrador</p>
+        <div className={styles.imagen}>
+          <img src={user.profile_img} alt='img' width='250' height='250'></img>
+        </div>
+        <div className={styles.user}>
+          <p>{user.username}</p>
+        </div>
+        <div className={styles.email}>
+          <p>{user.email}</p>
+          {user.is_admin === "si" ? (
+            <p>Es administrador</p>
+          ) : (
+            <p>No es administrador</p>
           )}
-        {user.disabled === "si" ? (
-        <p>Usuario baneado</p>
-        ) : (
-          <p>Usuario vigente</p>
-        )}
-      <div>
-        <Link to={`/usuarioedit/${id}`}>
-          <span>Editar usuario</span>
-        </Link>
+          {user.disabled === "si" ? (
+            <p>Usuario baneado</p>
+          ) : (
+            <p>Usuario vigente</p>
+          )}
+        </div>
+        <div className={styles.editar}>
+          <Link to={`/usuarioedit/${id}`}>
+            <span>Editar usuario</span>
+          </Link>
+        </div>
       </div>
-      </div>
-        <Footer />
+      <Footer />
     </div>
   );
 }
