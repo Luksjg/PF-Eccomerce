@@ -20,14 +20,14 @@
   background-color: #fff;
   margin-top: 50px;
   margin-left: 230px;
-  height: 230vh;
+  min-height: 135vh;
   
   }
   .columnaC{
     background-color: #EDEDED;
     margin-top: 50px;
     margin-left: 50px;
-    height: 230vh;
+    min-height: 135vh;
     position: absolute;
     top: 0;
     left: 325px;
@@ -87,3 +87,24 @@
     margin-bottom:8px;
     font-size: 1.2rem;
   }
+
+
+  .refresh{
+    position: relative;
+    top: 94vh;
+    left: 10px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .5s;
+    position: fixed;
+  ;
+  
+  }
+  .refreshh{
+  width: 40px;
+  height: 40px;
+  }
+  

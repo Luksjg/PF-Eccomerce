@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getToCart, addToCart } from "../../actions"
+import { getToCart, addToCart } from "../../actions";
 import Paginated from "../paginated/Paginated";
 import ProductCard from "./../productCard/ProductCard";
 import style from "./MapProducts.module.css";
 //var carro = [];
+import Swal from "sweetalert2";
 
 export default function MapProducts({
   productsToShow,
@@ -16,27 +17,25 @@ export default function MapProducts({
   nextPage,
 }) {
   //estados locales
-  const [carrito,setCarrito] = useState([])
-  const dispatch = useDispatch()
-  const [currentUser,setCurrentUser] = useState("")
-  const cart = useSelector(state=>state.cart)
+  const [carrito, setCarrito] = useState([]);
+  const dispatch = useDispatch();
+  const [currentUser, setCurrentUser] = useState("");
+  const cart = useSelector((state) => state.cart);
 
   //seteo de estados
   useEffect(() => {
-    const currentUser = (JSON.parse(localStorage.getItem("currentUser")));
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     // if (currentUser.userId) {
     //   setCurrentUser(currentUser)
     //   dispatch(getToCart())
     //   setCarrito(cart);
     // }else{
-      setCarrito(JSON.parse(localStorage.getItem("carrito")));
+    setCarrito(JSON.parse(localStorage.getItem("carrito")));
     // }
-  },[]);
+  }, []);
 
-
-
-  function handleProduct(product){
-    let id = currentUser.userId
+  function handleProduct(product) {
+    let id = currentUser.userId;
     // let aux = {
     //   id: product.id,
     //   name: product.name,
@@ -50,7 +49,6 @@ export default function MapProducts({
     //   }
     // }
 
-    
     // if(id){
     //   if(carrito?.length === 0){
     //     setCarrito([...carrito,aux])
@@ -58,7 +56,7 @@ export default function MapProducts({
     //     dispatch(addToCart(carrito,id))
     //     alert(`Producto agregado al carrito`)
     //   }else{
-    //     let repetidoback = carrito.find(p=>aux === p)    
+    //     let repetidoback = carrito.find(p=>aux === p)
     //     console.log(repetidoback, "este producto esta repetido")
     //     if(!repetidoback){
     //       console.log("agregado al carrito", carrito)
@@ -70,23 +68,19 @@ export default function MapProducts({
     //     }
     //   }
     // }else{
-      if (!localStorage.getItem("carrito")) {
-        let a = [];
-        a.push(product);
-        localStorage.setItem("carrito", JSON.stringify(a));
-        alert(`Producto agregado al carrito`);
-      } else {
-        let a = [];
-        a = JSON.parse(localStorage.getItem("carrito") || []);
-        let repetido = a.find((e) => product.id === e.id);
-        if (!repetido) {
-          a.push(product);
-          localStorage.setItem("carrito", JSON.stringify(a));
-          alert("Producto agregado al carrito");
-        } else {
-          alert("El producto ya está en el carrito");
-        }
-      }
+    if (!localStorage.getItem("carrito")) {
+      let a = [];
+      a.push(product);
+      localStorage.setItem("carrito", JSON.stringify(a));
+      Swal.fire(
+        "Producto agregado al carrito!",
+        "Revisa tu carro de compras",
+        "success"
+      );
+      /*       window.location.reload(); */
+    } else {
+      Swal.fire("Este producto ya ha sido agregado", "", "error");
+    }
     // }
   }
 

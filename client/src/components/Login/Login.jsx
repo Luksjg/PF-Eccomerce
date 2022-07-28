@@ -10,6 +10,7 @@ import {
   GithubAuthProvider,
 } from "firebase/auth";
 import style from "./Login.module.css";
+import Swal from "sweetalert2";
 import gith from "./gith.png";
 import google from "./google.png";
 
@@ -92,12 +93,16 @@ export default function Loguin() {
             localStorage.setItem("currentUser", JSON.stringify(data));
             //console.log("token", data.accessToken);
             //console.log("currentUser", data);
-            alert("Login Successful");
+            Swal.fire(
+              "Login exitoso",
+              "disfruta de nuestros productos",
+              "success"
+            );
             history.push("/");
           }
         });
     } else {
-      alert("Login Failed");
+      Swal.fire("Login Failed", "Debes completar todos los campos", "error");
     }
   };
 

@@ -1,4 +1,3 @@
-
 import "./App.module.css";
 import Home from "./components/home/Home.jsx";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -14,37 +13,51 @@ import ProductEdit from "./components/productEdit/ProductEdit";
 import Users from "./components/users/Users";
 import UserDataEdit from "./components/userDataEdit/UserDataEdit";
 import UserData from "./components/userData/UserData";
-import forgot from "./components/Forgot/forgotPassword.jsx"
-import resetPassword from "./components/Forgot/resetPassword"
-import Cart from "./components/cart/Cart"
+
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import forgot from "./components/Forgot/forgotPassword.jsx";
+import resetPassword from "./components/Forgot/resetPassword";
+import Cart from "./components/cart/Cart";
 import PanelOrderAdmin from "./components/PanelOrderAdmin";
 import Profile from "./components/Profile/Profile";
-import OrderEdit from './components/PanelOrderAdmin/editarOrden'
+import OrderEdit from "./components/PanelOrderAdmin/editarOrden";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <BrowserRouter>
-        <Switch> 
-          <Route exact path="/orderEdit/status/:id" component={OrderEdit} />
-          <Route exact path="/Profile/:id" component={Profile} />
-          <Route exact path="/PanelAdminOrd" component={PanelOrderAdmin} />
+        <ScrollToTop />
+
+        <Switch>
+          <Route exact path='/orderEdit/status/:id' component={OrderEdit} />
+          <Route exact path='/Profile/:id' component={Profile} />
+          <Route exact path='/PanelAdminOrd' component={PanelOrderAdmin} />
+
           <Route path='/resetPassword' component={resetPassword} />
           <Route path='/forgotPassword' component={forgot} />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/tienda" component={StorePage} />
-          <Route path="/register" component={Register} />
-          <Route path="/login" component={Login} />
-          <Route path="/usuario/:id" component={UserData} />
-          <Route path="/usuarioedit/:id" component={UserDataEdit} />
-          <Route path="/usuarios" component={Users} />
-          <Route path="/carrito" component={Cart} />
-          <Route path="/producto/:id" component={ProductDetail} />
-          <Route path="/categoria/:category" component={ProductsCategory} />
-          <Route path="/editar_producto/:id" component={ProductEdit} />
-          <Route path="/crearproducto" component={CreateProduct} />
-          <Route path="/nosotros" component={WeAre} />
-          <Route path="*" component={Page404} />
+          <Route exact path='/' component={Home} />
+          <Route exact path='/tienda' component={StorePage} />
+          <Route path='/register' component={Register} />
+          <Route path='/login' component={Login} />
+          <Route path='/usuario/:id' component={UserData} />
+          <Route path='/usuarioedit/:id' component={UserDataEdit} />
+          <Route path='/usuarios' component={Users} />
+          <Route path='/carrito' component={Cart} />
+          <Route path='/producto/:id' component={ProductDetail} />
+          <Route path='/categoria/:category' component={ProductsCategory} />
+          <Route path='/editar_producto/:id' component={ProductEdit} />
+          <Route path='/crearproducto' component={CreateProduct} />
+          <Route path='/nosotros' component={WeAre} />
+          <Route path='*' component={Page404} />
         </Switch>
       </BrowserRouter>
     </div>

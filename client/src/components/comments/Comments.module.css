@@ -19,6 +19,33 @@
     text-transform : uppercase; 
 
 }
+.subcont p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    font-size: 1.3rem;
+}
+.subcont a{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35px;
+    font-size: 1.3rem;
+}
+
+
+.sesion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+
+}
+
+
 .caja textarea{
     margin-left: 100px;
     margin-top: 40px;
@@ -65,11 +92,11 @@
 .review{
    /*  background-color: #0ead69; */
     position: relative;
-    margin-top: -93vh;
+    margin-top: -70vh;
     width: 20vw;
-    height: 40vh;
+    height: 70vh;
     margin-left: 50vw;
-    box-shadow: 5px 5px 15px 5px #000000;
+    box-shadow: 1px 1px 5px 1px #000000;
     border-radius: 10px;
     border:#595959 solid 1px;
     
@@ -108,4 +135,15 @@
     padding:10px;
     box-sizing: border-box;
     
+    }
+
+    .ternario p{
+        font-size: 1.3rem;
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+        color:#050505;
+        font-family : Rubik, sans-serif; 
+        text-transform : lowercase; 
+
     }

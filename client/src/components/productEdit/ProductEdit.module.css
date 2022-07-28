@@ -50,6 +50,7 @@ position: absolute;
   font-size: 3em;
   margin-top: -20px;
   margin-bottom: 50px;
+  margin-left: 50px;
   position: relative;
 }
 
@@ -180,6 +181,9 @@ padding-top: 10px;
   background-color: #E3EDFB;
   cursor: pointer;
 }
+.cancelar a{
+  color: #050505;
+}
 .cancelar span:hover{
   background-color: #66688D;
   transition: .5s;
@@ -192,4 +196,31 @@ padding-top: 10px;
   justify-content: space-around;
   width: 100%;
   
+}
+
+.crear button{
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  width: 15vh;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black ;
+  background-color: #E3EDFB;
+  cursor: pointer;
+  border-color: transparent;
+}
+.crear button:hover{
+  background-color: #66688D;
+  transition: .5s;
+  color: white;
+}
+.desactivar select {
+  font-size: 20px;
+  height: 35px;
+  width: 100%;
+  border-color: #6b35e8;
+  outline: transparent;
+  box-sizing: border-box;
 }
