@@ -20,6 +20,9 @@ import {
   GET_ORDERS,
   ORDERS_BY_USER,
   EDIT_ORDER,
+  ORDER_TO_MP,
+  GUARDAR,
+  GUARDARMP
 } from "../actions/index";
 
 const InitialState = {
@@ -37,6 +40,9 @@ const InitialState = {
   estadopepito: [],
   orders: [],
   ordersFilter: [],
+  orderToMP:[],
+  guardar:[],
+  guardarMP:[]
 };
 
 function orderP(a, b) {
@@ -51,8 +57,23 @@ function orderP(a, b) {
 
 function rootReducer(state = InitialState, action) {
   switch (action.type) {
+    case GUARDAR:
+      return{
+        ...state,
+        guardar:action.payload
+      }
+    case GUARDARMP:
+      return{
+        ...state,
+        guardarMP: action.payload
+      }
+    case ORDER_TO_MP:
+      return{
+        ...state,
+        orderToMP: action.payload
+      }
     case CART_OF_USER:
-      console.log(action.payload);
+      // console.log(action.payload);
       return {
         ...state,
         cart: action.payload,

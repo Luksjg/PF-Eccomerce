@@ -1,45 +1,39 @@
-import { getToCart } from "../../actions";
-
-import style from "./Cart.module.css";
-
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-// import { getToCart } from "../../actions"
+import { guardar, guardarMP } from "../../actions";
 import Footer from "../footer/Footer";
 import NavStore from "../NavStore/NavStore";
+import style from "./Cart.module.css";
 
 export default function Cart() {
   const [auxState, setAuxState] = useState("");
   const [currentUser, setCurrentUser] = useState("");
   const [totalPrice, setTotalPrice] = useState(1);
   const [carrito, setCarrito] = useState();
-  // const [loading,setLoading] = useState(false)
-  // const cart  = useSelector(state=>state.cart)
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   function changeAmount(product, boolean) {
-    let aux = product.count;
-    // if(currentUser){
     if (boolean) {
       product.count += 1;
       handlePrice();
     } else {
       product.count -= 1;
       handlePrice();
-      // }
     }
   }
 
   function removeProduct(product) {
-    // console.log(product)
     let array = carrito.filter((p) => p.id !== product.id);
     localStorage.setItem("carrito", JSON.stringify(array));
     setCarrito(array);
+    let aux = 0;
+    setAuxState(aux);
+    array && array.map((p) => (aux += p.price * p.count));
+    setTotalPrice(aux);
   }
 
   function cartSubmit() {
-    console.log(carrito);
     let array = carrito.map((p) => {
       return {
         productId: p.id,
@@ -47,7 +41,18 @@ export default function Cart() {
         quantity: p.count,
       };
     });
-    console.log(array);
+
+    let arraymp = carrito.map((p) => {
+      return {
+        title: p.name,
+        quantity: p.count,
+        price: p.price,
+      };
+    });
+
+    dispatch(guardar(array));
+    dispatch(guardarMP(arraymp));
+    // dispatch(orderToMP(arraymp))
   }
 
   useEffect(() => {
@@ -56,7 +61,6 @@ export default function Cart() {
       setCurrentUser(currentUser);
     }
     setCarrito(JSON.parse(localStorage.getItem("carrito")));
-
     handlePrice();
   }, [auxState]);
 
@@ -66,8 +70,6 @@ export default function Cart() {
     carrito && carrito.map((p) => (aux += p.price * p.count));
     setTotalPrice(aux);
   }
-
-  // } David estuvo aqui
 
   return (
     <div>
@@ -115,7 +117,7 @@ export default function Cart() {
                     </div>
                     <div className={style.remover}>
                       <label>Remover</label>
-                      <button onClick={() => removeProduct()}>x</button>
+                      <button onClick={() => removeProduct(product)}>x</button>
                     </div>
                     <div className={style.price}>
                       <label> ${product.price}</label>
@@ -132,8 +134,8 @@ export default function Cart() {
       <div className={style.priceTotal}>precio total: ${totalPrice}</div>
       <div>{/* <button onClick={()=>handleCart()}>COMPRAR</button> */}</div>
       {/*      <div>
-        <Link to='/profile'>Historial</Link>
-      </div> */}
+          <Link to='/profile'>Historial</Link>
+        </div> */}
 
       <Footer />
     </div>

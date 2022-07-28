@@ -5,6 +5,7 @@ import { BsSearch } from "react-icons/bs";
 import logo from "./logoShop.png";
 import { useDispatch } from "react-redux";
 import { getByName } from "../../actions";
+import Swal from "sweetalert2";
 // import LoginBtn from "../navbar/loginBTN/LoginBtn";
 
 const NavStore = ({ setCurrentPage }) => {
@@ -26,7 +27,7 @@ const NavStore = ({ setCurrentPage }) => {
   function logOut() {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("currentUser");
-    alert("Bye bye boss!");
+    Swal.fire("Bye bye boss!");
     window.location.reload();
   }
   //estados locales
