@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import S from "./NavBarClient.module.css";
+import Swal from "sweetalert2";
 
 export default function NavBar() {
   function logOut() {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("currentUser");
-    alert("See ya king! ;)");
+    Swal.fire("See ya king!");
     window.location.reload();
   }
   //estados locales
@@ -29,28 +30,32 @@ export default function NavBar() {
   return (
     <div className={S.container}>
       <div className={S.botones}>
-        <Link to='/'>
+        <Link to="/">
           <label>Home</label>
         </Link>
-        <Link to='/tienda'>
+        <Link to="/tienda">
           <label>Tienda</label>
         </Link>
-        <Link to='/nosotros'>
+        <Link to="/nosotros">
           <label>Nosotros</label>
         </Link>
-        <Link to='/tienda'>
+        <Link to="/tienda">
           {/* <label>
             <BsSearch />
           </label> */}
         </Link>
-        <Link to={`/profile/${currentUser.id}`}>
-          <label>Perfil</label>
-        </Link>
+        {currentUser ? (
+          <Link to={`/profile/${currentUser.id}`}>
+            <label>Perfil</label>
+          </Link>
+        ) : (
+          ""
+        )}
         <div>
           {accessToken ? (
             <label onClick={logOut}>Logout</label>
           ) : (
-            <Link to='/login'>
+            <Link to="/login">
               <label>Login</label>
             </Link>
           )}
