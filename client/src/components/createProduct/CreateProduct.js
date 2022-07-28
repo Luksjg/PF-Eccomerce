@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { postProduct } from "../../actions";
@@ -6,9 +6,12 @@ import Footer from "../footer/Footer";
 import NavBar from "../navbar/NavBar";
 import styles from "./CreateProduct.module.css";
 import foto from "./agregarfoto.png";
+import Page404 from "../page404/Page404";
 
 export default function CreateProduct() {
   // const [imagen,setimagen]=useState("")
+
+  const [currentUser,setCurrentUser] = useState("")
 
   const [input, setInput] = useState({
     name: "",
@@ -19,6 +22,13 @@ export default function CreateProduct() {
     description: "",
     outsanding: "",
   });
+
+  useEffect(()=>{
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (currentUser) {
+      setCurrentUser(currentUser);
+    }
+  },[])
 
   const history = useHistory();
 
@@ -74,8 +84,16 @@ export default function CreateProduct() {
     }
   }
 
+  
   return (
+    
     <div>
+      {currentUser && currentUser.isAdmin === "no" ?
+      <div>
+        <Page404/>
+      </div>
+      :
+      <div>
       <NavBar />
       <br />
       <br />
@@ -192,6 +210,9 @@ export default function CreateProduct() {
         </form>
       </div>
       <Footer />
+      </div>
+      }
+      
     </div>
   );
 }

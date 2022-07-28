@@ -1,23 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getUser } from "../../actions";
 import Footer from "../footer/Footer";
 import NavBar from "../navbar/NavBar";
+import Page404 from "../page404/Page404";
 import styles from "./UserData.module.css"
 
 export default function UserData() {
   const { id } = useParams();
+    const [currentUser, setCurrentUser] = useState("");
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUser(id));
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (currentUser) {
+      setCurrentUser(currentUser);
+    }
   }, [dispatch, id]);
 
   const user = useSelector((state) => state.user);
-  //console.log("user", user);
   return (
     <div>
+      {currentUser && currentUser.isAdmin === "no" ?
+      <Page404></Page404>
+      :
+      <div>
       <NavBar />
       <br />
       <br />
@@ -42,6 +51,9 @@ export default function UserData() {
       </div>
       </div>
         <Footer />
+        </div>
+      }
+
     </div>
   );
 }

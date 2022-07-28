@@ -6,11 +6,13 @@ import Footer from "../footer/Footer";
 import NavBar from "../navbar/NavBar";
 import styles from "./ProductEdit.module.css";
 import foto from "../createProduct/agregarfoto.png";
+import Page404 from "../page404/Page404";
 
 export default function ProductEdit() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
+  const [currentUser,setCurrentUser] = useState("")
 
   async function uploadImage(e) {
     const files = e.target.files;
@@ -48,6 +50,10 @@ export default function ProductEdit() {
 
   useEffect(() => {
     dispatch(getProduct(id));
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (currentUser) {
+      setCurrentUser(currentUser);
+    }
   }, [dispatch, id]);
 
   const product = useSelector((state) => state.product);
@@ -65,7 +71,12 @@ export default function ProductEdit() {
 
   return (
     <div>
-      {console.log(product)}
+      {currentUser && currentUser.isAdmin === "no" ?
+      <div>
+        <Page404></Page404>
+      </div>
+      :
+      <div>
       <NavBar />
       <br />
       <br />
@@ -202,6 +213,9 @@ export default function ProductEdit() {
       </div>
 
       <Footer />
+      </div>
+      }
+
     </div>
   );
 }
