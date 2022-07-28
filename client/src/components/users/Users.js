@@ -5,9 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUsers, getAllUsers } from "../../actions";
 import { Link } from "react-router-dom";
 import styles from "./User.module.css"
+import Page404 from "../page404/Page404";
 
 export default function Users() {
   const [name, setName] = useState("");
+  const [currentUser,setCurrentUser] = useState("")
   const users = useSelector((state) => state.users);
   const allUsers = useSelector((state) => state.allUsers);
   const dispatch = useDispatch();
@@ -25,10 +27,18 @@ export default function Users() {
 
   useEffect(() => {
     dispatch(getAllUsers());
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (currentUser) {
+      setCurrentUser(currentUser);
+    }
   }, [dispatch,name]);
   //console.log("users", allUsers);
   return (
     <div>
+      {currentUser && currentUser.isAdmin === "no" ?
+      <Page404></Page404>
+      :
+      <div>
       <NavBar />
       <br />
       <br />
@@ -84,6 +94,9 @@ export default function Users() {
         })
         }
       <Footer />
+      </div>
+      }
+     
     </div>
   );
 }

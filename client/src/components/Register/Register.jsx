@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-
+import Swal from "sweetalert2";
 import style from "./Register.module.css";
 
 function Register() {

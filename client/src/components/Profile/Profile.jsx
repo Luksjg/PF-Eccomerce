@@ -1,12 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ordersByUser, getUser } from "../../actions/index";
 import style from "./Profile.module.css";
+import Page404 from "../page404/Page404";
+
 
 function Profile() {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const [currentUser, setCurrentUser] = useState("");
 
   const user = useSelector((state) => state.user);
 
@@ -16,6 +19,10 @@ function Profile() {
     // estar pendiente de los cambios del estado
     dispatch(getUser(id));
     dispatch(ordersByUser(id));
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (currentUser) {
+      setCurrentUser(currentUser);
+    }
   }, [dispatch, id]);
 
   console.log(allOrders, "soy este");
