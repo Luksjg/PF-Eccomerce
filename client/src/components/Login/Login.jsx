@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import validarEmail from "./validateEmail";
 import validatePassword from "./validatePassword";
 import { authentication } from "../firebase/config/firebase-config.js";

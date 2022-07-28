@@ -1,0 +1,105 @@
+.cardProfile{
+    width: 99%;
+    height: 100%;
+    margin-top: 15px;
+    margin-left: 10px;
+    /* margin-right: 22px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: darkgrey;
+    border-radius: 10px;
+}
+
+.profileDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: #852fa9f0;
+    margin-left: 234px;
+    height: 100%;
+    /* background-color: rgb(88 96 51); */
+    border-radius: 10px;
+}
+
+.h2Profile{
+    display: flex;
+    justify-content: stretch;
+    /* padding: 12px; */
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    /* size: 10px; */
+    font-size: 65px;
+    /* background-color: rgb(232, 72, 72); */
+    /* border-radius: 10px; */
+}
+
+.userDate{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgb(232, 72, 72); */
+    /* border-radius: 10px; */
+    align-items: center;
+}
+
+.pDates{
+    font-size: 36px;
+}
+
+.imgDiv{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 144px;
+    margin-right: -225px;
+    width: 34%;
+}
+
+.ordDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgb(232, 72, 72); */
+    /* border-radius: 10px; */
+    margin-left: -10px;
+    margin-right: -10px;
+    border-radius: 0px 0px 22px 30px;
+}
+
+.h2OrdersProfile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #732fb3;
+    font-size: 43px;
+    width: 100%;
+    height: 100%;
+}
+
+.ordersMetod{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgb(232, 72, 72); */
+    /* border-radius: 10px; */
+    margin-left: -10px;
+    margin-right: -10px;
+    border-radius: 0px 0px 22px 30px;
+}
+
+.pProfile{
+    font-size: xx-large;
+}

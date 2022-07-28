@@ -9,6 +9,7 @@ import style from "./ProdutsCategory.module.css";
 import NavStore from "./../NavStore/NavStore";
 import { FiShoppingCart } from "react-icons/fi";
 import { getAllProducts } from "../../actions";
+import { FiRefreshCw } from "react-icons/fi";
 import refresh from "../storePage/refresh.png";
 import { Link } from "react-router-dom";
 
@@ -92,9 +93,11 @@ export default function ProductsCategory() {
               )}
             </div>
           <div className={style.carrito}>
-            <h3>
-              <FiShoppingCart />
-            </h3>
+          <Link to='/carrito'>
+              <h3>
+                <FiShoppingCart />
+              </h3>
+            </Link> 
           </div>
         </div>
       </div>

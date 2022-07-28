@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { guardar, guardarMP } from "../../actions";
 import Footer from "../footer/Footer";
-import NavStore from "../NavStore/NavStore";
 import style from "./Cart.module.css";
+import NavStore from "./../NavStore/NavStore";
+
+import {  guardar, orderToMP, addToCart } from "../../actions"
 
 export default function Cart() {
   const [auxState, setAuxState] = useState("");
@@ -50,9 +51,9 @@ export default function Cart() {
       };
     });
 
-    dispatch(guardar(array));
-    dispatch(guardarMP(arraymp));
-    // dispatch(orderToMP(arraymp))
+    dispatch(guardar(array))
+    dispatch(addToCart(array, currentUser.userId))
+    dispatch(orderToMP(arraymp))
   }
 
   useEffect(() => {
@@ -133,14 +134,18 @@ export default function Cart() {
             </div>
           )}
         </div>
-      </div>
-      <div className={style.priceTotal}>precio total: ${totalPrice}</div>
-      <div>{/* <button onClick={()=>handleCart()}>COMPRAR</button> */}</div>
-      {/*      <div>
+        <div>
+          <button onClick={()=>cartSubmit()}><Link to="/formulario">SIGUIENTE</Link></button>
+        </div>
+        <div className={style.priceTotal}>total price: {totalPrice}</div>
+
+
+        {/*      <div>
           <Link to='/profile'>Historial</Link>
         </div> */}
 
       <Footer />
+    </div>
     </div>
   );
 }
