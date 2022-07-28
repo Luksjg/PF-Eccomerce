@@ -90,8 +90,8 @@ export default function Cart() {
           {carrito?.length > 0 ? (
             carrito?.map((product, i) => {
               return (
-                <div className={style.container2}>
-                  <div key={i}>
+                <div className={style.containerglobal}>
+                  <div key={i} className={style.container2}>
                     <img
                       src={product.image}
                       alt='product imagen'
