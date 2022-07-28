@@ -86,7 +86,7 @@ export default function ProductDetail() {
               {product.stock > 0 ? (
                 <span>Añadir al carrito</span>
               ) : (
-                <Link to={`/producto/${id}`}></Link>
+                <Link to={`/editar_producto/${id}`}></Link>
               )}
               <div className={style.editar}>
                 {currentUser && currentUser.isAdmin === "si" ? (
