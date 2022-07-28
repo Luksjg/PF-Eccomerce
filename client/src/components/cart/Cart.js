@@ -127,7 +127,10 @@ export default function Cart() {
               );
             })
           ) : (
-            <div> Aun no hay nada en tu carrito!</div>
+            <div className={style.ternario}>
+              {" "}
+              <h2>Aun no hay nada en tu carrito!</h2>
+            </div>
           )}
         </div>
       </div>

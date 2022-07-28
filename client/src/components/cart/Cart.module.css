@@ -102,3 +102,16 @@
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
+
+.ternario{
+  height: 50vh;
+}
+.ternario h2{
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  position: relative;
+  top: 50%;
+ /*  background-color: #eeeeee; */
+
+}

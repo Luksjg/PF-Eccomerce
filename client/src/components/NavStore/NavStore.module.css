@@ -11,6 +11,7 @@
   justify-content: center;
   align-items: flex-end;
   margin-left: 10vw;
+
 /*   background-color: #7f7792; */
 
 }
@@ -51,7 +52,8 @@ position: relative;
 .botones{
   position: relative;
   display: flex;
-  width: 11vw;
+  width: 20vw;
+
   margin-left: 20px;
 /*   background-color: #261e39; */
 
