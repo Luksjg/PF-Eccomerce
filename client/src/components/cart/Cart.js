@@ -125,11 +125,11 @@ export default function Cart() {
               );
             })
           ) : (
-            <div>Loadig</div>
+            <div> Aun no hay nada en tu carrito!</div>
           )}
         </div>
       </div>
-      <div className={style.priceTotal}>total price: {totalPrice}</div>
+      <div className={style.priceTotal}>precio total: ${totalPrice}</div>
       <div>{/* <button onClick={()=>handleCart()}>COMPRAR</button> */}</div>
       {/*      <div>
         <Link to='/profile'>Historial</Link>
