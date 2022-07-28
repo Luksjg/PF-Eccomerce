@@ -1,13 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ordersByUser, getUser } from "../../actions/index";
+import Page404 from "../page404/Page404";
 
 
 function Profile() {
   const dispatch = useDispatch();
   const { id } = useParams();
-
+  const [currentUser, setCurrentUser] = useState("");
 
   const user = useSelector((state) => state.user);
 
@@ -17,45 +18,50 @@ function Profile() {
     // estar pendiente de los cambios del estado
     dispatch(getUser(id));
     dispatch(ordersByUser(id));
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (currentUser) {
+      setCurrentUser(currentUser);
+    }
   }, [dispatch, id]);
 
   console.log(allOrders, 'soy este')
 
   return (
     <div>
-      <div>
-        <h2>Profile</h2>
-      </div>
-      <div>
-        <p>{user.email}</p>
-        <p>{user.username}</p>
-        <img src={user.profile_img} alt="" />
-      </div>
-      <div>
-        <h2>ORDENES:</h2>
-        {console.log(allOrders)}
-        {
-          allOrders.length > 0 ? (
-            allOrders.map((order) => (
-                <div key={order.id}>
-                  <div>
-                    <p>{order.shipping}</p>
-                    <p>{order.paymentMethod}</p>
-                    <p>{order.status}</p>
-                    <p>{order.received}</p>
-                    <p>{order.buyDate}</p>
-                    <p>{order.paymentId}</p>
-                    <p>{order.paymentStatus}</p>
-                    <p>{order.paymentDetail}</p>
-                    
+        <div>
+          <h2>Profile</h2>
+        </div>
+        <div>
+          <p>{user.email}</p>
+          <p>{user.username}</p>
+          <img src={user.profile_img} alt="" />
+        </div>
+        <div>
+          <h2>ORDENES:</h2>
+          {console.log(allOrders)}
+          {
+            allOrders.length > 0 ? (
+              allOrders.map((order) => (
+                  <div key={order.id}>
+                    <div>
+                      <p>{order.shipping}</p>
+                      <p>{order.paymentMethod}</p>
+                      <p>{order.status}</p>
+                      <p>{order.received}</p>
+                      <p>{order.buyDate}</p>
+                      <p>{order.paymentId}</p>
+                      <p>{order.paymentStatus}</p>
+                      <p>{order.paymentDetail}</p>
+                      
+                    </div>
                   </div>
-                </div>
-            )
-        )) : (
-          <p>No hay ordenes</p>
-        )
-        }
-      </div>
+              )
+          )) : (
+            <p>No hay ordenes</p>
+          )
+          }
+        </div>
+
     </div>
   );
 }
