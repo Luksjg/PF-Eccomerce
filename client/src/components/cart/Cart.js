@@ -67,8 +67,6 @@ export default function Cart() {
     setTotalPrice(aux);
   }
 
-  // } David estuvo aqui
-
   return (
     <div>
       <NavStore />
@@ -87,9 +85,9 @@ export default function Cart() {
                   <div key={i} className={style.container2}>
                     <img
                       src={product.image}
-                      alt='product imagen'
-                      width='150px'
-                      height='150px'
+                      alt="product imagen"
+                      width="150px"
+                      height="150px"
                     />
                     <div className={style.name}>
                       <label>{product.name}</label>
@@ -115,7 +113,7 @@ export default function Cart() {
                     </div>
                     <div className={style.remover}>
                       <label>Remover</label>
-                      <button onClick={() => removeProduct()}>x</button>
+                      <button onClick={() => removeProduct(product)}>x</button>
                     </div>
                     <div className={style.price}>
                       <label> ${product.price}</label>
@@ -125,7 +123,7 @@ export default function Cart() {
               );
             })
           ) : (
-            <div>Loadig</div>
+            <div>No tiene productos en el carrito</div>
           )}
         </div>
       </div>
