@@ -9,16 +9,16 @@ h1{
 }
 h3{
   color: rgb(255, 255, 255);
-  margin-top: 40px;
+  margin-top: 4%;
 }
 .contenedor{
   background-image: url("./violeta.jpg");
   background-size: cover;
   background-repeat: no-repeat;
  
-  height: 60vh;
+  height: 62vh;
   width: 100%;
-  margin-top: 50px;
+  margin-top: 5vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,19 +26,21 @@ h3{
 
 .form{
 
-  margin-top: 70px;
+ position: relative;
+ margin-top: 5%;
+ min-height: 70vh;
 }
 .formTitle{
   color: white;
   font-family: 'Roboto', sans-serif;
   text-align: center;
-  margin-top: 17vh;
+  margin-top: 20%;
 }
 .formSubtitle{
   color: white;
   font-family: 'Roboto', sans-serif;
   text-align: center;
-  margin-top: 54px;
+  margin-top: 5%;
 }
 
 .formInputGroup{
@@ -46,7 +48,7 @@ h3{
   flex-direction: column;
   margin-top: 50px;
   margin-left: 27%;
-  width: 20vw;
+  width: 50%;
   
 
 }
@@ -98,7 +100,7 @@ h3{
   color: #fff;
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
-  margin-bottom: 80px;
+  margin-bottom: 15%;
   cursor: pointer;
 }
 .boton:hover{
@@ -109,7 +111,7 @@ h3{
 
 .pather{
 position: absolute;
-margin-top: -175px;
+margin-top: -10%;
 
 
 

@@ -2,9 +2,12 @@
     overflow: hidden;
     position: relative;
     min-width: 260px;
-    height: 400px;
+/*     height: 400px; */
     max-width: 110vh;
-    margin-left: 21%;
+    margin-left: 21%; 
+  /*   display: flex;
+    flex-direction: column;
+    justify-content: center; */
     padding-bottom: 80px;
   }
   .texto{
@@ -12,7 +15,7 @@
     display: flex;
     justify-content: center;
     padding-bottom:50px;
-    margin-top: 20vh;
+    margin-top: 11%;
     font-size: 2rem;
    
   }
@@ -75,7 +78,7 @@
   .inner {
     display: grid;
     grid-auto-flow: column; 
-    height: 36vh;
+    height: 100%;
     width: 200000vw;
     overflow: hidden;
     grid-auto-columns: 270px;
