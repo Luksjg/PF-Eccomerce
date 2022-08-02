@@ -2,7 +2,8 @@
 
 ## Introduction
 
-Proyecto individual realizado para presentar en HenryBootcamp. Un sitio web consume una API (REST Countries) para traerse información de países y las guarda en su propia base de datos (PostgreSQL). Luego utilizamos esta información en diferentes rutas para permitirle al usuario interactuar y poder llevar registro de sus actividades (Puede crear las mismas a través de un formulario controlado y asignarlas a distintos países mediante una tabla intermedia) realizadas, donde las llevo a cabo, el tiempo tomado y otros datos de interés. En otras funcionalidades el usuario también puede buscar países por nombre y filtrarlos (Si tiene actividades (y cuales son), por cantidad de población, y alfabéticamente).
+
+Ecommerce funcional con temática cannábica, cuenta con carrito de compras, mercado de pago, registro y logueo con firebase, base de datos relacional que guarda las compras de los usuarios y panel de administrador.
 
 Tecnologias utilizadas:
 <br>
@@ -19,24 +20,24 @@ Front-End: React, Redux, CSS Modules
 https://pf-eccomerce.vercel.app/
 
 ## Integrantes
-> Luksjg
-> Manu10mza
-> tadeoigarate 
-> Tiin24 
-> Damebeus
+<> Luksjg
+<> Manu10mza
+<> tadeoigarate 
+<> Tiin24 
+<> Damebeus
 
 ## Imagenes
 
-- Landing Page
+- Home
 
-![landingPage](/img/landginPage.png)
-
-
-- Home - country detail - 404 page - navegacion
-
-![funcional](/img/gif.gif)
+![Home](/img/pfgif.gif)
 
 
-- New Activity (Formulario)
+- Tienda
 
-![newActivity](/img/form.png)
+![Store](/img/PFR1.png)
+
+
+- Carrito
+
+![Cart](/img/PFR2.png)
