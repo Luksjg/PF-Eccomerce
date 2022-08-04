@@ -1,11 +1,17 @@
 /* eslint-disable no-useless-escape */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { newSub } from "../../actions";
 import style from "./Subscribe.module.css";
 import Swal from "sweetalert2";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 export default function Subscribe() {
+  useEffect(() => {
+    Aos.init({ duration: 2000, once: false });
+  }, []);
+
   const dispatch = useDispatch();
 
   const [input, setInput] = useState({
@@ -91,10 +97,10 @@ export default function Subscribe() {
         ></img>
       </a>
       <div className={style.form}>
-        <div className={style.formTitle}>
+        <div className={style.formTitle} data-aos='fade-up'>
           <h1>¡No te pierdas ningun articulo! </h1>
         </div>
-        <div className={style.formSubtitle}>
+        <div className={style.formSubtitle} data-aos='fade-up'>
           <h3>
             {" "}
             Suscríbete a nuestro newsletter y no te perderás ningún tema de
@@ -103,7 +109,7 @@ export default function Subscribe() {
         </div>
         <div className={style.formInput}>
           <form onSubmit={(e) => handleSubmit(e)}>
-            <div className={style.formInputGroup}>
+            <div className={style.formInputGroup} data-aos='fade-right'>
               {/*         <p>Nombre</p> */}
               <input
                 type='text'
@@ -113,7 +119,7 @@ export default function Subscribe() {
                 onChange={(e) => handleChange(e)}
               />
             </div>
-            <div className={style.formInputGroup}>
+            <div className={style.formInputGroup} data-aos='fade-left'>
               {/*     <p>Email</p> */}
               <input
                 type='text'
@@ -124,7 +130,7 @@ export default function Subscribe() {
               />
               {errors.mail ? <label>{errors.mail}</label> : null}
             </div>
-            <div className={style.formInputGroup}>
+            <div className={style.formInputGroup} data-aos='fade-right'>
               {/*   <p>Mensaje</p> */}
               <input
                 placeholder='Mensaje'

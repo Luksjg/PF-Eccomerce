@@ -6,6 +6,8 @@ import ProductCard from "../productCard/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getOutsandingProducts } from "../../actions";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const Carrusel = ({ slides }) => {
   const carrusel = useRef(document.createElement("div"));
@@ -57,13 +59,15 @@ const Carrusel = ({ slides }) => {
       });
     };
   }
-
+  useEffect(() => {
+    Aos.init({ duration: 2000, once: true });
+  }, []);
   return (
     <>
       <div className={styles.texto}>
         <h1>¡Productos destacados!</h1>
       </div>
-      <div className={styles.container} ref={carrusel}>
+      <div className={styles.container} ref={carrusel} data-aos='fade-up'>
         {
           <>
             <button

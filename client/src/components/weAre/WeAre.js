@@ -28,126 +28,126 @@ export default function WeAre() {
     <div>
       <div className={style.container}>
         <div className={style.cards}>
-          <a href="https://github.com/Manu10mza">
+          <a href='https://github.com/Manu10mza'>
             <div className={style.nombre}>
               <h3>Back-end Developer</h3>
               <h2>Gerardo romero</h2>
             </div>
             <div className={style.foto}>
               <img
-                src="https://pbs.twimg.com/media/FVAV0RhWYAAcGW0.jpg"
-                alt="github"
-                width="250"
-                height="250"
+                src='https://pbs.twimg.com/media/FVAV0RhWYAAcGW0.jpg'
+                alt='github'
+                width='250'
+                height='250'
               />
             </div>
             <div className={style.imagen}>
               <img
-                src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-                alt="github"
-                width="100"
-                height="100"
+                src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'
+                alt='github'
+                width='100'
+                height='100'
               />
             </div>
           </a>
         </div>
         <div className={style.cards}>
-          <a href="https://github.com/Tiin24">
+          <a href='https://github.com/Tiin24'>
             <div className={style.nombre}>
               <h3>Back-end Developer</h3>
               <h2>Isaias Agustin Romero</h2>
             </div>
             <div className={style.foto}>
               <img
-                src="https://pbs.twimg.com/media/E4uCRBrX0AAkDhi?format=jpg&name=large"
-                alt="github"
-                width="250"
-                height="250"
+                src='https://pbs.twimg.com/media/E4uCRBrX0AAkDhi?format=jpg&name=large'
+                alt='github'
+                width='250'
+                height='250'
               />
             </div>
             <div className={style.imagen}>
               <img
-                src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-                alt="github"
-                width="100"
-                height="100"
+                src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'
+                alt='github'
+                width='100'
+                height='100'
               />
             </div>
           </a>
         </div>
         <div className={style.cards}>
-          <a href="https://github.com/tadeoigarate">
+          <a href='https://github.com/tadeoigarate'>
             <div className={style.nombre}>
               <h3>Back-end Developer</h3>
               <h2>Tadeo Garate</h2>
             </div>
             <div className={style.foto}>
-              <img src={tadeo} alt="github" width="250" height="250" />
+              <img src={tadeo} alt='github' width='250' height='250' />
             </div>
             <div className={style.imagen}>
               <img
-                src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-                alt="github"
-                width="100"
-                height="100"
+                src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'
+                alt='github'
+                width='100'
+                height='100'
               />
             </div>
           </a>
         </div>
         <div className={style.cards}>
-          <a href="https://github.com/Luksjg">
+          <a href='https://github.com/Luksjg'>
             <div className={style.nombre}>
               <h3>Front-end Developer</h3>
               <h2>Lucas Joel Gomez</h2>
             </div>
             <div className={style.foto}>
-              <img src={lucas} alt="github" width="250" height="250" />
+              <img src={lucas} alt='github' width='250' height='250' />
             </div>
             <div className={style.imagen}>
               <img
-                src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-                alt="github"
-                width="100"
-                height="100"
+                src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'
+                alt='github'
+                width='100'
+                height='100'
               />
             </div>
           </a>
         </div>
         <div className={style.cards}>
-          <a href="https://us.123rf.com/450wm/iuphotos/iuphotos2010/iuphotos201004544/157632900-pared-de-ladrillo-blanco-con-traidor-de-inscripci%C3%B3n-escrito-a-mano-con-pintura-negra.jpg?ver=6">
+          <a href='https://us.123rf.com/450wm/iuphotos/iuphotos2010/iuphotos201004544/157632900-pared-de-ladrillo-blanco-con-traidor-de-inscripci%C3%B3n-escrito-a-mano-con-pintura-negra.jpg?ver=6'>
             <div className={style.nombre}>
               <h3>In memoriam</h3>
               <h2> Giancarlos sanchez</h2>
             </div>
             <div className={style.fotoGian}>
-              <img src={gc} alt="github" width="250" height="250" />
+              <img src={gc} alt='github' width='250' height='250' />
             </div>
             <div className={style.imagen}>
               <img
-                src="https://cdn-icons-png.flaticon.com/512/42/42811.png"
-                alt="github"
-                width="100"
-                height="100"
+                src='https://cdn-icons-png.flaticon.com/512/42/42811.png'
+                alt='github'
+                width='100'
+                height='100'
               />
             </div>
           </a>
         </div>
 
         <div className={style.cards}>
-          <a href="https://github.com/damebeus">
+          <a href='https://github.com/damebeus'>
             <div className={style.nombre}>
               <h3>Front-end Developer</h3>
               <h2>Damian Olivieri</h2>
             </div>
             <div className={style.foto}>
-              <img src={damian} alt="github" width="250" height="250" />
+              <img src={damian} alt='github' width='250' height='250' />
             </div>
             <div className={style.imagen}>
               <img
-                src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
-                alt="github"
-                width="100"
-                height="100"
+                src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'
+                alt='github'
+                width='100'
+                height='100'
               />
             </div>
           </a>
