@@ -18,7 +18,7 @@ export default function Welcome() {
             <p>
               {" "}
               El e-commerce más completo en productos para cultivos y grow.{" "}
-              <br />
+              <hr />
               ¡Hacé tu pedido y obtené un 20% DE DESCUENTO en tu próxima compra!{" "}
             </p>
           </div>

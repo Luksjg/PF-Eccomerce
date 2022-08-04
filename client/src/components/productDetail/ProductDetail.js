@@ -26,7 +26,6 @@ export default function ProductDetail() {
   useEffect(() => {
     setAccessToken(JSON.parse(localStorage.getItem("accessToken")));
     setCurrentUser(JSON.parse(localStorage.getItem("currentUser")));
-
   }, []);
 
   function handleProduct(product) {
@@ -65,11 +64,11 @@ export default function ProductDetail() {
             {product.image ? (
               <img
                 src={product.image}
-                alt="imagen1"
-                height="450"
-                width="450"
-                max-width="450"
-                max-height="450"
+                alt='imagen1'
+                height='450'
+                width='450'
+                max-width='450'
+                max-height='450'
               />
             ) : (
               <img src={prueba} alt={"Imagenotfound1"} />
@@ -113,7 +112,12 @@ export default function ProductDetail() {
             </div>
             <div className={style.stock}>
               {product.stock > 0 ? (
-                <button onClick={() => handleProduct(product)} className={style.agregar}>Añadir al carrito</button>
+                <button
+                  onClick={() => handleProduct(product)}
+                  className={style.agregar}
+                >
+                  Añadir al carrito
+                </button>
               ) : (
                 <Link to={`/producto/${id}`}></Link>
               )}
@@ -125,7 +129,7 @@ export default function ProductDetail() {
             </div>
           </div>
         </div>
-        <div>
+        <div className={style.comentarios}>
           <Comments />
         </div>
         <div>
