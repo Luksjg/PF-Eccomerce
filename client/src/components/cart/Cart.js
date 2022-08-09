@@ -91,8 +91,8 @@ export default function Cart() {
                     <img
                       src={product.image}
                       alt='product imagen'
-                      width='150px'
-                      height='150px'
+                      width='120px'
+                      height='120px'
                     />
                     <div className={style.name}>
                       <label>{product.name}</label>
@@ -135,12 +135,12 @@ export default function Cart() {
           )}
         </div>
         <div>
-          <button onClick={()=>cartSubmit()} disabled={currentUser.userId ? false:true}>
+          <button onClick={()=>cartSubmit()} disabled={currentUser.userId ? false:true} className={style.nextBtn}>
             {currentUser.userId?
             <Link to="/formulario">SIGUIENTE</Link>
             :
             <div>
-              No disponible
+              Ingresar
 
             </div>
 

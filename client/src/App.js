@@ -36,7 +36,6 @@ function App() {
     <div className='App'>
       <BrowserRouter>
         <ScrollToTop />
-
         <Switch>
           <Route exact path='/orderEdit/status/:id' component={OrderEdit} />
           <Route exact path='/Profile/:id' component={Profile} />
@@ -47,15 +46,19 @@ function App() {
           <Route exact path="/tienda" component={StorePage} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
+          {/*  */}
           <Route path="/usuario/:id" component={UserData} />
           <Route path="/usuarioedit/:id" component={UserDataEdit} />
+          {/*  */}
           <Route path="/usuarios" component={Users} />
-          <Route path="/carrito" component={Cart} />
+          {/*  */}
+          <Route path="/carrito" component={Cart} /> 
           <Route path="/producto/:id" component={ProductDetail} />
           <Route path="/categoria/:category" component={ProductsCategory} />
           <Route path="/editar_producto/:id" component={ProductEdit} />
           <Route path="/crearproducto" component={CreateProduct} />
           <Route path="/nosotros" component={WeAre} />
+          {/*  */}
           <Route path="/formulario" component={FormMP} />
           <Route path="*" component={Page404} />
         </Switch>
