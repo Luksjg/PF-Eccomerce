@@ -2,7 +2,10 @@
   background-color: #EDEDED;
 }
 
-
+.carrito{
+  position: relative;
+  top:16px;
+}
 .columnaContainer{
 
   display: flex;

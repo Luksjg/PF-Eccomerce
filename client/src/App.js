@@ -51,7 +51,6 @@ function App() {
           <Route path="/usuarioedit/:id" component={UserDataEdit} />
           {/*  */}
           <Route path="/usuarios" component={Users} />
-          {/*  */}
           <Route path="/carrito" component={Cart} /> 
           <Route path="/producto/:id" component={ProductDetail} />
           <Route path="/categoria/:category" component={ProductsCategory} />

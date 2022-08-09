@@ -140,7 +140,9 @@ export default function Cart() {
             <Link to="/formulario">SIGUIENTE</Link>
             :
             <div>
+            <Link to="/login">
               Ingresar
+            </Link>
 
             </div>
 

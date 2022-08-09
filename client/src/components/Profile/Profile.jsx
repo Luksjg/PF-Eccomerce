@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ordersByUser, getUser } from "../../actions/index";
 import style from "./Profile.module.css";
-import Page404 from "../page404/Page404";
+import NavBarClient from "../navbarClient/NavBarClient"
+import NavBar from "../navbar/NavBar";
 
 
 function Profile() {
@@ -29,6 +30,13 @@ function Profile() {
 
   return (
     <div>
+        <div>
+        {currentUser && currentUser.isAdmin === "si" ? (
+          <NavBar />
+        ) : (
+          <NavBarClient/>
+        )}
+      </div>
       <div className={style.cardProfile}>
         <div className={style.profileDiv}>
           <h2 className={style.h2Profile}>Profile</h2>

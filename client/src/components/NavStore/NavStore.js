@@ -83,26 +83,6 @@ const NavStore = ({ setCurrentPage }) => {
           </div>
         </div>
       </div>
-      {/*      <div className={S.container}>
-        <div className={S.Selectores}>
-          <div className={S.usuario}>
-            {accessToken ? (
-              <label onClick={logOut}>Logout</label>
-            ) : (
-              <Link to="/login">
-                <label>Login</label>
-              </Link>
-            )}
-          </div>
-          <div className={S.carrito}>
-            <Link to="/carrito">
-              <h3>
-                <FiShoppingCart />
-              </h3>
-            </Link>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 };
