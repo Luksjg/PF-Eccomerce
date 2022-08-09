@@ -46,25 +46,36 @@
     background : rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box; 
     color : rgb(255, 255, 255); 
     box-sizing : border-box; 
-    margin-top: -40vh;
-    margin-left: 57.5vw;
+    margin-top: -22%;
+    margin-left: 59%;
     font-family : Rubik, sans-serif; 
     text-transform : uppercase; 
 
 
 }
 .subTitulo{
-    margin-top: 0vh;
-    margin-left: 58vw;
+   
+    margin-left: 58%;
     font-size: 20px;
     color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family : Rubik, sans-serif;
 }
+.subTitulo p{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
 
 .btn{
     height: 5vh;
     width: 18vh;
-    margin-top: 2vh;
-    margin-left: 68vw;
+    margin-top: 2%;
+    margin-left: 75%;
     font-size: 20px;
     color: rgb(255, 255, 255);
     background-color : transparent; 
@@ -74,7 +85,7 @@
 }
 .btn:hover{
     background-color : rgba(255, 255, 255, 0.2); 
-    border: 1px solid rgba(255,255,255,0.18);
+    border: 3px solid rgba(255,255,255,0.18);
     transition: 0.4s;
     
 }

@@ -98,7 +98,7 @@ export default function Comments() {
       )}
 
       <div className={style.review}>
-        <h2>Reseñas</h2>
+        <h2>Reseñas :</h2>
         {reviews.length > 0 ? (
           reviews.map((r, i) => (
             <div key={i}>
