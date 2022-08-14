@@ -1,14 +1,21 @@
 .container{
     border: solid black 1px;
-    background-color: gray;
+    background-color: rgb(177, 177, 177);
     margin: 5px;
     padding: 15px;
     border-radius: 5px;
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+    text-align: center;
+    margin-left: 35%;
+    margin-right: 35%;
 
 }
 
 .container:hover{
-    opacity: 0.9;
+    opacity: 0.8;
+    cursor: pointer;
 }
 
 

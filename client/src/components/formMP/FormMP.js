@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { postShipping, cofirmarCompra } from "../../actions";
 import Footer from "../footer/Footer";
-import NavBar from "../navbar/NavBar";
 import style from "./FormMP.module.css";
 export default function FormMP() {
   const data = useSelector((state) => state.orderToMP);
@@ -66,18 +65,15 @@ export default function FormMP() {
   }
   return (
     <div>
-      <div>
+      <div className={style.bg}>
         <br />
         <br />
         <div className={style.titulo}>
-          <h1>Formulario de envio</h1>
+          <h1>Complete datos de envio</h1>
         </div>
         <div className={style.container}>
           <form onSubmit={(e) => handleSubmit(e)}>
             <div>
-              <div>
-                <h1>Direccion Del Envio</h1>
-              </div>
               <p>Nombre de la Calle:</p>
               <input
                 type='text'
@@ -143,12 +139,20 @@ export default function FormMP() {
               />
             </div>
 
-            <div></div>
-
+            <div className={style.btnC}>
             <div>
               <button type='submit'>Checkout</button>
             </div>
+
+
+            </div>
+
           </form>
+          <div className={style.backBtn}>
+            <button>
+                <Link to={`/carrito`}>Cancelar</Link>
+            </button>
+            </div>
         </div>
         <br />
         <br />

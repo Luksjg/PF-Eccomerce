@@ -4,22 +4,27 @@
 }
 .container {
   background-color: #fff;
-  margin-bottom: 400px;
+  margin-bottom: 200px;
   width: 60%;
   margin-left: 20%;
 }
 .titulo {
+  padding: 15px;
   text-align: center;
-  font-size: 50px;
+  font-size: 30px;
   font-weight: bold;
   background-color: #eeeeee;
 }
 
 .container2 {
-  /*    background-color: yellowgreen; */
   border-bottom: #9d9696 1px solid;
   display: flex;
 }
+
+.container2 img{
+  padding: 10px;
+}
+
 .name {
   font-size: 20px;
   font-weight: bold;
@@ -50,9 +55,10 @@
 .count button {
   background-color: #eeeeee;
   border: none;
-  font-size: 25px;
+  font-size: 22px;
   font-weight: bold;
-  margin-left: 5px;
+  margin-left: 8px;
+  background-color: white;
   margin-top: 5px;
   width: 20px;
   position: relative;
@@ -96,8 +102,8 @@
 .priceTotal {
   font-size: 25px;
   font-weight: bold;
-  margin-left: 128vh;
-  margin-top: -40px;
+  margin-left: 138vh;
+  margin-top: -80px;
   position: absolute;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -114,4 +120,23 @@
   top: 50%;
  /*  background-color: #eeeeee; */
 
+}
+
+.nextBtn{
+  background-color: rgb(250, 250, 250);
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 20px;
+  font-weight: bolder;
+  margin-left: 120vh;
+  color: rgb(48, 48, 48);
+  margin-top: -85px;
+  position: absolute;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.nextBtn:hover{
+  opacity: 0.6;
+  cursor: pointer;
 }

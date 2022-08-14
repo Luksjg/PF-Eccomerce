@@ -40,7 +40,6 @@ export default function Comments() {
         review: "",
         valoration: 0,
       });
-      history.push("/tienda");
     }
   }
 

@@ -31,7 +31,11 @@ function Profile() {
 
   return (
     <div className={style.fatherDiv}>
-      <NavBarClient />
+      {currentUser && currentUser.isAdmin === "si" ? (
+          <NavBar />
+        ) : (
+          <NavBarClient/>
+        )}
       <div className={style.divFirst}>
         <div className={style.cardProfile}>
           <div className={style.profileDiv}>

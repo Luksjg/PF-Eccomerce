@@ -1,6 +1,20 @@
 .fatherDiv{
   height: 80vh;
 }
+.cardProfile{
+    width: 99%;
+    height: 100%;
+    margin-top: 100px;
+    margin-left: 10px;
+    /* margin-right: 22px; */
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: darkgrey;
+    border-radius: 10px;
+}
 
 .divFirst{
   margin-top: 46px;
@@ -84,6 +98,7 @@
     background-color: rgb(50 50 50);
     border-radius: 10px;
     align-items: center;
+    margin-bottom: 19px;
 }
 
 .divH2{
