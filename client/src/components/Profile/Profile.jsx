@@ -3,9 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { ordersByUser, getUser } from "../../actions/index";
 import style from "./Profile.module.css";
-import NavBarClient from "../navbarClient/NavBarClient"
+import Page404 from "../page404/Page404";
 import NavBar from "../navbar/NavBar";
-
+import NavBarClient from "../navbarClient/NavBarClient";
+import Footer from "../footer/Footer";
 
 function Profile() {
   const dispatch = useDispatch();
@@ -29,46 +30,63 @@ function Profile() {
   console.log(allOrders, "soy este");
 
   return (
-    <div>
-        <div>
-        {currentUser && currentUser.isAdmin === "si" ? (
+    <div className={style.fatherDiv}>
+      {currentUser && currentUser.isAdmin === "si" ? (
           <NavBar />
         ) : (
           <NavBarClient/>
         )}
-      </div>
-      <div className={style.cardProfile}>
-        <div className={style.profileDiv}>
-          <h2 className={style.h2Profile}>Profile</h2>
-        </div>
-        <div className={style.userDate}>
-          <div>
-            <p className={style.pDates}>Email:{user.email}</p>
-            <p className={style.pDates}>User name:{user.username}</p>
+      <div className={style.divFirst}>
+        <div className={style.cardProfile}>
+          <div className={style.profileDiv}>
+            <h2 className={style.h2Profile}>Profile</h2>
           </div>
-          <div className={style.imgDiv}>
-            <img src={user.profile_img} alt="" width='20%' height="20%" />
+          <div className={style.userDate}>
+            <div>
+              <p className={style.pDates}>
+                <b className={style.bP}>{user.username}</b>
+              </p>
+              <p className={style.pDates}>
+                E-mail <b className={style.bP}>{user.email}</b>
+              </p>
+            </div>
+            <div className={style.imgDiv}>
+              <img src={user.profile_img} alt="" width="50%" height="50%" />
+            </div>
           </div>
-        </div>
-        <div className={style.ordDiv}>
-          <h2 className={style.h2OrdersProfile}>ORDENES:</h2>
-          {console.log(allOrders)}
-          {allOrders.length > 0 ? (
-            allOrders.map((order) => (
-              <div key={order.id}>
-                <div className={style.ordersMetod}>
-                  <p className={style.pProfile}>Estado:{order.status}</p>
-                  <p className={style.pProfile}>Tipo de envio:{order.shipping}</p>
-                  <p className={style.pProfile}>BuyDate:{order.buyDate}</p>
-                  <p className={style.pProfile}>{order.paymentMethod}</p>
+          <div className={style.divH2}>
+            <h2 className={style.h2OrdersProfile}>ORDENES</h2>
+          </div>
+          <div className={style.ordDiv}>
+            {console.log(allOrders)}
+            {allOrders.length > 0 ? (
+              allOrders.map((order) => (
+                <div key={order.id} className={style.ordersMetod}>
+                  <p className={style.pDates}>
+                    Estado:<b className={style.bP}>{order.status}</b>
+                  </p>
+                  <p className={style.pDates}>
+                    Tipo de envio:<b className={style.bP}>{order.shipping}</b>
+                  </p>
+                  <p className={style.pDates}>
+                    BuyDate:<b className={style.bP}>{order.buyDate}</b>
+                  </p>
+                  <p className={style.pDates}>
+                    <b className={style.bP}>{order.paymentMethod}</b>
+                  </p>
                 </div>
+              ))
+            ) : (
+              <div className={style.ordDiv}>
+              <p className={style.pProfile}>No hay ordenes</p>
               </div>
-            ))
-          ) : (
-            <p className={style.pProfile}>No hay ordenes</p>
-          )}
+            )}
+          </div>
         </div>
       </div>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }
