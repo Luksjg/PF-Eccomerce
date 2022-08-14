@@ -49,9 +49,13 @@ export default function NavBar() {
         <Link to="/PanelAdminOrd">
           <label>Panel orden</label>
         </Link>
-        <Link to={`/profile/${currentUser.id}`}>
+        {currentUser ? (
+          <Link to={`/profile/${currentUser.userId}`}>
             <label>Perfil</label>
           </Link>
+        ) : (
+          ""
+        )}
         <div>
           {accessToken ? (
             <label onClick={logOut}>Logout</label>
